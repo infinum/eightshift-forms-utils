@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace EightshiftForms\Helpers;
 
-use EightshiftForms\Hooks\Filters;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
@@ -30,7 +29,7 @@ final class SettingsOutputHelper
 	 */
 	public static function getIntro(string $type): array
 	{
-		$data = \apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$type]['labels'] ?? [];
+		$data = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$type]['labels'] ?? [];
 
 		if (!$data) {
 			return [];
@@ -70,7 +69,7 @@ final class SettingsOutputHelper
 	 */
 	public static function getNoValidGlobalConfig(string $type): array
 	{
-		$title = \apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$type]['labels']['title'] ?? [];
+		$title = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$type]['labels']['title'] ?? [];
 
 		if (!$title) {
 			return [];
@@ -306,7 +305,7 @@ final class SettingsOutputHelper
 	 */
 	public static function getPartialFormResponseTags(string $formType): string
 	{
-		$tags = \apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$formType]['emailTemplateTags'] ?? [];
+		$tags = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$formType]['emailTemplateTags'] ?? [];
 
 		if ($tags) {
 			return SettingsOutputHelper::getPartialFormFieldNames(\array_keys($tags));

@@ -78,6 +78,10 @@ class UtilsConfig
 	public const FILTER_PUBLIC_FILTERS_DATA = self::FILTER_PREFIX . '_public_filters_data';
 	public const FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES = self::FILTER_PREFIX . '_settings_none_translatable_names';
 
+	public const INTEGRATION_TYPE_DEFAULT = 'default';
+	public const INTEGRATION_TYPE_NO_BUILDER = 'no-builder';
+	public const INTEGRATION_TYPE_COMPLEX = 'complex';
+
 	/**
 	 * API validator output key.
 	 *

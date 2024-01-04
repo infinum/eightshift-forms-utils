@@ -10,12 +10,6 @@ declare(strict_types=1);
 
 namespace EightshiftForms\Helpers;
 
-use EightshiftForms\Hooks\Filters;
-use EightshiftForms\Integrations\ActiveCampaign\SettingsActiveCampaign;
-use EightshiftForms\Integrations\Jira\SettingsJira;
-use EightshiftForms\Integrations\Mailer\SettingsMailer;
-use EightshiftForms\Integrations\Pipedrive\SettingsPipedrive;
-use EightshiftForms\Troubleshooting\SettingsDebug;
 use EightshiftFormsUtils\Config\UtilsConfig;
 use EightshiftFormsUtilsVendor\EightshiftLibs\Helpers\Components;
 use RecursiveArrayIterator;
@@ -395,6 +389,7 @@ final class Helper
 
 		$output['type'] = $type;
 		$output['typeFilter'] = $blockName['name'];
+		$output['integrationType'] = $settings['integrationType'] ?? '';
 		$output['label'] = $settings['labels']['title'] ?? '';
 		$output['icon'] = $settings['labels']['icon'] ?? '';
 		$output['itemId'] = $blocks['innerBlocks'][0]['attrs']["{$type}IntegrationId"] ?? '';
@@ -402,8 +397,8 @@ final class Helper
 		$output['fields'] = $blocks;
 		$output['fieldsOnly'] = $fieldsOnly;
 
-		switch ($output['typeFilter']) {
-			case SettingsActiveCampaign::SETTINGS_TYPE_KEY:
+		switch ($output['integrationType']) {
+			case UtilsConfig::INTEGRATION_TYPE_COMPLEX:
 				if ($output['itemId'] && $output['type'] && $output['innerId']) {
 					$output['isValid'] = true;
 
@@ -412,9 +407,7 @@ final class Helper
 					}
 				}
 				break;
-			case SettingsMailer::SETTINGS_TYPE_KEY:
-			case SettingsJira::SETTINGS_TYPE_KEY:
-			case SettingsPipedrive::SETTINGS_TYPE_KEY:
+			case UtilsConfig::INTEGRATION_TYPE_NO_BUILDER:
 				if ($output['type']) {
 					$output['isValid'] = true;
 

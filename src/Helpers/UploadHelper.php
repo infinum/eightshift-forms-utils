@@ -10,12 +10,12 @@ declare(strict_types=1);
 
 namespace EightshiftFormsUtils\Helpers;
 
-use EightshiftFormsUtils\Config\Config;
+use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
- * Trait UploadHelper
+ * UploadHelper class
  */
-trait UploadHelper
+final class UploadHelper
 {
 	/**
 	 * Detect if there is and error in the file upload.
@@ -24,7 +24,7 @@ trait UploadHelper
 	 *
 	 * @return boolean
 	 */
-	protected function isUploadError(string $error): bool
+	public static function isUploadError(string $error): bool
 	{
 		$errors = [
 			// uploadFile() method errors.
@@ -54,7 +54,7 @@ trait UploadHelper
 	 *
 	 * @return array<string, array<int, array<string, mixed>>>
 	 */
-	protected function uploadFile(array $file): array
+	public static function uploadFile(array $file): array
 	{
 		$output = $file;
 
@@ -89,8 +89,8 @@ trait UploadHelper
 			);
 		}
 
-		$folderPath = $this->getUploadFolerPath();
-		if ($this->isUploadError($folderPath)) {
+		$folderPath = self::getUploadFolerPath();
+		if (self::isUploadError($folderPath)) {
 			return \array_merge(
 				$output,
 				[
@@ -160,7 +160,7 @@ trait UploadHelper
 	 *
 	 * @return void
 	 */
-	protected function deleteFiles(array $files): void
+	public static function deleteFiles(array $files): void
 	{
 		if (!$files) {
 			return;
@@ -186,10 +186,10 @@ trait UploadHelper
 	 *
 	 * @return void
 	 */
-	protected function deleteUploadFolderContent(int $numberOfHours = 2): void
+	public static function deleteUploadFolderContent(int $numberOfHours = 2): void
 	{
-		$folderPath = $this->getUploadFolerPath();
-		if ($this->isUploadError($folderPath)) {
+		$folderPath = self::getUploadFolerPath();
+		if (self::isUploadError($folderPath)) {
 			return;
 		}
 
@@ -221,10 +221,10 @@ trait UploadHelper
 	 *
 	 * @return string
 	 */
-	protected function getFilePath(string $name): string
+	public static function getFilePath(string $name): string
 	{
-		$folderPath = $this->getUploadFolerPath();
-		if ($this->isUploadError($folderPath)) {
+		$folderPath = self::getUploadFolerPath();
+		if (self::isUploadError($folderPath)) {
 			return 'errorFilePathMissingUploadFolder';
 		}
 
@@ -244,7 +244,7 @@ trait UploadHelper
 	 *
 	 * @return string
 	 */
-	protected function getFileNameFromPath(string $path): string
+	public static function getFileNameFromPath(string $path): string
 	{
 		$path = \explode(\DIRECTORY_SEPARATOR, $path);
 		return \end($path);
@@ -257,9 +257,9 @@ trait UploadHelper
 	 *
 	 * @return string
 	 */
-	protected function getFileExtFromPath(string $path): string
+	public static function getFileExtFromPath(string $path): string
 	{
-		$filename = $this->getFileNameFromPath($path);
+		$filename = self::getFileNameFromPath($path);
 		$ext = \explode('.', $filename);
 		return \end($ext);
 	}
@@ -271,7 +271,7 @@ trait UploadHelper
 	 *
 	 * @return boolean
 	 */
-	protected function isFileFaulty(array $files): bool
+	public static function isFileFaulty(array $files): bool
 	{
 		$isFaulty = false;
 
@@ -297,7 +297,7 @@ trait UploadHelper
 		}
 
 		$sep = \DIRECTORY_SEPARATOR;
-		$dir = Config::getTempUploadDir();
+		$dir = UtilsConfig::getTempUploadDir();
 		return \WP_CONTENT_DIR . "{$sep}{$dir}{$sep}";
 	}
 }

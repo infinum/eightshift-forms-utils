@@ -33,6 +33,7 @@ use RecursiveIteratorIterator;
  */
 class Helper
 {
+
 	/**
 	 * Set locale depending on default locale or hook override.
 	 *
@@ -165,7 +166,7 @@ class Helper
 	 *
 	 * @return bool
 	 */
-	public static function isEightshiftFormsUtilsAdminPages(): bool
+	public static function isEightshiftFormsAdminPages(): bool
 	{
 		$page = isset($_GET['page']) ? \sanitize_text_field(\wp_unslash($_GET['page'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
@@ -428,10 +429,12 @@ class Helper
 
 		$fieldsOnly = $blocks['innerBlocks'][0]['innerBlocks'] ?? [];
 
+		$settings = \apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$type] ?? [];
+
 		$output['type'] = $type;
 		$output['typeFilter'] = $blockName['name'];
-		$output['label'] = Filters::getSettingsLabels($type);
-		$output['icon'] = Helper::getProjectIcons($type);
+		$output['label'] = $settings['labels']['title'] ?? '';
+		$output['icon'] = $settings['labels']['icon'] ?? '';
 		$output['itemId'] = $blocks['innerBlocks'][0]['attrs']["{$type}IntegrationId"] ?? '';
 		$output['innerId'] = $blocks['innerBlocks'][0]['attrs']["{$type}IntegrationInnerId"] ?? '';
 		$output['fields'] = $blocks;
@@ -1073,5 +1076,89 @@ class Helper
 	public static function getStateFieldType(string $name): string
 	{
 		return Components::getSettings()['enums']['typeInternal'][$name] ?? '';
+	}
+
+	/**
+	 * Get the settings labels and details by type and key.
+	 * This method is used to provide the ability to translate all strings.
+	 *
+	 * @param string $type Settings type from the Settings class.
+	 *
+	 * @return array<string, string>
+	 */
+	public static function getSpecialConstants(string $type): array
+	{
+		$data = [
+			'tracking' => [
+				'{invalidFieldsString}' => \__('comma-separated list of invalid fields', 'eightshift-forms'),
+				'{invalidFieldsArray}' => \__('array of invalid fields', 'eightshift-forms'),
+			],
+		];
+		return isset($data[$type]) ? $data[$type] : [];
+	}
+
+	/**
+	 * Get private filter name.
+	 *
+	 * @param array<int, string> $names Array of names.
+	 *
+	 * @return string
+	 */
+	public static function getFilterName(array $names): string
+	{
+		$filters = \wp_cache_get(self::FILTER_PREFIX . '_filters_public_list', self::FILTER_PREFIX);
+
+		// Cache filter names for faster access.
+		if (!$filters) {
+			$filters = self::getAllPublicFiltersNames(\apply_filters(self::FILTER_PUBLIC_FILTERS_DATA, []));
+
+			\wp_cache_add(self::FILTER_PREFIX . '_filters_public_list', $filters, self::FILTER_PREFIX, \HOUR_IN_SECONDS);
+		}
+
+		// List of all keys provided for the filter name.
+		$names = \array_map(
+			function ($item) {
+				return Helper::kebabToSnakeCase(Helper::camelToSnakeCase($item));
+			},
+			$names
+		);
+
+		// Create a string from array.
+		$names = \implode('_', $names);
+
+		// Create a full filter name.
+		$filterName = self::FILTER_PREFIX . "_{$names}";
+
+		if (!\in_array($filterName, $filters, true)) {
+			// translators: %s is the filter name.
+			\trigger_error(\sprintf(\esc_html__("You are using `%s` filter that doesn't exist. Please check the documentation for the correct filter name!", 'eightshift-forms'), \esc_attr($filterName)), \E_USER_WARNING); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
+			return '';
+		}
+
+		return $filterName;
+	}
+
+	/**
+	 * Get list of all full filter names build from array.
+	 *
+	 * @param array<mixed> $data Array of data.
+	 * @param string $prefix Prefix to add to all filter names.
+	 *
+	 * @return array<int, string>
+	 */
+	private static function getAllPublicFiltersNames(array $data, string $prefix = ''): array
+	{
+		$output = [];
+
+		foreach ($data as $key => $value) {
+			if (\is_array($value)) {
+				$nestedKeys = self::getAllPublicFiltersNames($value, $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($key)) . '_');
+				$output = \array_merge($output, $nestedKeys);
+			} else {
+				$output[] = self::FILTER_PREFIX . '_' . $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($value));
+			}
+		}
+
+		return $output;
 	}
 }

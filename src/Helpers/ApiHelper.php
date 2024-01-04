@@ -199,7 +199,7 @@ final class ApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (Helper::isDeveloperMode() && $debug) {
+		if (Helper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 
@@ -227,7 +227,7 @@ final class ApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (Helper::isDeveloperMode() && $debug) {
+		if (Helper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 
@@ -255,7 +255,7 @@ final class ApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (Helper::isDeveloperMode() && $debug) {
+		if (Helper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 

@@ -10,11 +10,8 @@ declare(strict_types=1);
 
 namespace EightshiftForms\Helpers;
 
-use EightshiftForms\Config\Config;
-use EightshiftForms\Hooks\Filters;
-use EightshiftForms\Rest\Routes\AbstractBaseRoute;
 use EightshiftForms\Helpers\I18nHelper;
-use EightshiftForms\Troubleshooting\SettingsDebug;
+use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
  * SettingsHelper class.
@@ -129,7 +126,7 @@ final class SettingsHelper
 	 */
 	public static function isSettingCheckboxChecked(string $key, string $id, string $formId): bool
 	{
-		return \in_array($key, \explode(AbstractBaseRoute::DELIMITER, self::getSettingValue($id, $formId)), true);
+		return \in_array($key, \explode(UtilsConfig::DELIMITER, self::getSettingValue($id, $formId)), true);
 	}
 
 	/**
@@ -141,7 +138,7 @@ final class SettingsHelper
 	 */
 	public static function getSettingName(string $key): string
 	{
-		return Config::getSettingNamePrefix() . "-{$key}";
+		return UtilsConfig::getSettingNamePrefix() . "-{$key}";
 	}
 
 	// --------------------------------------------------
@@ -235,7 +232,7 @@ final class SettingsHelper
 			return [];
 		};
 
-		return \explode(AbstractBaseRoute::DELIMITER, $value);
+		return \explode(UtilsConfig::DELIMITER, $value);
 	}
 
 	/**
@@ -261,7 +258,7 @@ final class SettingsHelper
 	 */
 	public static function isOptionCheckboxChecked(string $key, string $id): bool
 	{
-		return \in_array($key, \explode(AbstractBaseRoute::DELIMITER, self::getOptionValue($id)), true);
+		return \in_array($key, \explode(UtilsConfig::DELIMITER, self::getOptionValue($id)), true);
 	}
 
 	/**
@@ -275,16 +272,16 @@ final class SettingsHelper
 	{
 		$sufix = '';
 
-		if (!isset(\array_flip(\apply_filters(Filters::FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES, []))[$key])) {
+		if (!isset(\array_flip(\apply_filters(UtilsConfig::FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES, []))[$key])) {
 			$locale = I18nHelper::getLocale();
 
 			if ($locale) {
-				$delimiter = AbstractBaseRoute::DELIMITER;
+				$delimiter = UtilsConfig::DELIMITER;
 				$sufix = "{$delimiter}{$locale}";
 			}
 		}
 
-		return Config::getSettingNamePrefix() . "-{$key}{$sufix}";
+		return UtilsConfig::getSettingNamePrefix() . "-{$key}{$sufix}";
 	}
 
 	// --------------------------------------------------
@@ -304,7 +301,7 @@ final class SettingsHelper
 		$output = [];
 
 		// Generate correct order of settings.
-		foreach (\apply_filters(Filters::FILTER_SETTINGS_DATA, []) as $key => $item) {
+		foreach (\apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, []) as $key => $item) {
 			$order = $item['order'] ?? 0;
 			if (!$order) {
 				continue;
@@ -364,7 +361,9 @@ final class SettingsHelper
 			$isContantValueUsed = true;
 		}
 
-		if (\apply_filters(SettingsDebug::FILTER_SETTINGS_IS_DEBUG_ACTIVE, SettingsDebug::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS)) {
+		$isOverrideActive = Helper::isDeveloperForceDisabledFieldsActive();
+
+		if ($isOverrideActive) {
 			$isDisabled = false;
 			if (empty($option)) {
 				$value = $constantValue;
@@ -392,7 +391,7 @@ final class SettingsHelper
 				$helpOutput = '<span class="is-filter-applied">' . \__('This field value is set with a global variable via code.', 'eightshift-forms') . '</span>';
 			}
 
-			if (\apply_filters(SettingsDebug::FILTER_SETTINGS_IS_DEBUG_ACTIVE, SettingsDebug::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS)) {
+			if ($isOverrideActive) {
 				$helpOutput .= '<span class="is-debug-applied">' . \__('Debug disable option override is active. Be careful what value is used!', 'eightshift-forms') . '</span>';
 			}
 		}

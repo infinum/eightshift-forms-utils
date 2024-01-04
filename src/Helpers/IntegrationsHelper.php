@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace EightshiftForms\Helpers;
 
-use EightshiftForms\Hooks\Filters;
 use EightshiftForms\Helpers\SettingsHelper;
+use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
  * Class IntegrationsHelper
@@ -34,7 +34,7 @@ final class IntegrationsHelper
 		}
 
 		$type = $integrationDetails['typeFilter'];
-		$useFilter = \apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$type]['use'] ?? '';
+		$useFilter = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$type]['use'] ?? '';
 
 		return [
 			'label' => $integrationDetails['label'],
@@ -55,7 +55,7 @@ final class IntegrationsHelper
 	{
 		$output = [];
 
-		foreach (\apply_filters(Filters::FILTER_SETTINGS_DATA, []) as $key => $value) {
+		foreach (\apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, []) as $key => $value) {
 			$useFilter = $value['use'] ?? '';
 
 			if (!$useFilter) {
@@ -64,7 +64,7 @@ final class IntegrationsHelper
 
 			$type = $value['type'] ?? '';
 
-			if ($type !== Filters::SETTINGS_INTERNAL_TYPE_INTEGRATION) {
+			if ($type !== UtilsConfig::SETTINGS_INTERNAL_TYPE_INTEGRATION) {
 				continue;
 			}
 

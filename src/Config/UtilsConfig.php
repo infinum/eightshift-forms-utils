@@ -75,6 +75,7 @@ class UtilsConfig
 	public const SETTINGS_NAME_PREFIX = 'es-forms';
 
 	public const FILTER_SETTINGS_DATA = self::FILTER_PREFIX . '_settings_data';
+	public const FILTER_PUBLIC_FILTERS_DATA = self::FILTER_PREFIX . '_public_filters_data';
 	public const FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES = self::FILTER_PREFIX . '_settings_none_translatable_names';
 
 	/**
@@ -95,9 +96,29 @@ class UtilsConfig
 	}
 
 	/**
+	 * Method that returns projects setting name prefix.
+	 *
+	 * @return string
+	 */
+	public static function getSettingNamePrefix(): string
+	{
+		return "es-forms";
+	}
+
+	/**
 	 * Filter settings is debug active key.
 	 */
 	public const FILTER_SETTINGS_IS_DEBUG_ACTIVE = 'es_forms_settings_is_debug_active';
-
 	public const SETTINGS_DEBUG_DEVELOPER_MODE_KEY = 'developer-mode';
+	public const SETTINGS_DEBUG_QM_LOG = 'skip-qm-log';
+	public const SETTINGS_DEBUG_FORCE_DISABLED_FIELDS = 'skip-force-disabled-fields';
+
+
+	public const SLUG_POST_TYPE = 'eightshift-forms';
+	public const SLUG_ADMIN = 'es-forms';
+	public const SLUG_ADMIN_SETTINGS = 'es-settings';
+	public const SLUG_ADMIN_SETTINGS_GLOBAL = 'es-settings-global';
+	public const SLUG_ADMIN_DASHBOARD = 'dashboard';
+
+	public const FILTER_SETTINGS_WPML_IS_VALID_NAME = 'es_forms_settings_is_valid_wpml';
 }

@@ -10,21 +10,14 @@ declare(strict_types=1);
 
 namespace EightshiftForms\Helpers;
 
-use EightshiftForms\AdminMenus\FormAdminMenu;
-use EightshiftForms\AdminMenus\FormGlobalSettingsAdminSubMenu;
-use EightshiftForms\AdminMenus\FormSettingsAdminSubMenu;
-use EightshiftForms\AdminMenus\FormListingAdminSubMenu;
-use EightshiftForms\CustomPostType\Forms;
 use EightshiftForms\Hooks\Filters;
 use EightshiftForms\Integrations\ActiveCampaign\SettingsActiveCampaign;
 use EightshiftForms\Integrations\Jira\SettingsJira;
 use EightshiftForms\Integrations\Mailer\SettingsMailer;
-use EightshiftForms\Dashboard\SettingsDashboard;
-use EightshiftForms\General\SettingsGeneral;
 use EightshiftForms\Integrations\Pipedrive\SettingsPipedrive;
 use EightshiftForms\Troubleshooting\SettingsDebug;
 use EightshiftFormsUtils\Config\UtilsConfig;
-use EightshiftFormsVendor\EightshiftLibs\Helpers\Components;
+use EightshiftFormsUtilsVendor\EightshiftLibs\Helpers\Components;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 
@@ -40,7 +33,7 @@ final class Helper
 	 */
 	public static function getListingPageUrl(): string
 	{
-		$page = FormListingAdminSubMenu::ADMIN_MENU_SLUG;
+		$page = UtilsConfig::SLUG_ADMIN;
 
 		return \get_admin_url(null, "admin.php?page={$page}");
 	}
@@ -53,9 +46,9 @@ final class Helper
 	 *
 	 * @return string
 	 */
-	public static function getSettingsPageUrl(string $formId, string $type = SettingsGeneral::SETTINGS_TYPE_KEY): string
+	public static function getSettingsPageUrl(string $formId, string $type): string
 	{
-		$page = FormSettingsAdminSubMenu::ADMIN_MENU_SLUG;
+		$page = UtilsConfig::SLUG_ADMIN_SETTINGS;
 		$typeKey = '';
 
 		if (!empty($type)) {
@@ -72,9 +65,9 @@ final class Helper
 	 *
 	 * @return string
 	 */
-	public static function getSettingsGlobalPageUrl(string $type = SettingsDashboard::SETTINGS_TYPE_KEY): string
+	public static function getSettingsGlobalPageUrl(string $type): string
 	{
-		$page = FormGlobalSettingsAdminSubMenu::ADMIN_MENU_SLUG;
+		$page = UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL;
 		$typeKey = '';
 
 		if (!empty($type)) {
@@ -91,7 +84,7 @@ final class Helper
 	 */
 	public static function getNewFormPageUrl(): string
 	{
-		$postType = Forms::POST_TYPE_SLUG;
+		$postType = UtilsConfig::SLUG_POST_TYPE;
 
 		return \get_admin_url(null, "post-new.php?post_type={$postType}");
 	}
@@ -140,9 +133,9 @@ final class Helper
 		$page = isset($_GET['page']) ? \sanitize_text_field(\wp_unslash($_GET['page'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		$pages = \array_flip([
-			FormAdminMenu::ADMIN_MENU_SLUG,
-			FormSettingsAdminSubMenu::ADMIN_MENU_SLUG,
-			FormGlobalSettingsAdminSubMenu::ADMIN_MENU_SLUG,
+			UtilsConfig::SLUG_ADMIN,
+			UtilsConfig::SLUG_ADMIN_SETTINGS,
+			UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL,
 		]);
 
 		return isset($pages[$page]) && \is_admin();
@@ -398,7 +391,7 @@ final class Helper
 
 		$fieldsOnly = $blocks['innerBlocks'][0]['innerBlocks'] ?? [];
 
-		$settings = \apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$type] ?? [];
+		$settings = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$type] ?? [];
 
 		$output['type'] = $type;
 		$output['typeFilter'] = $blockName['name'];
@@ -895,7 +888,7 @@ final class Helper
 	 */
 	public static function canIntegrationUseSync(string $integrationName): bool
 	{
-		return isset(\apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$integrationName]['fields']);
+		return isset(\apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$integrationName]['fields']);
 	}
 
 	/**
@@ -919,7 +912,7 @@ final class Helper
 	 */
 	public static function setQmLogsOutput($data = ''): void
 	{
-		if (\is_plugin_active('query-monitor/query-monitor.php') && \apply_filters(SettingsDebug::FILTER_SETTINGS_IS_DEBUG_ACTIVE, SettingsDebug::SETTINGS_DEBUG_QM_LOG) && $data) {
+		if (\is_plugin_active('query-monitor/query-monitor.php') && self::isDeveloperQMLogActive() && $data) {
 			\do_action('qm/debug', $data); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 		}
 	}
@@ -951,13 +944,13 @@ final class Helper
 			return [];
 		}
 
-		$isDeveloperMode = \apply_filters(SettingsDebug::FILTER_SETTINGS_IS_DEBUG_ACTIVE, SettingsDebug::SETTINGS_DEBUG_DEVELOPER_MODE_KEY);
+		$isDeveloperModeActive = Helper::isDeveloperModeActive();
 
 		return \array_map(
-			function ($item) use ($isDeveloperMode) {
+			function ($item) use ($isDeveloperModeActive) {
 				$id = $item->ID;
 				$title = $item->post_title; // phpcs:ignore Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps
-				$title = $isDeveloperMode ? "{$id} - {$title}" : $title;
+				$title = $isDeveloperModeActive ? "{$id} - {$title}" : $title;
 
 				return [
 					'id' => $id,
@@ -1075,13 +1068,13 @@ final class Helper
 	 */
 	public static function getFilterName(array $names): string
 	{
-		$filters = \wp_cache_get(Filters::FILTER_PREFIX . '_filters_public_list', Filters::FILTER_PREFIX);
+		$filters = \wp_cache_get(UtilsConfig::FILTER_PREFIX . '_filters_public_list', UtilsConfig::FILTER_PREFIX);
 
 		// Cache filter names for faster access.
 		if (!$filters) {
-			$filters = self::getAllPublicFiltersNames(\apply_filters(Filters::FILTER_PUBLIC_FILTERS_DATA, []));
+			$filters = self::getAllPublicFiltersNames(\apply_filters(UtilsConfig::FILTER_PUBLIC_FILTERS_DATA, []));
 
-			\wp_cache_add(Filters::FILTER_PREFIX . '_filters_public_list', $filters, Filters::FILTER_PREFIX, \HOUR_IN_SECONDS);
+			\wp_cache_add(UtilsConfig::FILTER_PREFIX . '_filters_public_list', $filters, UtilsConfig::FILTER_PREFIX, \HOUR_IN_SECONDS);
 		}
 
 		// List of all keys provided for the filter name.
@@ -1096,7 +1089,7 @@ final class Helper
 		$names = \implode('_', $names);
 
 		// Create a full filter name.
-		$filterName = Filters::FILTER_PREFIX . "_{$names}";
+		$filterName = UtilsConfig::FILTER_PREFIX . "_{$names}";
 
 		if (!\in_array($filterName, $filters, true)) {
 			// translators: %s is the filter name.
@@ -1112,9 +1105,29 @@ final class Helper
 	 *
 	 * @return boolean
 	 */
-	public static function isDeveloperMode(): bool
+	public static function isDeveloperModeActive(): bool
 	{
 		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_DEVELOPER_MODE_KEY) ?? false;
+	}
+
+	/**
+	 * Check if QA Monitor Log mode is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperQMLogActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_QM_LOG) ?? false;
+	}
+
+	/**
+	 * Check if Force Disabled Fields mode is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperForceDisabledFieldsActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS) ?? false;
 	}
 
 	/**
@@ -1134,7 +1147,7 @@ final class Helper
 				$nestedKeys = self::getAllPublicFiltersNames($value, $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($key)) . '_');
 				$output = \array_merge($output, $nestedKeys);
 			} else {
-				$output[] = Filters::FILTER_PREFIX . '_' . $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($value));
+				$output[] = UtilsConfig::FILTER_PREFIX . '_' . $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($value));
 			}
 		}
 

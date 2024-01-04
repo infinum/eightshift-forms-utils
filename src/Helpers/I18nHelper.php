@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace EightshiftForms\Helpers;
 
 use EightshiftForms\Misc\SettingsWpml;
+use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
  * Class I18nHelper
@@ -32,7 +33,7 @@ final class I18nHelper
 			$locale = \apply_filters($filterName, $localeInit);
 		}
 
-		$useWpml = \apply_filters(SettingsWpml::FILTER_SETTINGS_IS_VALID_NAME, []);
+		$useWpml = \apply_filters(UtilsConfig::FILTER_SETTINGS_WPML_IS_VALID_NAME, []);
 		if ($useWpml) {
 			$defaultLanguage = \apply_filters('wpml_default_language', null);
 			$currentLanguage = \apply_filters('wpml_current_language', null);

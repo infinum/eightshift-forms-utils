@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace EightshiftForms\Helpers;
 
 use EightshiftForms\Hooks\Filters;
+use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
  * Class SettingsOutputHelper
@@ -54,7 +55,7 @@ final class SettingsOutputHelper
 				'component' => 'highlighted-content',
 				'highlightedContentTitle' => \__('Feature not active', 'eightshift-forms'),
 				// translators: %s will be replaced with the global settings url.
-				'highlightedContentSubtitle' => \sprintf(\__('Oh no it looks like this feature is not active, please go to your <a href="%s">dashboard</a> and activate it.', 'eightshift-forms'), Helper::getSettingsGlobalPageUrl()),
+				'highlightedContentSubtitle' => \sprintf(\__('Oh no it looks like this feature is not active, please go to your <a href="%s">dashboard</a> and activate it.', 'eightshift-forms'), Helper::getSettingsGlobalPageUrl(UtilsConfig::SLUG_ADMIN_DASHBOARD)),
 				'highlightedContentIcon' => 'tools',
 			],
 		];

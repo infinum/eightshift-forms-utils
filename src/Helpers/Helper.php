@@ -3,67 +3,36 @@
 /**
  * Class that holds all generic helpers.
  *
- * @package EightshiftFormsUtils\Helpers
+ * @package EightshiftForms\Helpers
  */
 
 declare(strict_types=1);
 
-namespace EightshiftFormsUtils\Helpers;
+namespace EightshiftForms\Helpers;
 
-use EightshiftFormsUtils\AdminMenus\FormAdminMenu;
-use EightshiftFormsUtils\AdminMenus\FormGlobalSettingsAdminSubMenu;
-use EightshiftFormsUtils\AdminMenus\FormSettingsAdminSubMenu;
-use EightshiftFormsUtils\AdminMenus\FormListingAdminSubMenu;
-use EightshiftFormsUtils\CustomPostType\Forms;
-use EightshiftFormsUtils\Hooks\Filters;
-use EightshiftFormsUtils\Integrations\ActiveCampaign\SettingsActiveCampaign;
-use EightshiftFormsUtils\Integrations\Jira\SettingsJira;
-use EightshiftFormsUtils\Integrations\Mailer\SettingsMailer;
-use EightshiftFormsUtils\Dashboard\SettingsDashboard;
-use EightshiftFormsUtils\General\SettingsGeneral;
-use EightshiftFormsUtils\Integrations\Pipedrive\SettingsPipedrive;
-use EightshiftFormsUtils\Misc\SettingsWpml;
-use EightshiftFormsUtils\Troubleshooting\SettingsDebug;
-use EightshiftFormsUtilsVendor\EightshiftLibs\Helpers\Components;
+use EightshiftForms\AdminMenus\FormAdminMenu;
+use EightshiftForms\AdminMenus\FormGlobalSettingsAdminSubMenu;
+use EightshiftForms\AdminMenus\FormSettingsAdminSubMenu;
+use EightshiftForms\AdminMenus\FormListingAdminSubMenu;
+use EightshiftForms\CustomPostType\Forms;
+use EightshiftForms\Hooks\Filters;
+use EightshiftForms\Integrations\ActiveCampaign\SettingsActiveCampaign;
+use EightshiftForms\Integrations\Jira\SettingsJira;
+use EightshiftForms\Integrations\Mailer\SettingsMailer;
+use EightshiftForms\Dashboard\SettingsDashboard;
+use EightshiftForms\General\SettingsGeneral;
+use EightshiftForms\Integrations\Pipedrive\SettingsPipedrive;
+use EightshiftForms\Troubleshooting\SettingsDebug;
+use EightshiftFormsUtils\Config\UtilsConfig;
+use EightshiftFormsVendor\EightshiftLibs\Helpers\Components;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 
 /**
  * Helper class.
  */
-class Helper
+final class Helper
 {
-
-	/**
-	 * Set locale depending on default locale or hook override.
-	 *
-	 * @return string
-	 */
-	public static function getLocale(): string
-	{
-		$locale = '';
-		$localeInit = '';
-
-		$filterName = Filters::getFilterName(['general', 'locale']);
-		if (\has_filter($filterName)) {
-			$locale = \apply_filters($filterName, $localeInit);
-		}
-
-		$useWpml = \apply_filters(SettingsWpml::FILTER_SETTINGS_IS_VALID_NAME, []);
-		if ($useWpml) {
-			$defaultLanguage = \apply_filters('wpml_default_language', null);
-			$currentLanguage = \apply_filters('wpml_current_language', null);
-
-			if ($defaultLanguage === $currentLanguage) {
-				$locale = $localeInit;
-			} else {
-				$locale = $currentLanguage;
-			}
-		}
-
-		return $locale;
-	}
-
 	/**
 	 * Method that returns listing page url.
 	 *
@@ -774,7 +743,7 @@ class Helper
 			return '';
 		}
 
-		$filterName = Filters::getFilterName(['block', $name, 'additionalContent']);
+		$filterName = Helper::getFilterName(['block', $name, 'additionalContent']);
 
 		if (\has_filter($filterName)) {
 			return \apply_filters($filterName, $attributes);
@@ -926,7 +895,7 @@ class Helper
 	 */
 	public static function canIntegrationUseSync(string $integrationName): bool
 	{
-		return isset(Filters::getSettingsFiltersData()[$integrationName]['fields']);
+		return isset(\apply_filters(Filters::FILTER_SETTINGS_DATA, [])[$integrationName]['fields']);
 	}
 
 	/**
@@ -1106,13 +1075,13 @@ class Helper
 	 */
 	public static function getFilterName(array $names): string
 	{
-		$filters = \wp_cache_get(self::FILTER_PREFIX . '_filters_public_list', self::FILTER_PREFIX);
+		$filters = \wp_cache_get(Filters::FILTER_PREFIX . '_filters_public_list', Filters::FILTER_PREFIX);
 
 		// Cache filter names for faster access.
 		if (!$filters) {
-			$filters = self::getAllPublicFiltersNames(\apply_filters(self::FILTER_PUBLIC_FILTERS_DATA, []));
+			$filters = self::getAllPublicFiltersNames(\apply_filters(Filters::FILTER_PUBLIC_FILTERS_DATA, []));
 
-			\wp_cache_add(self::FILTER_PREFIX . '_filters_public_list', $filters, self::FILTER_PREFIX, \HOUR_IN_SECONDS);
+			\wp_cache_add(Filters::FILTER_PREFIX . '_filters_public_list', $filters, Filters::FILTER_PREFIX, \HOUR_IN_SECONDS);
 		}
 
 		// List of all keys provided for the filter name.
@@ -1127,7 +1096,7 @@ class Helper
 		$names = \implode('_', $names);
 
 		// Create a full filter name.
-		$filterName = self::FILTER_PREFIX . "_{$names}";
+		$filterName = Filters::FILTER_PREFIX . "_{$names}";
 
 		if (!\in_array($filterName, $filters, true)) {
 			// translators: %s is the filter name.
@@ -1136,6 +1105,16 @@ class Helper
 		}
 
 		return $filterName;
+	}
+
+	/**
+	 * Check if developer mode is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperMode(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_DEVELOPER_MODE_KEY) ?? false;
 	}
 
 	/**
@@ -1155,7 +1134,7 @@ class Helper
 				$nestedKeys = self::getAllPublicFiltersNames($value, $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($key)) . '_');
 				$output = \array_merge($output, $nestedKeys);
 			} else {
-				$output[] = self::FILTER_PREFIX . '_' . $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($value));
+				$output[] = Filters::FILTER_PREFIX . '_' . $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($value));
 			}
 		}
 

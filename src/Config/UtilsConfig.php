@@ -51,10 +51,38 @@ class UtilsConfig
 	 */
 	public const DELIMITER = '---';
 
+	/**
+	 * Status error const.
+	 *
+	 * @var string
+	 */
+	public const STATUS_ERROR = 'error';
+
+	/**
+	 * Status success const.
+	 *
+	 * @var string
+	 */
+	public const STATUS_SUCCESS = 'success';
+
+	/**
+	 * Status warning const.
+	 *
+	 * @var string
+	 */
+	public const STATUS_WARNING = 'warning';
+
 	public const SETTINGS_NAME_PREFIX = 'es-forms';
 
 	public const FILTER_SETTINGS_DATA = self::FILTER_PREFIX . '_settings_data';
 	public const FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES = self::FILTER_PREFIX . '_settings_none_translatable_names';
+
+	/**
+	 * API validator output key.
+	 *
+	 * @var string
+	 */
+	public const VALIDATOR_OUTPUT_KEY = 'validation';
 
 	/**
 	 * Method that returns projects temp upload dir name.
@@ -65,4 +93,11 @@ class UtilsConfig
 	{
 		return "esforms-tmp";
 	}
+
+	/**
+	 * Filter settings is debug active key.
+	 */
+	public const FILTER_SETTINGS_IS_DEBUG_ACTIVE = 'es_forms_settings_is_debug_active';
+
+	public const SETTINGS_DEBUG_DEVELOPER_MODE_KEY = 'developer-mode';
 }

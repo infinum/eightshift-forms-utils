@@ -3,12 +3,12 @@
 /**
  * Interface that holds all methods for building global form settings form.
  *
- * @package EightshiftFormsUtils\Settings\Settings
+ * @package EightshiftFormsUtils\Settings
  */
 
 declare(strict_types=1);
 
-namespace EightshiftFormsUtils\Settings\Settings;
+namespace EightshiftFormsUtils\Settings;
 
 /**
  * Interface for SettingGlobalInterface

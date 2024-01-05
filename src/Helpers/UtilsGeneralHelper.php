@@ -1011,6 +1011,66 @@ final class UtilsGeneralHelper
 	}
 
 	/**
+	 * Check if developer debugging is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperDebuggingActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_DEBUGGING_KEY) ?? false;
+	}
+
+	/**
+	 * Check if developer skip form validation is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperSkipFormValidationActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_VALIDATION_KEY) ?? false;
+	}
+
+	/**
+	 * Check if developer skip form reset is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperSkipFormResetActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_RESET_KEY) ?? false;
+	}
+
+	/**
+	 * Check if developer skip captcha is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperSkipCaptchaActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_CAPTCHA_KEY) ?? false;
+	}
+
+	/**
+	 * Check if developer skip forms sync is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperSkipFormsSyncActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_FORMS_SYNC_KEY) ?? false;
+	}
+
+	/**
+	 * Check if developer skip cache is active.
+	 *
+	 * @return boolean
+	 */
+	public static function isDeveloperSkipCacheActive(): bool
+	{
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_CACHE_KEY) ?? false;
+	}
+
+	/**
 	 * Check if developer mode is active.
 	 *
 	 * @return boolean

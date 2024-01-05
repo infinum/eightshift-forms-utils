@@ -116,6 +116,12 @@ class UtilsConfig
 	 * Filter settings is debug active key.
 	 */
 	public const FILTER_SETTINGS_IS_DEBUG_ACTIVE = 'es_forms_settings_is_debug_active';
+	public const SETTINGS_DEBUG_DEBUGGING_KEY = 'troubleshooting-debugging';
+	public const SETTINGS_DEBUG_SKIP_VALIDATION_KEY = 'skip-validation';
+	public const SETTINGS_DEBUG_SKIP_RESET_KEY = 'skip-reset';
+	public const SETTINGS_DEBUG_SKIP_CAPTCHA_KEY = 'skip-captcha';
+	public const SETTINGS_DEBUG_SKIP_FORMS_SYNC_KEY = 'skip-forms-sync';
+	public const SETTINGS_DEBUG_SKIP_CACHE_KEY = 'skip-cache';
 	public const SETTINGS_DEBUG_DEVELOPER_MODE_KEY = 'developer-mode';
 	public const SETTINGS_DEBUG_QM_LOG = 'skip-qm-log';
 	public const SETTINGS_DEBUG_FORCE_DISABLED_FIELDS = 'skip-force-disabled-fields';

@@ -31,7 +31,7 @@ final class UtilsI18nHelper
 			$defaultLanguage = $locale['default'] ?? '';
 			$currentLanguage = $locale['current'] ?? '';
 
-			return $defaultLanguage === $currentLanguage ? $defaultLanguage : $currentLanguage;
+			return $defaultLanguage === $currentLanguage ? '' : $currentLanguage;
 		}
 
 		return $output;

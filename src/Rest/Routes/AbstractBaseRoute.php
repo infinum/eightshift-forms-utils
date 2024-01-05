@@ -10,20 +10,18 @@ declare(strict_types=1);
 
 namespace EightshiftFormsUtils\Rest\Routes;
 
-use EightshiftForms\Settings\Settings\Settings;
 use EightshiftFormsUtils\Config\UtilsConfig;
 use EightshiftFormsUtils\Helpers\UtilsApiHelper;
 use EightshiftFormsUtils\Helpers\UtilsGeneralHelper;
 use EightshiftFormsUtils\Helpers\UtilsHelper;
 use EightshiftFormsUtils\Helpers\UtilsUploadHelper;
-use EightshiftFormsUtilsVendor\EightshiftLibs\Services\ServiceInterface;
 use WP_REST_Request;
 use WP_REST_Server;
 
 /**
  * Class AbstractBaseRoute
  */
-abstract class AbstractBaseRoute implements ServiceInterface
+abstract class AbstractBaseRoute
 {
 	/**
 	 * Alias for GET transport method.

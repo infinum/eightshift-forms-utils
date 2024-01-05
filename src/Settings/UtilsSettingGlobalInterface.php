@@ -11,9 +11,9 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Settings;
 
 /**
- * Interface for SettingGlobalInterface
+ * Interface for UtilsSettingGlobalInterface
  */
-interface SettingGlobalInterface
+interface UtilsSettingGlobalInterface
 {
 	/**
 	 * Get global settings array for building settings page.

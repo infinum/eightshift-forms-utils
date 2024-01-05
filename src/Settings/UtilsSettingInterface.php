@@ -11,9 +11,9 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Settings;
 
 /**
- * Interface for SettingInterface
+ * Interface for UtilsSettingInterface
  */
-interface SettingInterface
+interface UtilsSettingInterface
 {
 	/**
 	 * Get Form settings data array

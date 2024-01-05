@@ -3,15 +3,14 @@
 /**
  * Class that holds all api helpers used in classes.
  *
- * @package EightshiftLibs\Helpers
+ * @package EightshiftFormsUtils\Helpers
  */
 
 declare(strict_types=1);
 
-namespace EightshiftForms\Helpers;
+namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
-use EightshiftFormsUtilsVendor\EightshiftLibs\Helpers\Components;
 
 /**
  * ApiHelper class.
@@ -61,7 +60,7 @@ final class ApiHelper
 				$code = $response['response']['code'] ?? 200;
 				$body = $response['body'] ?? '';
 
-				if (Components::isJson($body)) {
+				if (Helper::isJson($body)) {
 					$body = \json_decode($body, true) ?? [];
 				}
 			}
@@ -75,7 +74,7 @@ final class ApiHelper
 		}
 
 		return [
-			'integration' => Components::kebabToCamelCase($integration, '-'),
+			'integration' => Helper::kebabToCamelCase($integration, '-'),
 			'params' => $params,
 			'files' => $files,
 			'response' => $response['response'] ?? [],

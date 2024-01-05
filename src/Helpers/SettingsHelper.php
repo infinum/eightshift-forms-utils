@@ -3,14 +3,14 @@
 /**
  * Class that holds all helpers for settings.
  *
- * @package EightshiftLibs\Helpers
+ * @package EightshiftFormsUtils\Helpers
  */
 
 declare(strict_types=1);
 
-namespace EightshiftForms\Helpers;
+namespace EightshiftFormsUtils\Helpers;
 
-use EightshiftForms\Helpers\I18nHelper;
+use EightshiftFormsUtils\Helpers\I18nHelper;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**

@@ -3,12 +3,12 @@
 /**
  * Class that holds all Settings output helpers.
  *
- * @package EightshiftLibs\Helpers
+ * @package EightshiftFormsUtils\Helpers
  */
 
 declare(strict_types=1);
 
-namespace EightshiftForms\Helpers;
+namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
 
@@ -216,9 +216,9 @@ final class SettingsOutputHelper
 			'submitValue' => \__('Test API connection', 'eightshift-forms'),
 			'submitVariant' => 'outline',
 			'submitAttrs' => [
-				Helper::getStateAttribute('testApiType') => $key,
+				UtilsHelper::getStateAttribute('testApiType') => $key,
 			],
-			'additionalClass' => Helper::getStateSelectorAdmin('testApi') . ' es-submit--api-test',
+			'additionalClass' => UtilsHelper::getStateSelectorAdmin('testApi') . ' es-submit--api-test',
 		];
 	}
 

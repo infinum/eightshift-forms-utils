@@ -3,14 +3,13 @@
 /**
  * Class that holds all i18n helpers.
  *
- * @package EightshiftLibs\Helpers
+ * @package EightshiftFormsUtils\Helpers
  */
 
 declare(strict_types=1);
 
-namespace EightshiftForms\Helpers;
+namespace EightshiftFormsUtils\Helpers;
 
-use EightshiftForms\Misc\SettingsWpml;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**

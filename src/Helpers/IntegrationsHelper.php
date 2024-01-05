@@ -3,14 +3,14 @@
 /**
  * Class that holds all Integration helpers.
  *
- * @package EightshiftLibs\Helpers
+ * @package EightshiftFormsUtils\Helpers
  */
 
 declare(strict_types=1);
 
-namespace EightshiftForms\Helpers;
+namespace EightshiftFormsUtils\Helpers;
 
-use EightshiftForms\Helpers\SettingsHelper;
+use EightshiftFormsUtils\Helpers\SettingsHelper;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**

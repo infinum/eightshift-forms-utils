@@ -3,12 +3,12 @@
 /**
  * Class that holds all generic helpers.
  *
- * @package EightshiftForms\Helpers
+ * @package EightshiftFormsUtils\Helpers
  */
 
 declare(strict_types=1);
 
-namespace EightshiftForms\Helpers;
+namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
 use EightshiftFormsUtilsVendor\EightshiftLibs\Helpers\Components;
@@ -244,7 +244,7 @@ final class Helper
 		return [
 			'namespace' => $block[0] ?? '',
 			'name' => $blockName,
-			'nameAttr' => Components::kebabToCamelCase($blockName),
+			'nameAttr' => Helper::kebabToCamelCase($blockName),
 		];
 	}
 
@@ -435,7 +435,7 @@ final class Helper
 		foreach ($output['fieldsOnly'] as $item) {
 			$blockItemName = self::getBlockNameDetails($item['blockName'])['nameAttr'];
 
-			$value = $item['attrs'][Components::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
+			$value = $item['attrs'][Helper::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
 
 			if (!$value) {
 				continue;
@@ -486,8 +486,8 @@ final class Helper
 				$name = $blockName['name'];
 
 				if ($name === 'step') {
-					$stepCurrent = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
-					$stepLabel = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
+					$stepCurrent = $block['attrs'][Helper::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+					$stepLabel = $block['attrs'][Helper::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
 
 					if (!$stepLabel) {
 						$stepLabel = $stepCurrent;
@@ -504,7 +504,7 @@ final class Helper
 					continue;
 				}
 
-				$itemName = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+				$itemName = $block['attrs'][Helper::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
 				if (!$itemName) {
 					continue;
 				}
@@ -739,31 +739,6 @@ final class Helper
 	}
 
 	/**
-	 * Return main manifest.json file.
-	 *
-	 * @return array<mixed>
-	 */
-	public static function getUtilsManifest(): array
-	{
-		$sep = \DIRECTORY_SEPARATOR;
-		$filePath = dirname(__FILE__, 2) . "{$sep}manifest.json";
-
-		return \json_decode(\implode(' ', (array)\file($filePath)), true);
-	}
-
-	/**
-	 * Return utils icons from manifest.json.
-	 *
-	 * @param string $type Type to return.
-	 *
-	 * @return string
-	 */
-	public static function getUtilsIcons(string $type): string
-	{
-		return self::getUtilsManifest()['icons'][Components::kebabToCamelCase($type)] ?? '';
-	}
-
-	/**
 	 * Find array value by key in recursive array.
 	 *
 	 * @param array<mixed> $array Array to find.
@@ -866,7 +841,7 @@ final class Helper
 	 */
 	public static function removeUneceseryParamFields(array $params, array $additional = []): array
 	{
-		$customFields = \array_flip(Components::flattenArray(self::getStateParams()));
+		$customFields = \array_flip(self::flattenArray(UtilsHelper::getStateParams()));
 		$additional = \array_flip($additional);
 
 		return \array_filter(
@@ -977,76 +952,6 @@ final class Helper
 	}
 
 	/**
-	 * Return selector admin enum values by name.
-	 *
-	 * @param string $name Name of the enum.
-	 *
-	 * @return string
-	 */
-	public static function getStateSelectorAdmin(string $name): string
-	{
-		return Components::getSettings()['enums']['selectorsAdmin'][$name] ?? '';
-	}
-
-	/**
-	 * Return selector enum values by name.
-	 *
-	 * @param string $name Name of the enum.
-	 *
-	 * @return string
-	 */
-	public static function getStateSelector(string $name): string
-	{
-		return Components::getSettings()['enums']['selectors'][$name] ?? '';
-	}
-
-	/**
-	 * Return attribute enum values by name.
-	 *
-	 * @param string $name Name of the enum.
-	 *
-	 * @return string
-	 */
-	public static function getStateAttribute(string $name): string
-	{
-		return Components::getSettings()['enums']['attrs'][$name] ?? '';
-	}
-
-	/**
-	 * Return all params enum values.
-	 *
-	 * @return array<string>
-	 */
-	public static function getStateParams(): array
-	{
-		return Components::getSettings()['enums']['params'] ?? [];
-	}
-
-	/**
-	 * Return param enum values by name.
-	 *
-	 * @param string $name Name of the enum.
-	 *
-	 * @return string
-	 */
-	public static function getStateParam(string $name): string
-	{
-		return self::getStateParams()[$name] ?? '';
-	}
-
-	/**
-	 * Return field type internal enum values by name.
-	 *
-	 * @param string $name Name of the enum.
-	 *
-	 * @return string
-	 */
-	public static function getStateFieldType(string $name): string
-	{
-		return Components::getSettings()['enums']['typeInternal'][$name] ?? '';
-	}
-
-	/**
 	 * Get the settings labels and details by type and key.
 	 * This method is used to provide the ability to translate all strings.
 	 *
@@ -1134,6 +1039,55 @@ final class Helper
 	public static function isDeveloperForceDisabledFieldsActive(): bool
 	{
 		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS) ?? false;
+	}
+
+	/**
+	 * Convert string from kebab to camel case.
+	 *
+	 * @param string $stringToConvert    String to convert.
+	 * @param string $separator Separator to use for conversion.
+	 *
+	 * @return string
+	 */
+	public static function kebabToCamelCase(string $stringToConvert, string $separator = '-'): string
+	{
+		return \lcfirst(\str_replace($separator, '', \ucwords($stringToConvert, $separator)));
+	}
+
+	/**
+	 * Check if json is valid
+	 *
+	 * @param string $jsonString String to check.
+	 *
+	 * @return bool
+	 */
+	public static function isJson(string $jsonString): bool
+	{
+		\json_decode($jsonString);
+		return (\json_last_error() === \JSON_ERROR_NONE);
+	}
+
+	/**
+	 * Flatten multidimensional array.
+	 *
+	 * @param array<mixed> $arrayToFlatten Multidimensional array to flatten.
+	 *
+	 * @return array<mixed>
+	 */
+	public static function flattenArray(array $arrayToFlatten): array
+	{
+		$output = [];
+
+		\array_walk_recursive(
+			$arrayToFlatten,
+			function ($a) use (&$output) {
+				if (!empty($a)) {
+					$output[] = $a;
+				}
+			}
+		);
+
+		return $output;
 	}
 
 	/**

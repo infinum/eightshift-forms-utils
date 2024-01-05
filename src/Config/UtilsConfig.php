@@ -65,24 +65,6 @@ class UtilsConfig
 	public const FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES = self::FILTER_PREFIX . '_settings_none_translatable_names';
 
 	// ------------------------------------------------------------------
-	// ADD-ONS
-	// ------------------------------------------------------------------
-
-	/**
-	 * Filter addon full name.
-	 *
-	 * @var string
-	 */
-	public const FILTER_ADDON_FULL_NAME = self::FILTER_PREFIX . '_addon_full_name';
-
-	/**
-	 * Filter addon name.
-	 *
-	 * @var string
-	 */
-	public const FILTER_ADDON_NAME = self::FILTER_PREFIX . '_addon_name';
-
-	// ------------------------------------------------------------------
 	// INTEGRATIONS
 	// ------------------------------------------------------------------
 

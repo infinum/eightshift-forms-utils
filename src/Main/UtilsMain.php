@@ -15,17 +15,17 @@ use EightshiftFormsUtils\Config\UtilsConfig;
 /**
  * The project config class.
  */
-class UtilsMain
+final class UtilsMain
 {
 	/**
 	 * Check if main plugin is active.
 	 *
+	 * @param string $name Name of the plugin.
+	 *
 	 * @return void
 	 */
-	public function checkAddonPlugins(): void
+	public static function checkAddonPlugins(string $name): void
 	{
-		$name = \apply_filters(UtilsConfig::FILTER_ADDON_FULL_NAME, '');
-
 		if (!\is_plugin_active(UtilsConfig::MAIN_PLUGIN_NAME) && !empty($name)) {
 			\deactivate_plugins($name);
 		}
@@ -34,12 +34,12 @@ class UtilsMain
 	/**
 	 * Check if main plugin is active if not set a notice.
 	 *
+	 * @param string $name Name of the plugin.
+	 *
 	 * @return void
 	 */
-	public function checkAddonPluginsNotice(): void
+	public static function checkAddonPluginsNotice(string $name): void
 	{
-		$name = \apply_filters(UtilsConfig::FILTER_ADDON_NAME, '');
-
 		if (!\is_plugin_active(UtilsConfig::MAIN_PLUGIN_NAME) && !empty($name)) {
 			// translators: %s is replaced with plugin name.
 			echo '<div class="notice notice-error"><p>' . \sprintf(\esc_html__('Eightshift Forms - Addon %s plugin requires Eightshift Forms plugin. Please activate Eightshift Forms plugin first.', 'eightshift-forms-addon-computed-fields'), \esc_html($name)) . '</p></div>';

@@ -137,7 +137,7 @@ final class UtilsSettingsHelper
 	 */
 	public static function getSettingName(string $key): string
 	{
-		return UtilsConfig::getSettingNamePrefix() . "-{$key}";
+		return UtilsConfig::SETTINGS_NAME_PREFIX . "-{$key}";
 	}
 
 	// --------------------------------------------------
@@ -280,7 +280,7 @@ final class UtilsSettingsHelper
 			}
 		}
 
-		return UtilsConfig::getSettingNamePrefix() . "-{$key}{$sufix}";
+		return UtilsConfig::SETTINGS_NAME_PREFIX . "-{$key}{$sufix}";
 	}
 
 	// --------------------------------------------------

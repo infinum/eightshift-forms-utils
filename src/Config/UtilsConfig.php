@@ -18,6 +18,10 @@ namespace EightshiftFormsUtils\Config;
  */
 class UtilsConfig
 {
+	//------------------------------------------------------------------
+	// FILTERS
+	//------------------------------------------------------------------
+
 	/**
 	 * Prefix added to all filters.
 	 *
@@ -33,57 +37,55 @@ class UtilsConfig
 	public const FILTER_LOADED_NAME = self::FILTER_PREFIX . '_loaded';
 
 	/**
-	 * Settings internal types.
+	 * Filter name for settings builder.
 	 *
 	 * @var string
 	 */
-	public const SETTINGS_INTERNAL_TYPE_GENERAL = 'sidebar-general';
-	public const SETTINGS_INTERNAL_TYPE_INTEGRATION = 'sidebar-integration';
-	public const SETTINGS_INTERNAL_TYPE_TROUBLESHOOTING = 'sidebar-troubleshooting';
-	public const SETTINGS_INTERNAL_TYPE_MISCELLANEOUS = 'sidebar-miscellaneous';
-	public const SETTINGS_INTERNAL_TYPE_ADVANCED = 'sidebar-advanced';
-	public const SETTINGS_INTERNAL_TYPE_ADDON = 'sidebar-addon';
-
-	/**
-	 * Delimiter used in checkboxes and multiple items.
-	 *
-	 * @var string
-	 */
-	public const DELIMITER = '---';
-
-	/**
-	 * Status error const.
-	 *
-	 * @var string
-	 */
-	public const STATUS_ERROR = 'error';
-
-	/**
-	 * Status success const.
-	 *
-	 * @var string
-	 */
-	public const STATUS_SUCCESS = 'success';
-
-	/**
-	 * Status warning const.
-	 *
-	 * @var string
-	 */
-	public const STATUS_WARNING = 'warning';
-
-	public const ROUTE_NAMESPACE = 'eightshift-forms';
-	public const ROUTE_VERSION = 'v1';
-
-	public const SETTINGS_NAME_PREFIX = 'es-forms';
-
 	public const FILTER_SETTINGS_DATA = self::FILTER_PREFIX . '_settings_data';
+
+	/**
+	 * Filter name for public filters.
+	 *
+	 * @var string
+	 */
 	public const FILTER_PUBLIC_FILTERS_DATA = self::FILTER_PREFIX . '_public_filters_data';
+
+	/**
+	 * Filter name for fields that are not translatable.
+	 *
+	 * @var string
+	 */
 	public const FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES = self::FILTER_PREFIX . '_settings_none_translatable_names';
 
+	//------------------------------------------------------------------
+	// INTEGRATIONS
+	//------------------------------------------------------------------
+
+	/**
+	 * Integration type - default.
+	 *
+	 * @var string
+	 */
 	public const INTEGRATION_TYPE_DEFAULT = 'default';
+
+	/**
+	 * Integration type - no builder.
+	 *
+	 * @var string
+	 */
 	public const INTEGRATION_TYPE_NO_BUILDER = 'no-builder';
+
+	/**
+	 * Integration type - complex.
+	 *
+	 * @var string
+	 */
 	public const INTEGRATION_TYPE_COMPLEX = 'complex';
+
+
+	//------------------------------------------------------------------
+	// VALIDATIOR
+	//------------------------------------------------------------------
 
 	/**
 	 * API validator output key.
@@ -92,42 +94,104 @@ class UtilsConfig
 	 */
 	public const VALIDATOR_OUTPUT_KEY = 'validation';
 
-	/**
-	 * Method that returns projects temp upload dir name.
-	 *
-	 * @return string
-	 */
-	public static function getTempUploadDir(): string
-	{
-		return "esforms-tmp";
-	}
+	//------------------------------------------------------------------
+	// FILE UPLOAD
+	//------------------------------------------------------------------
 
 	/**
-	 * Method that returns projects setting name prefix.
+	 * File upload temp folder name.
 	 *
-	 * @return string
+	 * @var string
 	 */
-	public static function getSettingNamePrefix(): string
-	{
-		return "es-forms";
-	}
+	public const TEMP_UPLOAD_DIR = 'esforms-tmp';
+
+	//------------------------------------------------------------------
+	// DEVELOPER
+	//------------------------------------------------------------------
 
 	/**
-	 * Filter settings is debug active key.
+	 * Debug filter is debug active key.
+	 *
+	 * @var string
 	 */
 	public const FILTER_SETTINGS_IS_DEBUG_ACTIVE = 'es_forms_settings_is_debug_active';
-	public const SETTINGS_DEBUG_DEBUGGING_KEY = 'troubleshooting-debugging';
-	public const SETTINGS_DEBUG_SKIP_VALIDATION_KEY = 'skip-validation';
-	public const SETTINGS_DEBUG_SKIP_RESET_KEY = 'skip-reset';
-	public const SETTINGS_DEBUG_SKIP_CAPTCHA_KEY = 'skip-captcha';
-	public const SETTINGS_DEBUG_SKIP_FORMS_SYNC_KEY = 'skip-forms-sync';
-	public const SETTINGS_DEBUG_SKIP_CACHE_KEY = 'skip-cache';
-	public const SETTINGS_DEBUG_DEVELOPER_MODE_KEY = 'developer-mode';
-	public const SETTINGS_DEBUG_QM_LOG = 'skip-qm-log';
-	public const SETTINGS_DEBUG_FORCE_DISABLED_FIELDS = 'skip-force-disabled-fields';
 
 	/**
-	 * Setting local type name.
+	 * Debug settings name - debug mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_DEBUGGING_KEY = 'troubleshooting-debugging';
+
+	/**
+	 * Debug settings name - skip validation mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_SKIP_VALIDATION_KEY = 'skip-validation';
+
+	/**
+	 * Debug settings name - skip form reset mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_SKIP_RESET_KEY = 'skip-reset';
+
+	/**
+	 * Debug settings name - skip captcha mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_SKIP_CAPTCHA_KEY = 'skip-captcha';
+
+	/**
+	 * Debug settings name - skip forms sync mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_SKIP_FORMS_SYNC_KEY = 'skip-forms-sync';
+
+	/**
+	 * Debug settings name - skip cache mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_SKIP_CACHE_KEY = 'skip-cache';
+
+	/**
+	 * Debug settings name - developer mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_DEVELOPER_MODE_KEY = 'developer-mode';
+
+	/**
+	 * Debug settings name - skip Query Monitor plugin log mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_QM_LOG = 'skip-qm-log';
+
+	/**
+	 * Debug settings name - skip force disabled fields mode.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_DEBUG_FORCE_DISABLED_FIELDS = 'skip-force-disabled-fields';
+
+	//------------------------------------------------------------------
+	// SETTINGS TYPES
+	//------------------------------------------------------------------
+
+	/**
+	 * Settings name prefix.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_NAME_PREFIX = 'es-forms';
+
+	/**
+	 * Setting type name.
 	 *
 	 * @var string
 	 */
@@ -140,14 +204,90 @@ class UtilsConfig
 	 */
 	public const SETTINGS_GLOBAL_TYPE_NAME = 'settingsGlobal';
 
+	/**
+	 * Settings internal types - general.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_INTERNAL_TYPE_GENERAL = 'sidebar-general';
 
+	/**
+	 * Settings internal types - integration.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_INTERNAL_TYPE_INTEGRATION = 'sidebar-integration';
+
+	/**
+	 * Settings internal types - troubleshooting.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_INTERNAL_TYPE_TROUBLESHOOTING = 'sidebar-troubleshooting';
+
+	/**
+	 * Settings internal types - miscellaneous.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_INTERNAL_TYPE_MISCELLANEOUS = 'sidebar-miscellaneous';
+
+	/**
+	 * Settings internal types - advanced.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_INTERNAL_TYPE_ADVANCED = 'sidebar-advanced';
+
+	/**
+	 * Settings internal types - addon.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_INTERNAL_TYPE_ADDON = 'sidebar-addon';
+
+	//------------------------------------------------------------------
+	// POST TYPE AND SLUG
+	//------------------------------------------------------------------
+
+	/**
+	 * Post type name.
+	 *
+	 * @var string
+	 */
 	public const SLUG_POST_TYPE = 'eightshift-forms';
+
+	/**
+	 * Slug name for admin prefix.
+	 *
+	 * @var string
+	 */
 	public const SLUG_ADMIN = 'es-forms';
+
+	/**
+	 * Slug page name for settings page.
+	 *
+	 * @var string
+	 */
 	public const SLUG_ADMIN_SETTINGS = 'es-settings';
+
+	/**
+	 * Slug page name for settings global page.
+	 *
+	 * @var string
+	 */
 	public const SLUG_ADMIN_SETTINGS_GLOBAL = 'es-settings-global';
+
+	/**
+	 * Slug page name for global settings dashboard page.
+	 *
+	 * @var string
+	 */
 	public const SLUG_ADMIN_DASHBOARD = 'dashboard';
 
-	public const FILTER_SETTINGS_WPML_IS_VALID_NAME = 'es_forms_settings_is_valid_wpml';
+	//------------------------------------------------------------------
+	// REST API
+	//------------------------------------------------------------------
 
 	/**
 	 * Dynamic name route prefix for integrations items inner.
@@ -177,9 +317,78 @@ class UtilsConfig
 	 */
 	public const ROUTE_PREFIX_INTEGRATION_EDITOR = 'integration-editor';
 
+	/**
+	 * Delimiter used in checkboxes and multiple items.
+	 *
+	 * @var string
+	 */
+	public const DELIMITER = '---';
+
+	/**
+	 * Status error const.
+	 *
+	 * @var string
+	 */
+	public const STATUS_ERROR = 'error';
+
+	/**
+	 * Status success const.
+	 *
+	 * @var string
+	 */
+	public const STATUS_SUCCESS = 'success';
+
+	/**
+	 * Status warning const.
+	 *
+	 * @var string
+	 */
+	public const STATUS_WARNING = 'warning';
+
+	/**
+	 * Routes namespace.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_NAMESPACE = 'eightshift-forms';
+
+	/**
+	 * Routes version number.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_VERSION = 'v1';
+
+	//------------------------------------------------------------------
+	// CAPS
+	//------------------------------------------------------------------
+
+	/**
+	 * Cap for listing page.
+	 *
+	 * @var string
+	 */
 	public const CAP_LISTING = 'eightshift_forms_adminu_menu';
+
+	/**
+	 * Cap for settings page.
+	 *
+	 * @var string
+	 */
 	public const CAP_SETTINGS = 'eightshift_forms_form_settings';
+
+	/**
+	 * Cap for global settings page.
+	 *
+	 * @var string
+	 */
 	public const CAP_SETTINGS_GLOBAL = 'eightshift_forms_global_settings';
+
+	/**
+	 * Caps for block editor page.
+	 *
+	 * @var string
+	 */
 	public const CAP_FORM = 'eightshift_forms';
 	public const CAP_FORM_EDIT = 'edit_eightshift_forms';
 	public const CAP_FORM_READ = 'read_eightshift_forms';
@@ -190,6 +399,11 @@ class UtilsConfig
 	public const CAP_FORM_PUBLISH = 'publish_eightshift_formss';
 	public const CAP_FORM_READ_PRIVATE = 'read_private_eightshift_formss';
 
+	/**
+	 * Capability list.
+	 *
+	 * @var array<string>
+	 */
 	public const CAPS = [
 		self::CAP_LISTING,
 		self::CAP_SETTINGS,
@@ -204,4 +418,9 @@ class UtilsConfig
 		self::CAP_FORM_PUBLISH,
 		self::CAP_FORM_READ_PRIVATE,
 	];
+
+
+	public const FILTER_SETTINGS_WPML_IS_VALID_NAME = 'es_forms_settings_is_valid_wpml';
 }
+
+

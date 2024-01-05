@@ -297,7 +297,7 @@ final class UtilsUploadHelper
 		}
 
 		$sep = \DIRECTORY_SEPARATOR;
-		$dir = UtilsConfig::getTempUploadDir();
+		$dir = UtilsConfig::TEMP_UPLOAD_DIR;
 		return \WP_CONTENT_DIR . "{$sep}{$dir}{$sep}";
 	}
 }

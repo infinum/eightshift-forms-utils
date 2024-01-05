@@ -365,7 +365,7 @@ abstract class AbstractBaseRoute implements ServiceInterface
 	 *
 	 * @return array<string, mixed>
 	 */
-	protected function checkUserPermission(string $permission = FormSettingsAdminSubMenu::ADMIN_MENU_CAPABILITY): array
+	protected function checkUserPermission(string $permission = UtilsConfig::CAP_SETTINGS): array
 	{
 		if (\current_user_can($permission)) {
 			return [];

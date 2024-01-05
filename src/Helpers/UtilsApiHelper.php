@@ -13,9 +13,9 @@ namespace EightshiftFormsUtils\Helpers;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
- * ApiHelper class.
+ * UtilsApiHelper class.
  */
-final class ApiHelper
+final class UtilsApiHelper
 {
 	/**
 	 * Return API response array details.

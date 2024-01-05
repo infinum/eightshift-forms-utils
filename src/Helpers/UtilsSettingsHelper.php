@@ -14,9 +14,9 @@ use EightshiftFormsUtils\Helpers\I18nHelper;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
- * SettingsHelper class.
+ * UtilsSettingsHelper class.
  */
-final class SettingsHelper
+final class UtilsSettingsHelper
 {
 	// --------------------------------------------------
 	// Settings helper methods

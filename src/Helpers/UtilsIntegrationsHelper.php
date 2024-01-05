@@ -14,9 +14,9 @@ use EightshiftFormsUtils\Helpers\SettingsHelper;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
- * Class IntegrationsHelper
+ * Class UtilsIntegrationsHelper
  */
-final class IntegrationsHelper
+final class UtilsIntegrationsHelper
 {
 	/**
 	 * Get all active integration on specific form.

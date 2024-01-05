@@ -15,9 +15,9 @@ use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 
 /**
- * Helper class.
+ * UtilsGeneralHelper class.
  */
-final class Helper
+final class UtilsGeneralHelper
 {
 	/**
 	 * Method that returns listing page url.

@@ -13,9 +13,9 @@ namespace EightshiftFormsUtils\Helpers;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
- * Class I18nHelper
+ * Class UtilsI18nHelper
  */
-final class I18nHelper
+final class UtilsI18nHelper
 {
 	/**
 	 * Set locale depending on default locale or hook override.

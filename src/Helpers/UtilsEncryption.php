@@ -11,9 +11,9 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Helpers;
 
 /**
- * Encryption class.
+ * UtilsEncryption class.
  */
-class Encryption
+class UtilsEncryption
 {
 	/**
 	 * Encript method.

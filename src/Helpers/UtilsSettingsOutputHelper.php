@@ -13,9 +13,9 @@ namespace EightshiftFormsUtils\Helpers;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
- * Class SettingsOutputHelper
+ * Class UtilsSettingsOutputHelper
  */
-final class SettingsOutputHelper
+final class UtilsSettingsOutputHelper
 {
 	// --------------------------------------------------
 	// Full component output helpers.

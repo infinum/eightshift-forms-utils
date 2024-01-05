@@ -13,9 +13,9 @@ namespace EightshiftFormsUtils\Helpers;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
- * UploadHelper class
+ * UtilsUploadHelper class
  */
-final class UploadHelper
+final class UtilsUploadHelper
 {
 	/**
 	 * Detect if there is and error in the file upload.

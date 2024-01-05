@@ -27,7 +27,7 @@ final class UtilsI18nHelper
 		$locale = '';
 		$localeInit = '';
 
-		$filterName = Helper::getFilterName(['general', 'locale']);
+		$filterName = UtilsGeneralHelper::getFilterName(['general', 'locale']);
 		if (\has_filter($filterName)) {
 			$locale = \apply_filters($filterName, $localeInit);
 		}

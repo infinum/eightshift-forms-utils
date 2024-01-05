@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace EightshiftFormsUtils\Helpers;
 
-use EightshiftFormsUtils\Helpers\SettingsHelper;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
@@ -27,7 +26,7 @@ final class UtilsIntegrationsHelper
 	 */
 	public static function getIntegrationDetailsById(string $id): array
 	{
-		$integrationDetails = Helper::getFormDetailsById($id);
+		$integrationDetails = UtilsGeneralHelper::getFormDetailsById($id);
 
 		if (!$integrationDetails) {
 			return [];
@@ -40,7 +39,7 @@ final class UtilsIntegrationsHelper
 			'label' => $integrationDetails['label'],
 			'icon' => $integrationDetails['icon'],
 			'value' => $type,
-			'isActive' => $useFilter ? SettingsHelper::isOptionCheckboxChecked($useFilter, $useFilter) : false,
+			'isActive' => $useFilter ? UtilsSettingsHelper::isOptionCheckboxChecked($useFilter, $useFilter) : false,
 			'isValid' => $integrationDetails['isValid'],
 			'isApiValid' => $integrationDetails['isApiValid'],
 		];
@@ -68,7 +67,7 @@ final class UtilsIntegrationsHelper
 				continue;
 			}
 
-			$isUsed = SettingsHelper::isOptionCheckboxChecked($useFilter, $useFilter);
+			$isUsed = UtilsSettingsHelper::isOptionCheckboxChecked($useFilter, $useFilter);
 
 			if (!$isUsed) {
 				continue;

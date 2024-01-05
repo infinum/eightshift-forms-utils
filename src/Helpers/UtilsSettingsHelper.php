@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace EightshiftFormsUtils\Helpers;
 
-use EightshiftFormsUtils\Helpers\I18nHelper;
 use EightshiftFormsUtils\Config\UtilsConfig;
 
 /**
@@ -273,7 +272,7 @@ final class UtilsSettingsHelper
 		$sufix = '';
 
 		if (!isset(\array_flip(\apply_filters(UtilsConfig::FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES, []))[$key])) {
-			$locale = I18nHelper::getLocale();
+			$locale = UtilsI18nHelper::getLocale();
 
 			if ($locale) {
 				$delimiter = UtilsConfig::DELIMITER;
@@ -361,7 +360,7 @@ final class UtilsSettingsHelper
 			$isContantValueUsed = true;
 		}
 
-		$isOverrideActive = Helper::isDeveloperForceDisabledFieldsActive();
+		$isOverrideActive = UtilsGeneralHelper::isDeveloperForceDisabledFieldsActive();
 
 		if ($isOverrideActive) {
 			$isDisabled = false;

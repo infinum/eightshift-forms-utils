@@ -219,8 +219,8 @@ final class UtilsGeneralHelper
 
 		foreach ($matches as $match) {
 			$output[] = [
-				'label' => Helper::minifyString($match[2] ?? ''),
-				'value' => Helper::minifyString($match[1] ?? ''),
+				'label' => self::minifyString($match[2] ?? ''),
+				'value' => self::minifyString($match[1] ?? ''),
 				'original' => $match[0] ?? '',
 			];
 		}
@@ -243,7 +243,7 @@ final class UtilsGeneralHelper
 		return [
 			'namespace' => $block[0] ?? '',
 			'name' => $blockName,
-			'nameAttr' => Helper::kebabToCamelCase($blockName),
+			'nameAttr' => self::kebabToCamelCase($blockName),
 		];
 	}
 
@@ -434,7 +434,7 @@ final class UtilsGeneralHelper
 		foreach ($output['fieldsOnly'] as $item) {
 			$blockItemName = self::getBlockNameDetails($item['blockName'])['nameAttr'];
 
-			$value = $item['attrs'][Helper::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
+			$value = $item['attrs'][self::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
 
 			if (!$value) {
 				continue;
@@ -485,8 +485,8 @@ final class UtilsGeneralHelper
 				$name = $blockName['name'];
 
 				if ($name === 'step') {
-					$stepCurrent = $block['attrs'][Helper::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
-					$stepLabel = $block['attrs'][Helper::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
+					$stepCurrent = $block['attrs'][self::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+					$stepLabel = $block['attrs'][self::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
 
 					if (!$stepLabel) {
 						$stepLabel = $stepCurrent;
@@ -503,7 +503,7 @@ final class UtilsGeneralHelper
 					continue;
 				}
 
-				$itemName = $block['attrs'][Helper::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+				$itemName = $block['attrs'][self::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
 				if (!$itemName) {
 					continue;
 				}
@@ -724,11 +724,11 @@ final class UtilsGeneralHelper
 			return '';
 		}
 
-		if (Helper::isBlockEditor()) {
+		if (self::isBlockEditor()) {
 			return '';
 		}
 
-		$filterName = Helper::getFilterName(['block', $name, 'additionalContent']);
+		$filterName = self::getFilterName(['block', $name, 'additionalContent']);
 
 		if (\has_filter($filterName)) {
 			return \apply_filters($filterName, $attributes);
@@ -924,7 +924,7 @@ final class UtilsGeneralHelper
 			return [];
 		}
 
-		$isDeveloperModeActive = Helper::isDeveloperModeActive();
+		$isDeveloperModeActive = self::isDeveloperModeActive();
 
 		return \array_map(
 			function ($item) use ($isDeveloperModeActive) {
@@ -937,7 +937,7 @@ final class UtilsGeneralHelper
 					'postType' => $item->post_type, // phpcs:ignore Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps
 					'title' => $title,
 					'status' => $item->post_status, // phpcs:ignore Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps
-					'editLink' => Helper::getFormEditPageUrl((string) $id),
+					'editLink' => self::getFormEditPageUrl((string) $id),
 					'viewLink' => \get_permalink($id),
 					'activeIntegration' => [
 						'isActive' => true,
@@ -990,7 +990,7 @@ final class UtilsGeneralHelper
 		// List of all keys provided for the filter name.
 		$names = \array_map(
 			function ($item) {
-				return Helper::kebabToSnakeCase(Helper::camelToSnakeCase($item));
+				return self::kebabToSnakeCase(self::camelToSnakeCase($item));
 			},
 			$names
 		);
@@ -1103,10 +1103,10 @@ final class UtilsGeneralHelper
 
 		foreach ($data as $key => $value) {
 			if (\is_array($value)) {
-				$nestedKeys = self::getAllPublicFiltersNames($value, $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($key)) . '_');
+				$nestedKeys = self::getAllPublicFiltersNames($value, $prefix . self::kebabToSnakeCase(self::camelToSnakeCase($key)) . '_');
 				$output = \array_merge($output, $nestedKeys);
 			} else {
-				$output[] = UtilsConfig::FILTER_PREFIX . '_' . $prefix . Helper::kebabToSnakeCase(Helper::camelToSnakeCase($value));
+				$output[] = UtilsConfig::FILTER_PREFIX . '_' . $prefix . self::kebabToSnakeCase(self::camelToSnakeCase($value));
 			}
 		}
 

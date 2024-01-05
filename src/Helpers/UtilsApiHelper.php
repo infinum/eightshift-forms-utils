@@ -60,7 +60,7 @@ final class UtilsApiHelper
 				$code = $response['response']['code'] ?? 200;
 				$body = $response['body'] ?? '';
 
-				if (Helper::isJson($body)) {
+				if (UtilsGeneralHelper::isJson($body)) {
 					$body = \json_decode($body, true) ?? [];
 				}
 			}
@@ -74,7 +74,7 @@ final class UtilsApiHelper
 		}
 
 		return [
-			'integration' => Helper::kebabToCamelCase($integration, '-'),
+			'integration' => UtilsGeneralHelper::kebabToCamelCase($integration, '-'),
 			'params' => $params,
 			'files' => $files,
 			'response' => $response['response'] ?? [],
@@ -198,7 +198,7 @@ final class UtilsApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (Helper::isDeveloperModeActive() && $debug) {
+		if (UtilsGeneralHelper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 
@@ -226,7 +226,7 @@ final class UtilsApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (Helper::isDeveloperModeActive() && $debug) {
+		if (UtilsGeneralHelper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 
@@ -254,7 +254,7 @@ final class UtilsApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (Helper::isDeveloperModeActive() && $debug) {
+		if (UtilsGeneralHelper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 

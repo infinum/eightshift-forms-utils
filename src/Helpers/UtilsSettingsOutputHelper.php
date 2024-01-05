@@ -54,7 +54,7 @@ final class UtilsSettingsOutputHelper
 				'component' => 'highlighted-content',
 				'highlightedContentTitle' => \__('Feature not active', 'eightshift-forms'),
 				// translators: %s will be replaced with the global settings url.
-				'highlightedContentSubtitle' => \sprintf(\__('Oh no it looks like this feature is not active, please go to your <a href="%s">dashboard</a> and activate it.', 'eightshift-forms'), Helper::getSettingsGlobalPageUrl(UtilsConfig::SLUG_ADMIN_DASHBOARD)),
+				'highlightedContentSubtitle' => \sprintf(\__('Oh no it looks like this feature is not active, please go to your <a href="%s">dashboard</a> and activate it.', 'eightshift-forms'), UtilsGeneralHelper::getSettingsGlobalPageUrl(UtilsConfig::SLUG_ADMIN_DASHBOARD)),
 				'highlightedContentIcon' => 'tools',
 			],
 		];
@@ -80,7 +80,7 @@ final class UtilsSettingsOutputHelper
 				'component' => 'highlighted-content',
 				'highlightedContentTitle' => \__('Some config required', 'eightshift-forms'),
 				// translators: %s will be replaced with the global settings url.
-				'highlightedContentSubtitle' => \sprintf(\__('Before using %1$s you need to configure it in <a href="%2$s" target="_blank" rel="noopener noreferrer">global settings</a>.', 'eightshift-forms'), $title, Helper::getSettingsGlobalPageUrl($type)),
+				'highlightedContentSubtitle' => \sprintf(\__('Before using %1$s you need to configure it in <a href="%2$s" target="_blank" rel="noopener noreferrer">global settings</a>.', 'eightshift-forms'), $title, UtilsGeneralHelper::getSettingsGlobalPageUrl($type)),
 				'highlightedContentIcon' => 'tools',
 			],
 		];
@@ -308,7 +308,7 @@ final class UtilsSettingsOutputHelper
 		$tags = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$formType]['emailTemplateTags'] ?? [];
 
 		if ($tags) {
-			return SettingsOutputHelper::getPartialFormFieldNames(\array_keys($tags));
+			return self::getPartialFormFieldNames(\array_keys($tags));
 		}
 
 		return '';

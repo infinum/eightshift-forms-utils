@@ -37,7 +37,7 @@ class UtilsHelper
 	 */
 	public static function getUtilsIcons(string $type): string
 	{
-		return self::getUtilsManifest()['icons'][Helper::kebabToCamelCase($type)] ?? '';
+		return self::getUtilsManifest()['icons'][UtilsGeneralHelper::kebabToCamelCase($type)] ?? '';
 	}
 
 	/**

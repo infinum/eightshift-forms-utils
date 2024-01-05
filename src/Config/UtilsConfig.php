@@ -171,7 +171,6 @@ class UtilsConfig
 	 */
 	public const ROUTE_PREFIX_INTEGRATION_EDITOR = 'integration-editor';
 
-	
 	public const CAP_LISTING = 'eightshift_forms_adminu_menu';
 	public const CAP_SETTINGS = 'eightshift_forms_form_settings';
 	public const CAP_SETTINGS_GLOBAL = 'eightshift_forms_global_settings';
@@ -184,4 +183,19 @@ class UtilsConfig
 	public const CAP_FORM_DELETE_MULTIPLE = 'delete_eightshift_formss';
 	public const CAP_FORM_PUBLISH = 'publish_eightshift_formss';
 	public const CAP_FORM_READ_PRIVATE = 'read_private_eightshift_formss';
+
+	public const CAPS = [
+		self::CAP_LISTING,
+		self::CAP_SETTINGS,
+		self::CAP_SETTINGS_GLOBAL,
+		self::CAP_FORM,
+		self::CAP_FORM_EDIT,
+		self::CAP_FORM_READ,
+		self::CAP_FORM_DELETE,
+		self::CAP_FORM_EDIT_MULTIPLE,
+		self::CAP_FORM_EDIT_OTHERS,
+		self::CAP_FORM_DELETE_MULTIPLE,
+		self::CAP_FORM_PUBLISH,
+		self::CAP_FORM_READ_PRIVATE,
+	];
 }

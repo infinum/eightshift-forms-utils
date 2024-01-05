@@ -72,6 +72,9 @@ class UtilsConfig
 	 */
 	public const STATUS_WARNING = 'warning';
 
+	public const ROUTE_NAMESPACE = 'eightshift-forms';
+	public const ROUTE_VERSION = 'v1';
+
 	public const SETTINGS_NAME_PREFIX = 'es-forms';
 
 	public const FILTER_SETTINGS_DATA = self::FILTER_PREFIX . '_settings_data';
@@ -117,6 +120,20 @@ class UtilsConfig
 	public const SETTINGS_DEBUG_QM_LOG = 'skip-qm-log';
 	public const SETTINGS_DEBUG_FORCE_DISABLED_FIELDS = 'skip-force-disabled-fields';
 
+	/**
+	 * Setting local type name.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_TYPE_NAME = 'settings';
+
+	/**
+	 * Setting global type name.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_GLOBAL_TYPE_NAME = 'settingsGlobal';
+
 
 	public const SLUG_POST_TYPE = 'eightshift-forms';
 	public const SLUG_ADMIN = 'es-forms';
@@ -153,4 +170,18 @@ class UtilsConfig
 	 * @var string
 	 */
 	public const ROUTE_PREFIX_INTEGRATION_EDITOR = 'integration-editor';
+
+	
+	public const CAP_LISTING = 'eightshift_forms_adminu_menu';
+	public const CAP_SETTINGS = 'eightshift_forms_form_settings';
+	public const CAP_SETTINGS_GLOBAL = 'eightshift_forms_global_settings';
+	public const CAP_FORM = 'eightshift_forms';
+	public const CAP_FORM_EDIT = 'edit_eightshift_forms';
+	public const CAP_FORM_READ = 'read_eightshift_forms';
+	public const CAP_FORM_DELETE = 'delete_eightshift_forms';
+	public const CAP_FORM_EDIT_MULTIPLE = 'edit_eightshift_formss';
+	public const CAP_FORM_EDIT_OTHERS = 'edit_others_eightshift_formss';
+	public const CAP_FORM_DELETE_MULTIPLE = 'delete_eightshift_formss';
+	public const CAP_FORM_PUBLISH = 'publish_eightshift_formss';
+	public const CAP_FORM_READ_PRIVATE = 'read_private_eightshift_formss';
 }

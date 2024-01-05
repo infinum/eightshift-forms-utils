@@ -739,13 +739,11 @@ final class Helper
 	}
 
 	/**
-	 * Return utils icons from manifest.json.
+	 * Return main manifest.json file.
 	 *
-	 * @param string $type Type to return.
-	 *
-	 * @return string
+	 * @return array<mixed>
 	 */
-	public static function getUtilsManifest(): string
+	public static function getUtilsManifest(): array
 	{
 		$sep = \DIRECTORY_SEPARATOR;
 		$filePath = dirname(__FILE__, 2) . "{$sep}manifest.json";

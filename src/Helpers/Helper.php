@@ -739,15 +739,30 @@ final class Helper
 	}
 
 	/**
-	 * Return project icons from utils component.
+	 * Return utils icons from manifest.json.
 	 *
 	 * @param string $type Type to return.
 	 *
 	 * @return string
 	 */
-	public static function getProjectIcons(string $type): string
+	public static function getUtilsManifest(): string
 	{
-		return Components::getComponent('utils')['icons'][Components::kebabToCamelCase($type)] ?? '';
+		$sep = \DIRECTORY_SEPARATOR;
+		$filePath = dirname(__FILE__, 2) . "{$sep}manifest.json";
+
+		return \json_decode(\implode(' ', (array)\file($filePath)), true);
+	}
+
+	/**
+	 * Return utils icons from manifest.json.
+	 *
+	 * @param string $type Type to return.
+	 *
+	 * @return string
+	 */
+	public static function getUtilsIcons(string $type): string
+	{
+		return self::getUtilsManifest()['icons'][Components::kebabToCamelCase($type)] ?? '';
 	}
 
 	/**

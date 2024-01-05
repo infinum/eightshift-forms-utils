@@ -125,4 +125,32 @@ class UtilsConfig
 	public const SLUG_ADMIN_DASHBOARD = 'dashboard';
 
 	public const FILTER_SETTINGS_WPML_IS_VALID_NAME = 'es_forms_settings_is_valid_wpml';
+
+	/**
+	 * Dynamic name route prefix for integrations items inner.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_PREFIX_INTEGRATION_ITEMS_INNER = 'integration-items-inner';
+
+	/**
+	 * Dynamic name route prefix for integrations items.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_PREFIX_INTEGRATION_ITEMS = 'integration-items';
+
+	/**
+	 * Dynamic name route prefix for form submit.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_PREFIX_FORM_SUBMIT = 'submit';
+
+	/**
+	 * Dynamic name route prefix for integration editor.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_PREFIX_INTEGRATION_EDITOR = 'integration-editor';
 }

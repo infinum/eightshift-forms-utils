@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
-use EightshiftFormsUtilsVendor\EightshiftLibs\Helpers\Components;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 

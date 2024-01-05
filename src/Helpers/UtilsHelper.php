@@ -15,7 +15,7 @@ namespace EightshiftFormsUtils\Helpers;
  */
 class UtilsHelper
 {
-		/**
+	/**
 	 * Return main manifest.json file.
 	 *
 	 * @return array<mixed>
@@ -23,7 +23,7 @@ class UtilsHelper
 	public static function getUtilsManifest(): array
 	{
 		$sep = \DIRECTORY_SEPARATOR;
-		$filePath = dirname(__FILE__, 2) . "{$sep}manifest.json";
+		$filePath = \dirname(__FILE__, 2) . "{$sep}manifest.json";
 
 		return \json_decode(\implode(' ', (array)\file($filePath)), true);
 	}

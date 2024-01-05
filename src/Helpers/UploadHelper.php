@@ -290,7 +290,7 @@ final class UploadHelper
 	 *
 	 * @return string
 	 */
-	private function getUploadFolerPath(): string
+	private static function getUploadFolerPath(): string
 	{
 		if (!\defined('WP_CONTENT_DIR')) {
 			return 'errorUploadFolderPathMissingWpContentDir';

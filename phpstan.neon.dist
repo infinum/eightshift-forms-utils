@@ -12,8 +12,4 @@ parameters:
 		- src/
 	excludePaths:
 		- src/**/*Example.php
-	ignoreErrors:
-		# Block templates
-		- '#^Variable \$attributes might not be defined\.#'
-		- '#^Variable \$innerBlockContent might not be defined\.#'
 	checkGenericClassInNonGenericObjectType: false

@@ -58,6 +58,13 @@ class UtilsConfig
 	public const FILTER_PUBLIC_FILTERS_DATA = self::FILTER_PREFIX . '_public_filters_data';
 
 	/**
+	 * Filter name for public actions.
+	 *
+	 * @var string
+	 */
+	public const FILTER_PUBLIC_ACTIONS_DATA = self::FILTER_PREFIX . '_public_actions_data';
+
+	/**
 	 * Filter name for fields that are not translatable.
 	 *
 	 * @var string

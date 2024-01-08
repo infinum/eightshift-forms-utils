@@ -24,7 +24,7 @@ final class UtilsI18nHelper
 	{
 		$output = '';
 
-		$filterName = UtilsGeneralHelper::getFilterName(['general', 'locale']);
+		$filterName = UtilsHooksHelper::getFilterName(['general', 'locale']);
 		if (\has_filter($filterName)) {
 			$locale = \apply_filters($filterName, []);
 

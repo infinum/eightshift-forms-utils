@@ -32,7 +32,7 @@ final class UtilsIntegrationsHelper
 			return [];
 		}
 
-		$type = $integrationDetails['typeFilter'];
+		$type = $integrationDetails['type'];
 		$useFilter = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$type]['use'] ?? '';
 
 		return [

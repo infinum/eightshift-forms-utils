@@ -19,9 +19,9 @@ use WP_REST_Request;
 use WP_REST_Server;
 
 /**
- * Class AbstractBaseRoute
+ * Class AbstractUtilsBaseRoute
  */
-abstract class AbstractBaseRoute
+abstract class AbstractUtilsBaseRoute
 {
 	/**
 	 * Alias for GET transport method.

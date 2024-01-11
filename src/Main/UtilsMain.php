@@ -26,7 +26,7 @@ final class UtilsMain
 	 */
 	public static function checkAddonPlugins(string $name): void
 	{
-		if (!\is_plugin_active(UtilsConfig::MAIN_PLUGIN_NAME) && !empty($name)) {
+		if (!\is_plugin_active(UtilsConfig::MAIN_PLUGIN_FULL_NAME) && !empty($name)) {
 			\deactivate_plugins($name);
 		}
 	}
@@ -40,7 +40,7 @@ final class UtilsMain
 	 */
 	public static function checkAddonPluginsNotice(string $name): void
 	{
-		if (!\is_plugin_active(UtilsConfig::MAIN_PLUGIN_NAME) && !empty($name)) {
+		if (!\is_plugin_active(UtilsConfig::MAIN_PLUGIN_FULL_NAME) && !empty($name)) {
 			// translators: %s is replaced with plugin name.
 			echo '<div class="notice notice-error"><p>' . \sprintf(\esc_html__('Eightshift Forms - Addon %s plugin requires Eightshift Forms plugin. Please activate Eightshift Forms plugin first.', 'eightshift-forms-addon-computed-fields'), \esc_html($name)) . '</p></div>';
 		}

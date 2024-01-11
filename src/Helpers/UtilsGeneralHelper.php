@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
+use EightshiftLibs\Helpers\Components;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 
@@ -19,6 +20,24 @@ use RecursiveIteratorIterator;
  */
 final class UtilsGeneralHelper
 {
+	/**
+	 * Method that returns project version.
+	 *
+	 * Generally used for versioning asset handlers while enqueueing them.
+	 *
+	 * @return string
+	 */
+	public static function getProjectVersion(): string
+	{
+		if (!\function_exists('get_plugin_data')) {
+			require_once(\ABSPATH . 'wp-admin/includes/plugin.php');
+		}
+
+		$details = \get_plugin_data(Components::getProjectPaths('cliOutput') . \DIRECTORY_SEPARATOR . UtilsConfig::PLUGIN_ENTRYPOINT_FILE_NAME);
+
+		return isset($details['Version']) ? (string) $details['Version'] : '1.0.0';
+	}
+
 	/**
 	 * Method that returns listing page url.
 	 *

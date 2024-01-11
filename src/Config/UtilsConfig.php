@@ -18,12 +18,27 @@ namespace EightshiftFormsUtils\Config;
  */
 class UtilsConfig
 {
+
 	/**
-	 * Main plugin file.
+	 * Plugin entrypoint file name.
 	 *
 	 * @var string
 	 */
-	public const MAIN_PLUGIN_NAME = 'eightshift-forms/eightshift-forms.php';
+	public const PLUGIN_ENTRYPOINT_FILE_NAME = 'eightshift-forms.php';
+
+	/**
+	 * Main plugin folder name.
+	 *
+	 * @var string
+	 */
+	public const MAIN_PLUGIN_FOLDER_NAME = 'eightshift-forms';
+
+	/**
+	 * Main plugin full name.
+	 *
+	 * @var string
+	 */
+	public const MAIN_PLUGIN_FULL_NAME = self::MAIN_PLUGIN_FOLDER_NAME . \DIRECTORY_SEPARATOR . self::PLUGIN_ENTRYPOINT_FILE_NAME;
 
 	// ------------------------------------------------------------------
 	// FILTERS

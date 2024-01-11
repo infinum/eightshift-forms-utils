@@ -11,12 +11,13 @@ declare(strict_types=1);
 
 namespace EightshiftFormsUtils\Blocks;
 
+use EightshiftLibs\Blocks\AbstractBlocks;
 use WP_Block_Editor_Context;
 
 /**
  * Class AbstractUtilsBaseRoute
  */
-abstract class AbstractUtilsBlocks
+class UtilsBlocks extends AbstractBlocks
 {
 	/**
 	 * Register all the hooks

@@ -106,4 +106,18 @@ final class UtilsDeveloperHelper
 	{
 		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS) ?? false;
 	}
+
+	/**
+	 * Set and output data to output log using Query Monitor plugin.
+	 *
+	 * @param mixed $data Data to output.
+	 *
+	 * @return void
+	 */
+	public static function setQmLogsOutput($data = ''): void
+	{
+		if (\is_plugin_active('query-monitor/query-monitor.php') && UtilsDeveloperHelper::isDeveloperQMLogActive() && $data) {
+			\do_action('qm/debug', $data); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+		}
+	}
 }

@@ -850,20 +850,6 @@ final class UtilsGeneralHelper
 	}
 
 	/**
-	 * Set and output data to output log using Query Monitor plugin.
-	 *
-	 * @param mixed $data Data to output.
-	 *
-	 * @return void
-	 */
-	public static function setQmLogsOutput($data = ''): void
-	{
-		if (\is_plugin_active('query-monitor/query-monitor.php') && UtilsDeveloperHelper::isDeveloperQMLogActive() && $data) {
-			\do_action('qm/debug', $data); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
-		}
-	}
-
-	/**
 	 * Return all posts where form is assigned.
 	 *
 	 * @param string $formId Form Id.

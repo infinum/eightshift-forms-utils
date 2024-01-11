@@ -33,7 +33,7 @@ final class UtilsGeneralHelper
 			require_once(\ABSPATH . 'wp-admin/includes/plugin.php');
 		}
 
-		$details = \get_plugin_data(Components::getProjectPaths('cliOutput') . \DIRECTORY_SEPARATOR . UtilsConfig::PLUGIN_ENTRYPOINT_FILE_NAME);
+		$details = \get_plugin_data(Components::getProjectPaths('cliOutput') . \DIRECTORY_SEPARATOR . UtilsConfig::MAIN_PLUGIN_FILE_NAME);
 
 		return isset($details['Version']) ? (string) $details['Version'] : '1.0.0';
 	}

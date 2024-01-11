@@ -18,27 +18,33 @@ namespace EightshiftFormsUtils\Config;
  */
 class UtilsConfig
 {
-
 	/**
-	 * Plugin entrypoint file name.
+	 * Main plugin slug name.
 	 *
 	 * @var string
 	 */
-	public const PLUGIN_ENTRYPOINT_FILE_NAME = 'eightshift-forms.php';
+	public const MAIN_PLUGIN_PROJECT_SLUG = 'eightshift-forms';
+
+	/**
+	 * Main plugin file name.
+	 *
+	 * @var string
+	 */
+	public const MAIN_PLUGIN_FILE_NAME = 'eightshift-forms.php';
 
 	/**
 	 * Main plugin folder name.
 	 *
 	 * @var string
 	 */
-	public const MAIN_PLUGIN_FOLDER_NAME = 'eightshift-forms';
+	public const MAIN_PLUGIN_FOLDER_NAME = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	/**
 	 * Main plugin full name.
 	 *
 	 * @var string
 	 */
-	public const MAIN_PLUGIN_FULL_NAME = self::MAIN_PLUGIN_FOLDER_NAME . \DIRECTORY_SEPARATOR . self::PLUGIN_ENTRYPOINT_FILE_NAME;
+	public const MAIN_PLUGIN_FULL_NAME = self::MAIN_PLUGIN_FOLDER_NAME . \DIRECTORY_SEPARATOR . self::MAIN_PLUGIN_FILE_NAME;
 
 	// ------------------------------------------------------------------
 	// FILTERS
@@ -284,7 +290,7 @@ class UtilsConfig
 	 *
 	 * @var string
 	 */
-	public const SLUG_POST_TYPE = 'eightshift-forms';
+	public const SLUG_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	/**
 	 * Slug name for admin prefix.

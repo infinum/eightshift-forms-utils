@@ -806,7 +806,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function removeUneceseryParamFields(array $params, array $additional = []): array
 	{
-		$customFields = \array_flip(self::flattenArray(UtilsHelper::getStateParams()));
+		$customFields = \array_flip(Components::flattenArray(UtilsHelper::getStateParams()));
 		$additional = \array_flip($additional);
 
 		return \array_filter(
@@ -1049,28 +1049,5 @@ final class UtilsGeneralHelper
 	{
 		\json_decode($jsonString);
 		return (\json_last_error() === \JSON_ERROR_NONE);
-	}
-
-	/**
-	 * Flatten multidimensional array.
-	 *
-	 * @param array<mixed> $arrayToFlatten Multidimensional array to flatten.
-	 *
-	 * @return array<mixed>
-	 */
-	public static function flattenArray(array $arrayToFlatten): array
-	{
-		$output = [];
-
-		\array_walk_recursive(
-			$arrayToFlatten,
-			function ($a) use (&$output) {
-				if (!empty($a)) {
-					$output[] = $a;
-				}
-			}
-		);
-
-		return $output;
 	}
 }

@@ -446,6 +446,9 @@ abstract class AbstractUtilsBaseRoute
 			// Populare params.
 			$formDataReference['params'] = $params['params'] ?? [];
 
+			// Populare params raw.
+			$formDataReference['paramsRaw'] = $params['paramsRaw'] ?? [];
+
 			// Populate files from uploaded ID.
 			$formDataReference['files'] = $params['files'] ?? [];
 

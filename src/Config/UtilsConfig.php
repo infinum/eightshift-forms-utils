@@ -143,34 +143,35 @@ class UtilsConfig
 	// ------------------------------------------------------------------
 	// WP-CLI
 	// ------------------------------------------------------------------
-		/**
-		 * Main plugin WP-CLI command prefix.
-		 *
-		 * @var string
-		 */
-		public const MAIN_PLUGIN_WP_CLI_COMMAND_PREFIX = self::MAIN_PLUGIN_PROJECT_SLUG;
+
+	/**
+	 * Main plugin WP-CLI command prefix.
+	 *
+	 * @var string
+	 */
+	public const MAIN_PLUGIN_WP_CLI_COMMAND_PREFIX = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	// ------------------------------------------------------------------
 	// Enqueue
 	// ------------------------------------------------------------------
 
-		/**
-		 * Main plugin enqueue assets prefix.
-		 *
-		 * @var string
-		 */
-		public const MAIN_PLUGIN_ENQUEUE_ASSETS_PREFIX = self::MAIN_PLUGIN_PROJECT_SLUG;
+	/**
+	 * Main plugin enqueue assets prefix.
+	 *
+	 * @var string
+	 */
+	public const MAIN_PLUGIN_ENQUEUE_ASSETS_PREFIX = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	// ------------------------------------------------------------------
 	// Manifest
 	// ------------------------------------------------------------------
 
-		/**
-		 * Main plugin manifest item hook name.
-		 *
-		 * @var string
-		 */
-		public const MAIN_PLUGIN_MANIFEST_ITEM_HOOK_NAME = 'es-forms-manifest-item';
+	/**
+	 * Main plugin manifest item hook name.
+	 *
+	 * @var string
+	 */
+	public const MAIN_PLUGIN_MANIFEST_ITEM_HOOK_NAME = 'es-forms-manifest-item';
 
 	// ------------------------------------------------------------------
 	// DEVELOPER

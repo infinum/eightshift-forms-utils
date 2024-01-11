@@ -276,7 +276,13 @@ abstract class AbstractUtilsBaseRoute
 					// All other "normal" fields.
 					$fieldType = $value['type'] ?? '';
 					$fieldValue = $value['value'] ?? '';
+					$fieldName = $value['name'] ?? '';
 
+					if (!$fieldName) {
+						break;
+					}
+
+					// File.
 					if ($fieldType === 'file') {
 						$output['files'][$key] = $fieldValue ? \array_merge(
 							$value,
@@ -292,10 +298,17 @@ abstract class AbstractUtilsBaseRoute
 						break;
 					}
 
+					// Rating.
 					if ($fieldType === 'rating' && $fieldValue === '0') {
 						$value['value'] = '';
 					}
 
+					// Checkbox.
+					if ($fieldType === 'checkbox') {
+						$fieldValue = \explode(UtilsConfig::DELIMITER, $fieldValue);
+					}
+
+					$output['paramsRaw'][$fieldName] = $fieldValue;
 					$output['params'][$key] = $value;
 
 					break;

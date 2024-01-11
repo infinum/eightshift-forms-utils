@@ -141,6 +141,27 @@ class UtilsConfig
 	public const TEMP_UPLOAD_DIR = 'esforms-tmp';
 
 	// ------------------------------------------------------------------
+	// WP-CLI
+	// ------------------------------------------------------------------
+		/**
+		 * Main plugin WP-CLI command prefix.
+		 *
+		 * @var string
+		 */
+		public const MAIN_PLUGIN_WP_CLI_COMMAND_PREFIX = self::MAIN_PLUGIN_PROJECT_SLUG;
+
+	// ------------------------------------------------------------------
+	// Enqueue
+	// ------------------------------------------------------------------
+
+		/**
+		 * Main plugin enqueue assets prefix.
+		 *
+		 * @var string
+		 */
+		public const MAIN_PLUGIN_ENQUEUE_ASSETS_PREFIX = self::MAIN_PLUGIN_PROJECT_SLUG;
+
+	// ------------------------------------------------------------------
 	// DEVELOPER
 	// ------------------------------------------------------------------
 

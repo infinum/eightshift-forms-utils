@@ -16,9 +16,9 @@ use EightshiftLibs\Helpers\Components;
 use EightshiftLibs\Manifest\AbstractManifest;
 
 /**
- * Class Manifest
+ * Class UtilsManifest
  */
-class Manifest extends AbstractManifest
+class UtilsManifest extends AbstractManifest
 {
 	/**
 	 * Register all hooks. Changed filter name to manifest.

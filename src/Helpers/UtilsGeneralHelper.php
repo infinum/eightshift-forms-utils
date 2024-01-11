@@ -262,7 +262,7 @@ final class UtilsGeneralHelper
 		return [
 			'namespace' => $block[0] ?? '',
 			'name' => $blockName,
-			'nameAttr' => self::kebabToCamelCase($blockName),
+			'nameAttr' => Components::kebabToCamelCase($blockName),
 		];
 	}
 
@@ -451,7 +451,7 @@ final class UtilsGeneralHelper
 		foreach ($output['fieldsOnly'] as $item) {
 			$blockItemName = self::getBlockNameDetails($item['blockName'])['nameAttr'];
 
-			$value = $item['attrs'][self::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
+			$value = $item['attrs'][Components::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
 
 			if (!$value) {
 				continue;
@@ -502,8 +502,8 @@ final class UtilsGeneralHelper
 				$name = $blockName['name'];
 
 				if ($name === 'step') {
-					$stepCurrent = $block['attrs'][self::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
-					$stepLabel = $block['attrs'][self::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
+					$stepCurrent = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+					$stepLabel = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
 
 					if (!$stepLabel) {
 						$stepLabel = $stepCurrent;
@@ -520,7 +520,7 @@ final class UtilsGeneralHelper
 					continue;
 				}
 
-				$itemName = $block['attrs'][self::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+				$itemName = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
 				if (!$itemName) {
 					continue;
 				}
@@ -858,7 +858,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function setQmLogsOutput($data = ''): void
 	{
-		if (\is_plugin_active('query-monitor/query-monitor.php') && self::isDeveloperQMLogActive() && $data) {
+		if (\is_plugin_active('query-monitor/query-monitor.php') && UtilsDeveloperHelper::isDeveloperQMLogActive() && $data) {
 			\do_action('qm/debug', $data); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 		}
 	}
@@ -890,7 +890,7 @@ final class UtilsGeneralHelper
 			return [];
 		}
 
-		$isDeveloperModeActive = self::isDeveloperModeActive();
+		$isDeveloperModeActive = UtilsDeveloperHelper::isDeveloperModeActive();
 
 		return \array_map(
 			function ($item) use ($isDeveloperModeActive) {
@@ -933,121 +933,5 @@ final class UtilsGeneralHelper
 			],
 		];
 		return isset($data[$type]) ? $data[$type] : [];
-	}
-
-	/**
-	 * Check if developer debugging is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperDebuggingActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_DEBUGGING_KEY) ?? false;
-	}
-
-	/**
-	 * Check if developer skip form validation is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperSkipFormValidationActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_VALIDATION_KEY) ?? false;
-	}
-
-	/**
-	 * Check if developer skip form reset is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperSkipFormResetActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_RESET_KEY) ?? false;
-	}
-
-	/**
-	 * Check if developer skip captcha is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperSkipCaptchaActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_CAPTCHA_KEY) ?? false;
-	}
-
-	/**
-	 * Check if developer skip forms sync is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperSkipFormsSyncActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_FORMS_SYNC_KEY) ?? false;
-	}
-
-	/**
-	 * Check if developer skip cache is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperSkipCacheActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_CACHE_KEY) ?? false;
-	}
-
-	/**
-	 * Check if developer mode is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperModeActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_DEVELOPER_MODE_KEY) ?? false;
-	}
-
-	/**
-	 * Check if QA Monitor Log mode is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperQMLogActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_QM_LOG) ?? false;
-	}
-
-	/**
-	 * Check if Force Disabled Fields mode is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperForceDisabledFieldsActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS) ?? false;
-	}
-
-	/**
-	 * Convert string from kebab to camel case.
-	 *
-	 * @param string $stringToConvert    String to convert.
-	 * @param string $separator Separator to use for conversion.
-	 *
-	 * @return string
-	 */
-	public static function kebabToCamelCase(string $stringToConvert, string $separator = '-'): string
-	{
-		return \lcfirst(\str_replace($separator, '', \ucwords($stringToConvert, $separator)));
-	}
-
-	/**
-	 * Check if json is valid
-	 *
-	 * @param string $jsonString String to check.
-	 *
-	 * @return bool
-	 */
-	public static function isJson(string $jsonString): bool
-	{
-		\json_decode($jsonString);
-		return (\json_last_error() === \JSON_ERROR_NONE);
 	}
 }

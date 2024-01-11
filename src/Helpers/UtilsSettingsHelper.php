@@ -360,7 +360,7 @@ final class UtilsSettingsHelper
 			$isContantValueUsed = true;
 		}
 
-		$isOverrideActive = UtilsGeneralHelper::isDeveloperForceDisabledFieldsActive();
+		$isOverrideActive = UtilsDeveloperHelper::isDeveloperForceDisabledFieldsActive();
 
 		if ($isOverrideActive) {
 			$isDisabled = false;

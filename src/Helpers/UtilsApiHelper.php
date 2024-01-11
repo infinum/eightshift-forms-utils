@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
+use EightshiftLibs\Helpers\Components;
 
 /**
  * UtilsApiHelper class.
@@ -60,7 +61,7 @@ final class UtilsApiHelper
 				$code = $response['response']['code'] ?? 200;
 				$body = $response['body'] ?? '';
 
-				if (UtilsGeneralHelper::isJson($body)) {
+				if (Components::isJson($body)) {
 					$body = \json_decode($body, true) ?? [];
 				}
 			}
@@ -74,7 +75,7 @@ final class UtilsApiHelper
 		}
 
 		return [
-			'integration' => UtilsGeneralHelper::kebabToCamelCase($integration, '-'),
+			'integration' => Components::kebabToCamelCase($integration, '-'),
 			'params' => $params,
 			'files' => $files,
 			'response' => $response['response'] ?? [],
@@ -198,7 +199,7 @@ final class UtilsApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (UtilsGeneralHelper::isDeveloperModeActive() && $debug) {
+		if (UtilsDeveloperHelper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 
@@ -226,7 +227,7 @@ final class UtilsApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (UtilsGeneralHelper::isDeveloperModeActive() && $debug) {
+		if (UtilsDeveloperHelper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 
@@ -254,7 +255,7 @@ final class UtilsApiHelper
 			$output['data'] = $additional;
 		}
 
-		if (UtilsGeneralHelper::isDeveloperModeActive() && $debug) {
+		if (UtilsDeveloperHelper::isDeveloperModeActive() && $debug) {
 			$output['debug'] = $debug;
 		}
 

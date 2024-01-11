@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace EightshiftFormsUtils\Helpers;
 
+use EightshiftLibs\Helpers\Components;
+
 /**
  * UtilsHelper class.
  */
@@ -37,7 +39,7 @@ class UtilsHelper
 	 */
 	public static function getUtilsIcons(string $type): string
 	{
-		return self::getUtilsManifest()['icons'][UtilsGeneralHelper::kebabToCamelCase($type)] ?? '';
+		return self::getUtilsManifest()['icons'][Components::kebabToCamelCase($type)] ?? '';
 	}
 
 	/**

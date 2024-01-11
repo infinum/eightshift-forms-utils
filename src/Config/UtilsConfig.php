@@ -93,6 +93,24 @@ class UtilsConfig
 	public const FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES = self::FILTER_PREFIX . '_settings_none_translatable_names';
 
 	// ------------------------------------------------------------------
+	// BLOCKS
+	// ------------------------------------------------------------------
+
+	/**
+	 * Block main category slug
+	 *
+	 * @var string
+	 */
+	public const BLOCKS_MAIN_CATEGORY_SLUG = 'eightshift-forms';
+
+	/**
+	 * Block add-ons category slug
+	 *
+	 * @var string
+	 */
+	public const BLOCKS_ADDONS_CATEGORY_SLUG = 'eightshift-forms-addons';
+
+	// ------------------------------------------------------------------
 	// INTEGRATIONS
 	// ------------------------------------------------------------------
 

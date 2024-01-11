@@ -456,6 +456,9 @@ abstract class AbstractUtilsBaseRoute
 
 			// Get form storage from params.
 			$formDataReference['storage'] = \json_decode($params['storage'] ?? '', true) ?? [];
+
+			// Create placeholder for addon data.
+			$formDataReference['addonData'] = [];
 		}
 
 		return $formDataReference;

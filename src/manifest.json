@@ -227,6 +227,11 @@
 			"validation": "validation",
 			"addon": "addon",
 			"successRedirectData": "successRedirectData"
+		},
+		"successRedirectUrlKeys": {
+			"variation": "es-variation",
+			"downloads": "es-downloads",
+			"data": "es-data"
 		}
 	}
 }

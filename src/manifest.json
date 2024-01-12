@@ -187,7 +187,6 @@
 			"successRedirect": "data-success-redirect",
 			"successRedirectVariation": "data-success-redirect-variation",
 			"successRedirectDownloads": "data-success-redirect-downloads",
-			"successRedirectData": "data-success-redirect-data",
 			"conditionalTags": "data-conditional-tags",
 			"typeSelector": "data-type-selector",
 			"actionExternal": "data-action-external",

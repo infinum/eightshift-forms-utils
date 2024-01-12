@@ -18,30 +18,12 @@ use EightshiftFormsUtils\Helpers\UtilsUploadHelper;
 use EightshiftLibs\Rest\CallableRouteInterface;
 use EightshiftLibs\Rest\Routes\AbstractRoute;
 use WP_REST_Request;
-use WP_REST_Server;
 
 /**
  * Class AbstractUtilsBaseRoute
  */
 abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableRouteInterface
 {
-	/**
-	 * Method that registers rest route that is used inside rest_api_init hook
-	 *
-	 * @param WP_REST_Server $wpRestServer Server object.
-	 *
-	 * @return void
-	 */
-	public function routeRegisterCallback(WP_REST_Server $wpRestServer): void
-	{
-		\register_rest_route(
-			UtilsConfig::ROUTE_NAMESPACE . '/' . UtilsConfig::ROUTE_VERSION,
-			$this->getRouteName(),
-			$this->getCallbackArguments(),
-			false
-		);
-	}
-
 	/**
 	 * Method that returns project Route namespace
 	 *

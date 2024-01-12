@@ -137,17 +137,6 @@ class UtilsConfig
 
 
 	// ------------------------------------------------------------------
-	// VALIDATIOR
-	// ------------------------------------------------------------------
-
-	/**
-	 * API validator output key.
-	 *
-	 * @var string
-	 */
-	public const VALIDATOR_OUTPUT_KEY = 'validation';
-
-	// ------------------------------------------------------------------
 	// FILE UPLOAD
 	// ------------------------------------------------------------------
 
@@ -444,6 +433,20 @@ class UtilsConfig
 	 * @var string
 	 */
 	public const ROUTE_VERSION = 'v1';
+
+	/**
+	 * Route output validator key.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_OUTPUT_VALIDATION_KEY = 'validation';
+
+	/**
+	 * Route output add-on data key.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_OUTPUT_ADDON_DATA_KEY = 'addon';
 
 	// ------------------------------------------------------------------
 	// CAPS

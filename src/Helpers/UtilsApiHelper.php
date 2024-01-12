@@ -153,7 +153,7 @@ final class UtilsApiHelper
 		$additionalOutput = [];
 
 		$additional = [
-			UtilsConfig::VALIDATOR_OUTPUT_KEY,
+			UtilsConfig::ROUTE_OUTPUT_VALIDATION_KEY,
 			...$additional,
 		];
 

@@ -67,7 +67,14 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 	 *
 	 * @return array<string, mixed> Either an array of options for the endpoint, or an array of arrays for multiple methods.
 	 */
-	abstract protected function getCallbackArguments(): array;
+	protected function getCallbackArguments(): array
+	{
+		return [
+			'methods' => $this->getMethods(),
+			'callback' => [$this, 'routeCallback'],
+			'permission_callback' => [$this, 'permissionCallback'],
+		];
+	}
 
 	/**
 	 * Returns allowed methods for this route.

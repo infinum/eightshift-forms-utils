@@ -15,38 +15,16 @@ use EightshiftFormsUtils\Helpers\UtilsApiHelper;
 use EightshiftFormsUtils\Helpers\UtilsGeneralHelper;
 use EightshiftFormsUtils\Helpers\UtilsHelper;
 use EightshiftFormsUtils\Helpers\UtilsUploadHelper;
+use EightshiftLibs\Rest\CallableRouteInterface;
+use EightshiftLibs\Rest\Routes\AbstractRoute;
 use WP_REST_Request;
 use WP_REST_Server;
 
 /**
  * Class AbstractUtilsBaseRoute
  */
-abstract class AbstractUtilsBaseRoute
+abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableRouteInterface
 {
-	/**
-	 * Alias for GET transport method.
-	 *
-	 * @var string
-	 */
-	public const READABLE = 'GET';
-
-	/**
-	 * Alias for POST transport method.
-	 *
-	 * @var string
-	 */
-	public const CREATABLE = 'POST';
-
-	/**
-	 * A register method holds register_rest_route function to register api route
-	 *
-	 * @return void
-	 */
-	public function register(): void
-	{
-		\add_action('rest_api_init', [$this, 'routeRegisterCallback']);
-	}
-
 	/**
 	 * Method that registers rest route that is used inside rest_api_init hook
 	 *
@@ -65,11 +43,24 @@ abstract class AbstractUtilsBaseRoute
 	}
 
 	/**
-	 * Get the base url of the route
+	 * Method that returns project Route namespace
 	 *
-	 * @return string The base URL for route you are adding.
+	 * @return string Project namespace for REST route.
 	 */
-	abstract protected function getRouteName(): string;
+	protected function getNamespace(): string
+	{
+		return UtilsConfig::ROUTE_NAMESPACE;
+	}
+
+	/**
+	 * Method that returns project route version
+	 *
+	 * @return string Route version as a string.
+	 */
+	protected function getVersion(): string
+	{
+		return UtilsConfig::ROUTE_VERSION;
+	}
 
 	/**
 	 * Get callback arguments array

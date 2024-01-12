@@ -448,6 +448,13 @@ class UtilsConfig
 	 */
 	public const ROUTE_OUTPUT_ADDON_DATA_KEY = 'addon';
 
+	/**
+	 * Route output success redirect data key.
+	 *
+	 * @var string
+	 */
+	public const ROUTE_OUTPUT_SUCCESS_REDIRECT_DATA_KEY = 'successRedirectData';
+
 	// ------------------------------------------------------------------
 	// CAPS
 	// ------------------------------------------------------------------

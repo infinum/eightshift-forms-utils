@@ -437,6 +437,8 @@ class UtilsConfig
 	/**
 	 * Route output validator key.
 	 *
+	 * Note: This key is used in manifest enum.
+	 *
 	 * @var string
 	 */
 	public const ROUTE_OUTPUT_VALIDATION_KEY = 'validation';
@@ -444,12 +446,16 @@ class UtilsConfig
 	/**
 	 * Route output add-on data key.
 	 *
+	 * Note: This key is used in manifest enum.
+	 *
 	 * @var string
 	 */
 	public const ROUTE_OUTPUT_ADDON_DATA_KEY = 'addon';
 
 	/**
 	 * Route output success redirect data key.
+	 *
+	 * Note: This key is used in manifest enum.
 	 *
 	 * @var string
 	 */

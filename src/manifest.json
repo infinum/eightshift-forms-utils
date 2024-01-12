@@ -222,6 +222,11 @@
 			"hubspotTypeId": "data-hubspot-type-id",
 
 			"adminIntegrationType": "data-integration-type"
+		},
+		"responseOutputKeys": {
+			"validation": "validation",
+			"addon": "addon",
+			"successRedirectData": "successRedirectData"
 		}
 	}
 }

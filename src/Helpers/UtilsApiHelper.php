@@ -154,6 +154,8 @@ final class UtilsApiHelper
 
 		$additional = [
 			UtilsConfig::ROUTE_OUTPUT_VALIDATION_KEY,
+			UtilsConfig::ROUTE_OUTPUT_ADDON_DATA_KEY,
+			UtilsConfig::ROUTE_OUTPUT_SUCCESS_REDIRECT_DATA_KEY,
 			...$additional,
 		];
 

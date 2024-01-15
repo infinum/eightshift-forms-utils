@@ -153,7 +153,8 @@
 			"captcha": "es-form-captcha",
 			"direct": "es-form-direct",
 			"itemId": "es-form-item-id",
-			"innerId": "es-form-inner-id"
+			"innerId": "es-form-inner-id",
+			"additionalData": "es-form-additional-data"
 		},
 		"attrs": {
 			"formType": "data-form-type",

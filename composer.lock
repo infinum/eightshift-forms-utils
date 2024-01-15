@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce9222444dfb17ba53d85bb62f87ba85",
+    "content-hash": "ea51f3a78024996efb10cc6574a303bf",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "7.1.1",
+            "version": "7.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "ad226cec6f872bd485a2ccfbe458d35e3df70670"
+                "reference": "a5f24a4a5450089fc0ccb2bd06661d6ca59639f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/ad226cec6f872bd485a2ccfbe458d35e3df70670",
-                "reference": "ad226cec6f872bd485a2ccfbe458d35e3df70670",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/a5f24a4a5450089fc0ccb2bd06661d6ca59639f8",
+                "reference": "a5f24a4a5450089fc0ccb2bd06661d6ca59639f8",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2024-01-15T10:48:02+00:00"
+            "time": "2024-01-15T14:07:46+00:00"
         },
         {
             "name": "opis/closure",

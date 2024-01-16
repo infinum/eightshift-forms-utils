@@ -26,22 +26,22 @@ final class UtilsIntegrationsHelper
 	 */
 	public static function getIntegrationDetailsById(string $id): array
 	{
-		$integrationDetails = UtilsGeneralHelper::getFormDetailsById($id);
+		$formDataReference = UtilsGeneralHelper::getFormDetailsById($id);
 
-		if (!$integrationDetails) {
+		if (!$formDataReference) {
 			return [];
 		}
 
-		$type = $integrationDetails['type'];
+		$type = $formDataReference[UtilsConfig::FDR_TYPE];
 		$useFilter = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$type]['use'] ?? '';
 
 		return [
-			'label' => $integrationDetails['label'],
-			'icon' => $integrationDetails['icon'],
+			'label' => $formDataReference[UtilsConfig::FDR_LABEL],
+			'icon' => $formDataReference[UtilsConfig::FDR_ICON],
 			'value' => $type,
 			'isActive' => $useFilter ? UtilsSettingsHelper::isOptionCheckboxChecked($useFilter, $useFilter) : false,
-			'isValid' => $integrationDetails['isValid'],
-			'isApiValid' => $integrationDetails['isApiValid'],
+			'isValid' => $formDataReference[UtilsConfig::FDR_IS_VALID],
+			'isApiValid' => $formDataReference[UtilsConfig::FDR_IS_API_VALID],
 		];
 	}
 

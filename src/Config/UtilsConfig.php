@@ -476,6 +476,7 @@ class UtilsConfig
 	public const FDR_ITEM_ID = 'itemId';
 	public const FDR_INNER_ID = 'innerId';
 	public const FDR_TYPE = 'type';
+	public const FDR_INTEGRATION_TYPE = 'integrationType';
 	public const FDR_FORM_ID = 'formId';
 	public const FDR_POST_ID = 'postId';
 	public const FDR_PARAMS = 'params';
@@ -491,6 +492,16 @@ class UtilsConfig
 	public const FDR_CAPTCHA = 'captcha';
 	public const FDR_STORAGE = 'storage';
 	public const FDR_ADDON_DATA = 'addonData';
+	public const FDR_EMAIL_RESPONSE_TAGS = 'emailResponseTags';
+	public const FDR_IS_VALID = 'isValid';
+	public const FDR_IS_API_VALID = 'isApiValid';
+	public const FDR_LABEL = 'label';
+	public const FDR_ICON = 'icon';
+	public const FDR_FIELDS = 'fields';
+	public const FDR_FIELD_NAMES = 'fieldNames';
+	public const FDR_FIELD_NAMES_TAGS = 'fieldNamesTags';
+	public const FDR_FIELD_NAMES_FULL = 'fieldNamesFull';
+	public const FDR_STEPS_SETUP = 'stepsSetup';
 
 	// ------------------------------------------------------------------
 	// CAPS

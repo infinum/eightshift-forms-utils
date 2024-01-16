@@ -380,6 +380,8 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 	 */
 	protected function getFormDataReference($request): array
 	{
+		$formDataReference = [];
+
 		// Get params from request.
 		$params = $this->prepareApiParams($request);
 

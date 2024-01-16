@@ -147,6 +147,13 @@ class UtilsConfig
 	 */
 	public const TEMP_UPLOAD_DIR = 'esforms-tmp';
 
+	/**
+	 * File upload type name used for admin.
+	 *
+	 * @var string
+	 */
+	public const FILE_UPLOAD_ADMIN_TYPE_NAME = 'fileUploadAdmin';
+
 	// ------------------------------------------------------------------
 	// WP-CLI
 	// ------------------------------------------------------------------

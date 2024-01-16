@@ -375,17 +375,13 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 	 * @param mixed $request Data got from endpoint url.
 	 *
 	 * @return array<string, mixed>
+	 * 
+	 * 
 	 */
 	protected function getFormDataReference($request): array
 	{
 		// Get params from request.
 		$params = $this->prepareApiParams($request);
-
-		// Populare params.
-		$formDataReference['params'] = $params['params'] ?? [];
-
-		// Populate files from uploaded ID.
-		$formDataReference['files'] = $params['files'] ?? [];
 
 		// Get form directImport from params.
 		if (isset($params['directImport'])) {
@@ -411,7 +407,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 			if (
 				$type === UtilsConfig::SETTINGS_TYPE_NAME ||
 				$type === UtilsConfig::SETTINGS_GLOBAL_TYPE_NAME ||
-				$type === 'fileUploadAdmin'
+				$type === UtilsConfig::FILE_UPLOAD_ADMIN_TYPE_NAME
 			) {
 				// This provides filter name for setting.
 				$settingsName = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$formSettingsType][$type] ?? '';

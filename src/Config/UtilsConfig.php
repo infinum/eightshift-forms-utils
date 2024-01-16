@@ -469,6 +469,30 @@ class UtilsConfig
 	public const ROUTE_OUTPUT_SUCCESS_REDIRECT_DATA_KEY = 'successRedirectData';
 
 	// ------------------------------------------------------------------
+	// Form Data Refference
+	// ------------------------------------------------------------------
+
+	public const FDR_DIRECT_IMPORT = 'directImport';
+	public const FDR_ITEM_ID = 'itemId';
+	public const FDR_INNER_ID = 'innerId';
+	public const FDR_TYPE = 'type';
+	public const FDR_FORM_ID = 'formId';
+	public const FDR_POST_ID = 'postId';
+	public const FDR_PARAMS = 'params';
+	public const FDR_PARAMS_RAW = 'paramsRaw';
+	public const FDR_FILES = 'files';
+
+	public const FDR_SETTINGS_TYPE = 'settingsType';
+	public const FDR_FIELDS_ONLY = 'fieldsOnly';
+	public const FDR_FILES_UPLOAD = 'filesUpload';
+	public const FDR_ACTION = 'action';
+	public const FDR_ACTION_EXTERNAL = 'actionExternal';
+	public const FDR_API_STEPS = 'apiSteps';
+	public const FDR_CAPTCHA = 'captcha';
+	public const FDR_STORAGE = 'storage';
+	public const FDR_ADDON_DATA = 'addonData';
+
+	// ------------------------------------------------------------------
 	// CAPS
 	// ------------------------------------------------------------------
 

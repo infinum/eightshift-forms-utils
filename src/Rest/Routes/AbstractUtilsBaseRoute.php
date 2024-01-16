@@ -385,14 +385,14 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 		// Get form directImport from params.
 		if (isset($params['directImport'])) {
-			$formDataReference['directImport'] = true;
-			$formDataReference['itemId'] = $params['itemId'] ?? '';
-			$formDataReference['innerId'] = $params['innerId'] ?? '';
-			$formDataReference['type'] = $params['type'] ?? '';
-			$formDataReference['formId'] = $params['formId'] ?? '';
-			$formDataReference['postId'] = $params['postId'] ?? '';
-			$formDataReference['params'] = $params['params'] ?? [];
-			$formDataReference['files'] = $params['files'] ?? [];
+			$formDataReference[UtilsConfig::FDR_DIRECT_IMPORT] = true;
+			$formDataReference[UtilsConfig::FDR_ITEM_ID] = $params['itemId'] ?? '';
+			$formDataReference[UtilsConfig::FDR_INNER_ID] = $params['innerId'] ?? '';
+			$formDataReference[UtilsConfig::FDR_TYPE] = $params['type'] ?? '';
+			$formDataReference[UtilsConfig::FDR_FORM_ID] = $params['formId'] ?? '';
+			$formDataReference[UtilsConfig::FDR_POST_ID] = $params['postId'] ?? '';
+			$formDataReference[UtilsConfig::FDR_PARAMS] = $params['params'] ?? [];
+			$formDataReference[UtilsConfig::FDR_FILES] = $params['files'] ?? [];
 		} else {
 			// Get form id from params.
 			$formId = $params['formId'] ?? '';
@@ -413,48 +413,48 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 				$settingsName = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$formSettingsType][$type] ?? '';
 
 				$formDataReference = [
-					'formId' => $formId,
-					'type' => $type,
-					'itemId' => '',
-					'innerId' => '',
-					'fieldsOnly' => !empty($settingsName) ? \apply_filters($settingsName, $formId) : [],
+					UtilsConfig::FDR_FORM_ID => $formId,
+					UtilsConfig::FDR_TYPE => $type,
+					UtilsConfig::FDR_ITEM_ID => '',
+					UtilsConfig::FDR_INNER_ID => '',
+					UtilsConfig::FDR_FIELDS_ONLY => !empty($settingsName) ? \apply_filters($settingsName, $formId) : [],
 				];
 			} else {
 				$formDataReference = UtilsGeneralHelper::getFormDetailsById($formId);
 			}
 
 			// Populare params.
-			$formDataReference['params'] = $params['params'] ?? [];
+			$formDataReference[UtilsConfig::FDR_PARAMS] = $params['params'] ?? [];
 
 			// Populare params raw.
-			$formDataReference['paramsRaw'] = $params['paramsRaw'] ?? [];
+			$formDataReference[UtilsConfig::FDR_PARAMS_RAW] = $params['paramsRaw'] ?? [];
 
 			// Populate files from uploaded ID.
-			$formDataReference['files'] = $params['files'] ?? [];
+			$formDataReference[UtilsConfig::FDR_FILES] = $params['files'] ?? [];
 
 			// Populare files on upload. Only populated on file upload.
-			$formDataReference['filesUpload'] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
+			$formDataReference[UtilsConfig::FDR_FILES_UPLOAD] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
 
 			// Populare action.
-			$formDataReference['action'] = $params['action'] ?? '';
+			$formDataReference[UtilsConfig::FDR_ACTION] = $params['action'] ?? '';
 
 			// Populare action external.
-			$formDataReference['actionExternal'] = $params['actionExternal'] ?? '';
+			$formDataReference[UtilsConfig::FDR_ACTION_EXTERNAL] = $params['actionExternal'] ?? '';
 
 			// Populare step fields.
-			$formDataReference['apiSteps'] = $params['apiSteps'] ?? [];
+			$formDataReference[UtilsConfig::FDR_API_STEPS] = $params['apiSteps'] ?? [];
 
 			// Get form captcha from params.
-			$formDataReference['captcha'] = $params['captcha'] ?? [];
+			$formDataReference[UtilsConfig::FDR_CAPTCHA] = $params['captcha'] ?? [];
 
 			// Get form post Id from params.
-			$formDataReference['postId'] = $params['postId'] ?? '';
+			$formDataReference[UtilsConfig::FDR_POST_ID] = $params['postId'] ?? '';
 
 			// Get form storage from params.
-			$formDataReference['storage'] = \json_decode($params['storage'] ?? '', true) ?? [];
+			$formDataReference[UtilsConfig::FDR_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
 
 			// Create placeholder for addon data.
-			$formDataReference['addonData'] = [];
+			$formDataReference[UtilsConfig::FDR_ADDON_DATA] = [];
 		}
 
 		return $formDataReference;

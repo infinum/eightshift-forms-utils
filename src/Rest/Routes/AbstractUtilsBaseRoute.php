@@ -469,8 +469,9 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 	/**
 	 * Prepare form details api data for direct import.
 	 *
-	 * @param array $params
-	 * @return array
+	 * @param array<string, mixed> $params Params to use.
+	 *
+	 * @return array<string, mixed>
 	 */
 	private function getFormDetailsApiDirectImport(array $params): array
 	{
@@ -481,17 +482,15 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		$type = $params['type'] ?? '';
 
 		// Get form directImport from params.
-		if (isset($params['directImport'])) {
-			$output[UtilsConfig::FD_DIRECT_IMPORT] = true;
-			$output[UtilsConfig::FD_TYPE] = $type;
-			$output[UtilsConfig::FD_FORM_ID] = $formId;
-			$output[UtilsConfig::FD_ITEM_ID] = $params['itemId'] ?? '';
-			$output[UtilsConfig::FD_INNER_ID] = $params['innerId'] ?? '';
-			$output[UtilsConfig::FD_POST_ID] = $params['postId'] ?? '';
-			$output[UtilsConfig::FD_PARAMS] = $params['params'] ?? [];
-			$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
+		$output[UtilsConfig::FD_DIRECT_IMPORT] = true;
+		$output[UtilsConfig::FD_TYPE] = $type;
+		$output[UtilsConfig::FD_FORM_ID] = $formId;
+		$output[UtilsConfig::FD_ITEM_ID] = $params['itemId'] ?? '';
+		$output[UtilsConfig::FD_INNER_ID] = $params['innerId'] ?? '';
+		$output[UtilsConfig::FD_POST_ID] = $params['postId'] ?? '';
+		$output[UtilsConfig::FD_PARAMS] = $params['params'] ?? [];
+		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
 
-			return $output;
-		}
+		return $output;
 	}
 }

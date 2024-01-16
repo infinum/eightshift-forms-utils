@@ -105,7 +105,7 @@ class UtilsHelper
 	 *
 	 * @return array<string>
 	 */
-	public static function getStateResponseOutputKeys(): string
+	public static function getStateResponseOutputKeys(): array
 	{
 		return self::getUtilsManifest()['enums']['responseOutputKeys'] ?? [];
 	}

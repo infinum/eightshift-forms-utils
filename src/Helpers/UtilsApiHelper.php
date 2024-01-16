@@ -90,7 +90,7 @@ final class UtilsApiHelper
 
 	/**
 	 * Return Integration API error response array - in combination with getIntegrationApiReponseDetails response.
-	 * 
+	 *
 	 * NOTE: Not for public response on API.
 	 *
 	 * @param array<string, mixed> $details Details provided by getIntegrationApiReponseDetails method.

@@ -101,8 +101,8 @@ final class UtilsApiHelper
 	 */
 	public static function getIntegrationErrorOutput(array $details, string $msg, array $additional = []): array
 	{
-		unset($details['status']);
-		unset($details['message']);
+		unset($details[UtilsConfig::IARD_STATUS]);
+		unset($details[UtilsConfig::IARD_MSG]);
 
 		return \array_merge(
 			[
@@ -126,15 +126,15 @@ final class UtilsApiHelper
 	 */
 	public static function getIntegrationSuccessOutput(array $details, array $additional = []): array
 	{
-		$integration = $details['integration'] ?? '';
+		$type = $details[UtilsConfig::IARD_TYPE] ?? '';
 
-		unset($details['status']);
-		unset($details['message']);
+		unset($details[UtilsConfig::IARD_STATUS]);
+		unset($details[UtilsConfig::IARD_MSG]);
 
 		return \array_merge(
 			[
 				'status' => UtilsConfig::STATUS_SUCCESS,
-				'message' => "{$integration}Success",
+				'message' => "{$type}Success",
 			],
 			$details,
 			$additional
@@ -146,38 +146,32 @@ final class UtilsApiHelper
 	 *
 	 * @param array<string, mixed> $details Details provided by getIntegrationApiReponseDetails method.
 	 * @param string $msg Message to output.
-	 * @param array<int, string> $additional Additional array details to attach to the success output.
 	 *
 	 * @return array<string, array<mixed>|int|string>
 	 */
-	public static function getIntegrationApiPublicOutput(array $details, string $msg, array $additional = []): array
+	public static function getIntegrationApiPublicOutput(array $details, string $msg): array
 	{
-		$status = $details['status'] ?? UtilsConfig::STATUS_ERROR;
+		$status = $details[UtilsConfig::IARD_STATUS] ?? UtilsConfig::STATUS_ERROR;
 
 		$additionalOutput = [];
 
-		$additional = [
-			UtilsHelper::getStateResponseOutputKey('validation'),
-			UtilsHelper::getStateResponseOutputKey('addon'),
-			UtilsHelper::getStateResponseOutputKey('successRedirectData'),
-			...$additional,
-		];
+		$allowedOutputKeys = UtilsHelper::getStateResponseOutputKeys();
 
-		foreach ($additional as $value) {
+		foreach ($allowedOutputKeys as $value) {
 			if (isset($details[$value])) {
 				$additionalOutput[$value] = $details[$value];
 			}
 		}
 
 		if ($status === UtilsConfig::STATUS_SUCCESS) {
-			return self::getApiSuccessOutput(
+			return self::getApiSuccessPublicOutput(
 				$msg,
 				$additionalOutput,
 				$details
 			);
 		}
 
-		return self::getApiErrorOutput(
+		return self::getApiErrorPublicOutput(
 			$msg,
 			$additionalOutput,
 			$details
@@ -193,7 +187,7 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, array<mixed>|int|string>
 	 */
-	public static function getApiErrorOutput(string $msg, array $additional = [], array $debug = []): array
+	public static function getApiErrorPublicOutput(string $msg, array $additional = [], array $debug = []): array
 	{
 		$output = [
 			'status' => UtilsConfig::STATUS_ERROR,
@@ -221,7 +215,7 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, array<mixed>|int|string>
 	 */
-	public static function getApiSuccessOutput(string $msg, array $additional = [], array $debug = []): array
+	public static function getApiSuccessPublicOutput(string $msg, array $additional = [], array $debug = []): array
 	{
 		$output = [
 			'status' => UtilsConfig::STATUS_SUCCESS,
@@ -249,7 +243,7 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, array<mixed>|int|string>
 	 */
-	public static function getApiWarningOutput(string $msg, array $additional = [], array $debug = []): array
+	public static function getApiWarningPublicOutput(string $msg, array $additional = [], array $debug = []): array
 	{
 		$output = [
 			'status' => UtilsConfig::STATUS_WARNING,
@@ -273,9 +267,9 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getApiPermissionsErrorOutput(): array
+	public static function getApiPermissionsErrorPublicOutput(): array
 	{
-		return self::getApiErrorOutput(
+		return self::getApiErrorPublicOutput(
 			\esc_html__('You don\'t have enough permissions to perform this action!', 'eightshift-forms'),
 		);
 	}

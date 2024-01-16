@@ -101,6 +101,16 @@ class UtilsHelper
 	}
 
 	/**
+	 * Return all responseOutputKeys enum values.
+	 *
+	 * @return array<string>
+	 */
+	public static function getStateResponseOutputKeys(): string
+	{
+		return self::getUtilsManifest()['enums']['responseOutputKeys'] ?? [];
+	}
+
+	/**
 	 * Return responseOutputKeys enum value by name.
 	 *
 	 * @param string $name Name of the enum.
@@ -109,7 +119,7 @@ class UtilsHelper
 	 */
 	public static function getStateResponseOutputKey(string $name): string
 	{
-		return self::getUtilsManifest()['enums']['responseOutputKeys'][$name] ?? '';
+		return self::getStateResponseOutputKeys()[$name] ?? '';
 	}
 
 	/**

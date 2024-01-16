@@ -366,7 +366,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 			return [];
 		}
 
-		return UtilsApiHelper::getApiPermissionsErrorOutput();
+		return UtilsApiHelper::getApiPermissionsErrorPublicOutput();
 	}
 
 	/**

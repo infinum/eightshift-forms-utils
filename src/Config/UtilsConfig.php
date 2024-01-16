@@ -469,39 +469,39 @@ class UtilsConfig
 	public const ROUTE_OUTPUT_SUCCESS_REDIRECT_DATA_KEY = 'successRedirectData';
 
 	// ------------------------------------------------------------------
-	// Form Data Refference
+	// Form Data Keys
 	// ------------------------------------------------------------------
 
-	public const FDR_DIRECT_IMPORT = 'directImport';
-	public const FDR_ITEM_ID = 'itemId';
-	public const FDR_INNER_ID = 'innerId';
-	public const FDR_TYPE = 'type';
-	public const FDR_INTEGRATION_TYPE = 'integrationType';
-	public const FDR_FORM_ID = 'formId';
-	public const FDR_POST_ID = 'postId';
-	public const FDR_PARAMS = 'params';
-	public const FDR_PARAMS_RAW = 'paramsRaw';
-	public const FDR_FILES = 'files';
+	public const FD_DIRECT_IMPORT = 'directImport';
+	public const FD_ITEM_ID = 'itemId';
+	public const FD_INNER_ID = 'innerId';
+	public const FD_TYPE = 'type';
+	public const FD_INTEGRATION_TYPE = 'integrationType';
+	public const FD_FORM_ID = 'formId';
+	public const FD_POST_ID = 'postId';
+	public const FD_PARAMS = 'params';
+	public const FD_PARAMS_RAW = 'paramsRaw';
+	public const FD_FILES = 'files';
 
-	public const FDR_SETTINGS_TYPE = 'settingsType';
-	public const FDR_FIELDS_ONLY = 'fieldsOnly';
-	public const FDR_FILES_UPLOAD = 'filesUpload';
-	public const FDR_ACTION = 'action';
-	public const FDR_ACTION_EXTERNAL = 'actionExternal';
-	public const FDR_API_STEPS = 'apiSteps';
-	public const FDR_CAPTCHA = 'captcha';
-	public const FDR_STORAGE = 'storage';
-	public const FDR_ADDON_DATA = 'addonData';
-	public const FDR_EMAIL_RESPONSE_TAGS = 'emailResponseTags';
-	public const FDR_IS_VALID = 'isValid';
-	public const FDR_IS_API_VALID = 'isApiValid';
-	public const FDR_LABEL = 'label';
-	public const FDR_ICON = 'icon';
-	public const FDR_FIELDS = 'fields';
-	public const FDR_FIELD_NAMES = 'fieldNames';
-	public const FDR_FIELD_NAMES_TAGS = 'fieldNamesTags';
-	public const FDR_FIELD_NAMES_FULL = 'fieldNamesFull';
-	public const FDR_STEPS_SETUP = 'stepsSetup';
+	public const FD_SETTINGS_TYPE = 'settingsType';
+	public const FD_FIELDS_ONLY = 'fieldsOnly';
+	public const FD_FILES_UPLOAD = 'filesUpload';
+	public const FD_ACTION = 'action';
+	public const FD_ACTION_EXTERNAL = 'actionExternal';
+	public const FD_API_STEPS = 'apiSteps';
+	public const FD_CAPTCHA = 'captcha';
+	public const FD_STORAGE = 'storage';
+	public const FD_ADDON_DATA = 'addonData';
+	public const FD_EMAIL_RESPONSE_TAGS = 'emailResponseTags';
+	public const FD_IS_VALID = 'isValid';
+	public const FD_IS_API_VALID = 'isApiValid';
+	public const FD_LABEL = 'label';
+	public const FD_ICON = 'icon';
+	public const FD_FIELDS = 'fields';
+	public const FD_FIELD_NAMES = 'fieldNames';
+	public const FD_FIELD_NAMES_TAGS = 'fieldNamesTags';
+	public const FD_FIELD_NAMES_FULL = 'fieldNamesFull';
+	public const FD_STEPS_SETUP = 'stepsSetup';
 
 	// ------------------------------------------------------------------
 	// CAPS

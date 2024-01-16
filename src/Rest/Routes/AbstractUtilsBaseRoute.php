@@ -370,95 +370,128 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 	}
 
 	/**
-	 * Prepare array for later check like validation and etc...
+	 * Prepare form details api data.
 	 *
 	 * @param mixed $request Data got from endpoint url.
 	 *
 	 * @return array<string, mixed>
-	 * 
-	 * 
 	 */
-	protected function getFormDataReference($request): array
+	protected function getFormDetailsApi($request): array
 	{
-		$formDataReference = [];
+		$output = [];
 
 		// Get params from request.
 		$params = $this->prepareApiParams($request);
 
+		// Get form id from params.
+		$formId = $params['formId'] ?? '';
+
+		// Get form type from params.
+		$type = $params['type'] ?? '';
+
 		// Get form directImport from params.
 		if (isset($params['directImport'])) {
-			$formDataReference[UtilsConfig::FDR_DIRECT_IMPORT] = true;
-			$formDataReference[UtilsConfig::FDR_ITEM_ID] = $params['itemId'] ?? '';
-			$formDataReference[UtilsConfig::FDR_INNER_ID] = $params['innerId'] ?? '';
-			$formDataReference[UtilsConfig::FDR_TYPE] = $params['type'] ?? '';
-			$formDataReference[UtilsConfig::FDR_FORM_ID] = $params['formId'] ?? '';
-			$formDataReference[UtilsConfig::FDR_POST_ID] = $params['postId'] ?? '';
-			$formDataReference[UtilsConfig::FDR_PARAMS] = $params['params'] ?? [];
-			$formDataReference[UtilsConfig::FDR_FILES] = $params['files'] ?? [];
-		} else {
-			// Get form id from params.
-			$formId = $params['formId'] ?? '';
-
-			// Get form type from params.
-			$type = $params['type'] ?? '';
-
-			// Get form settings for admin from params.
-			$formSettingsType = $params['settingsType'] ?? '';
-
-			// Manual populate output it admin settings our build it from form Id.
-			if (
-				$type === UtilsConfig::SETTINGS_TYPE_NAME ||
-				$type === UtilsConfig::SETTINGS_GLOBAL_TYPE_NAME ||
-				$type === UtilsConfig::FILE_UPLOAD_ADMIN_TYPE_NAME
-			) {
-				// This provides filter name for setting.
-				$settingsName = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$formSettingsType][$type] ?? '';
-
-				$formDataReference = [
-					UtilsConfig::FDR_FORM_ID => $formId,
-					UtilsConfig::FDR_TYPE => $type,
-					UtilsConfig::FDR_ITEM_ID => '',
-					UtilsConfig::FDR_INNER_ID => '',
-					UtilsConfig::FDR_FIELDS_ONLY => !empty($settingsName) ? \apply_filters($settingsName, $formId) : [],
-				];
-			} else {
-				$formDataReference = UtilsGeneralHelper::getFormDetailsById($formId);
-			}
-
-			// Populare params.
-			$formDataReference[UtilsConfig::FDR_PARAMS] = $params['params'] ?? [];
-
-			// Populare params raw.
-			$formDataReference[UtilsConfig::FDR_PARAMS_RAW] = $params['paramsRaw'] ?? [];
-
-			// Populate files from uploaded ID.
-			$formDataReference[UtilsConfig::FDR_FILES] = $params['files'] ?? [];
-
-			// Populare files on upload. Only populated on file upload.
-			$formDataReference[UtilsConfig::FDR_FILES_UPLOAD] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
-
-			// Populare action.
-			$formDataReference[UtilsConfig::FDR_ACTION] = $params['action'] ?? '';
-
-			// Populare action external.
-			$formDataReference[UtilsConfig::FDR_ACTION_EXTERNAL] = $params['actionExternal'] ?? '';
-
-			// Populare step fields.
-			$formDataReference[UtilsConfig::FDR_API_STEPS] = $params['apiSteps'] ?? [];
-
-			// Get form captcha from params.
-			$formDataReference[UtilsConfig::FDR_CAPTCHA] = $params['captcha'] ?? [];
-
-			// Get form post Id from params.
-			$formDataReference[UtilsConfig::FDR_POST_ID] = $params['postId'] ?? '';
-
-			// Get form storage from params.
-			$formDataReference[UtilsConfig::FDR_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
-
-			// Create placeholder for addon data.
-			$formDataReference[UtilsConfig::FDR_ADDON_DATA] = [];
+			return $this->getFormDetailsApiDirectImport($params);
 		}
 
-		return $formDataReference;
+		// Get form settings for admin from params.
+		$formSettingsType = $params['settingsType'] ?? '';
+
+		// Manual populate output it admin settings our build it from form Id.
+		if (
+			$type === UtilsConfig::SETTINGS_TYPE_NAME ||
+			$type === UtilsConfig::SETTINGS_GLOBAL_TYPE_NAME ||
+			$type === UtilsConfig::FILE_UPLOAD_ADMIN_TYPE_NAME
+		) {
+			// This provides filter name for setting.
+			$settingsName = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$formSettingsType][$type] ?? '';
+
+			$output[UtilsConfig::FD_FORM_ID] = $formId;
+			$output[UtilsConfig::FD_TYPE] = $type;
+			$output[UtilsConfig::FD_ITEM_ID] = '';
+			$output[UtilsConfig::FD_INNER_ID] = '';
+			$output[UtilsConfig::FD_FIELDS_ONLY] = !empty($settingsName) ? \apply_filters($settingsName, $formId) : [];
+		} else {
+			$formDetails = UtilsGeneralHelper::getFormDetails($formId);
+
+			$output[UtilsConfig::FD_FORM_ID] = $formId;
+			$output[UtilsConfig::FD_IS_VALID] = $formDetails[UtilsConfig::FD_IS_VALID] ?? false;
+			$output[UtilsConfig::FD_IS_API_VALID] = $formDetails[UtilsConfig::FD_IS_API_VALID] ?? false;
+			$output[UtilsConfig::FD_LABEL] = $formDetails[UtilsConfig::FD_LABEL] ?? '';
+			$output[UtilsConfig::FD_ICON] = $formDetails[UtilsConfig::FD_ICON] ?? '';
+			$output[UtilsConfig::FD_TYPE] = $formDetails[UtilsConfig::FD_TYPE] ?? '';
+			$output[UtilsConfig::FD_ITEM_ID] = $formDetails[UtilsConfig::FD_ITEM_ID] ?? '';
+			$output[UtilsConfig::FD_INNER_ID] = $formDetails[UtilsConfig::FD_INNER_ID] ?? '';
+			$output[UtilsConfig::FD_FIELDS] = $formDetails[UtilsConfig::FD_FIELDS] ?? [];
+			$output[UtilsConfig::FD_FIELDS_ONLY] = $formDetails[UtilsConfig::FD_FIELDS_ONLY] ?? [];
+			$output[UtilsConfig::FD_FIELD_NAMES] = $formDetails[UtilsConfig::FD_FIELD_NAMES] ?? [];
+			$output[UtilsConfig::FD_FIELD_NAMES_TAGS] = $formDetails[UtilsConfig::FD_FIELD_NAMES_TAGS] ?? [];
+			$output[UtilsConfig::FD_FIELD_NAMES_FULL] = $formDetails[UtilsConfig::FD_FIELD_NAMES_FULL] ?? [];
+			$output[UtilsConfig::FD_STEPS_SETUP] = $formDetails[UtilsConfig::FD_STEPS_SETUP] ?? [];
+		}
+
+		// Populare params.
+		$output[UtilsConfig::FD_PARAMS] = $params['params'] ?? [];
+
+		// Populare params raw.
+		$output[UtilsConfig::FD_PARAMS_RAW] = $params['paramsRaw'] ?? [];
+
+		// Populate files from uploaded ID.
+		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
+
+		// Populare files on upload. Only populated on file upload.
+		$output[UtilsConfig::FD_FILES_UPLOAD] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
+
+		// Populare action.
+		$output[UtilsConfig::FD_ACTION] = $params['action'] ?? '';
+
+		// Populare action external.
+		$output[UtilsConfig::FD_ACTION_EXTERNAL] = $params['actionExternal'] ?? '';
+
+		// Populare step fields.
+		$output[UtilsConfig::FD_API_STEPS] = $params['apiSteps'] ?? [];
+
+		// Get form captcha from params.
+		$output[UtilsConfig::FD_CAPTCHA] = $params['captcha'] ?? [];
+
+		// Get form post Id from params.
+		$output[UtilsConfig::FD_POST_ID] = $params['postId'] ?? '';
+
+		// Get form storage from params.
+		$output[UtilsConfig::FD_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
+
+		// Create placeholder for addon data.
+		$output[UtilsConfig::FD_ADDON_DATA] = [];
+
+		return $output;
+	}
+
+	/**
+	 * Prepare form details api data for direct import.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
+	private function getFormDetailsApiDirectImport(array $params): array
+	{
+		// Get form id from params.
+		$formId = $params['formId'] ?? '';
+
+		// Get form type from params.
+		$type = $params['type'] ?? '';
+
+		// Get form directImport from params.
+		if (isset($params['directImport'])) {
+			$output[UtilsConfig::FD_DIRECT_IMPORT] = true;
+			$output[UtilsConfig::FD_TYPE] = $type;
+			$output[UtilsConfig::FD_FORM_ID] = $formId;
+			$output[UtilsConfig::FD_ITEM_ID] = $params['itemId'] ?? '';
+			$output[UtilsConfig::FD_INNER_ID] = $params['innerId'] ?? '';
+			$output[UtilsConfig::FD_POST_ID] = $params['postId'] ?? '';
+			$output[UtilsConfig::FD_PARAMS] = $params['params'] ?? [];
+			$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
+
+			return $output;
+		}
 	}
 }

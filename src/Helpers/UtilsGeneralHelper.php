@@ -357,23 +357,23 @@ final class UtilsGeneralHelper
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getFormDetailsById(string $formId): array
+	public static function getFormDetails(string $formId): array
 	{
 		$output = [
-			UtilsConfig::FDR_FORM_ID => $formId,
-			UtilsConfig::FDR_IS_VALID => false,
-			UtilsConfig::FDR_IS_API_VALID => false,
-			UtilsConfig::FDR_LABEL => '',
-			UtilsConfig::FDR_ICON => '',
-			UtilsConfig::FDR_TYPE => '',
-			UtilsConfig::FDR_ITEM_ID => '',
-			UtilsConfig::FDR_INNER_ID => '',
-			UtilsConfig::FDR_FIELDS => [],
-			UtilsConfig::FDR_FIELDS_ONLY => [],
-			UtilsConfig::FDR_FIELD_NAMES => [],
-			UtilsConfig::FDR_FIELD_NAMES_TAGS => [],
-			UtilsConfig::FDR_FIELD_NAMES_FULL => [],
-			UtilsConfig::FDR_STEPS_SETUP => [],
+			UtilsConfig::FD_FORM_ID => $formId,
+			UtilsConfig::FD_IS_VALID => false,
+			UtilsConfig::FD_IS_API_VALID => false,
+			UtilsConfig::FD_LABEL => '',
+			UtilsConfig::FD_ICON => '',
+			UtilsConfig::FD_TYPE => '',
+			UtilsConfig::FD_ITEM_ID => '',
+			UtilsConfig::FD_INNER_ID => '',
+			UtilsConfig::FD_FIELDS => [],
+			UtilsConfig::FD_FIELDS_ONLY => [],
+			UtilsConfig::FD_FIELD_NAMES => [],
+			UtilsConfig::FD_FIELD_NAMES_TAGS => [],
+			UtilsConfig::FD_FIELD_NAMES_FULL => [],
+			UtilsConfig::FD_STEPS_SETUP => [],
 		];
 
 		$form = \get_post_field('post_content', (int) $formId);
@@ -404,40 +404,40 @@ final class UtilsGeneralHelper
 
 		$settings = \apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$type] ?? [];
 
-		$output[UtilsConfig::FDR_TYPE] = $type;
-		$output[UtilsConfig::FDR_INTEGRATION_TYPE] = $settings['integrationType'] ?? '';
-		$output[UtilsConfig::FDR_LABEL] = $settings['labels']['title'] ?? '';
-		$output[UtilsConfig::FDR_ICON] = $settings['labels']['icon'] ?? '';
-		$output[UtilsConfig::FDR_ITEM_ID] = $blocks['innerBlocks'][0]['attrs']["{$type}IntegrationId"] ?? '';
-		$output[UtilsConfig::FDR_INNER_ID] = $blocks['innerBlocks'][0]['attrs']["{$type}IntegrationInnerId"] ?? '';
-		$output[UtilsConfig::FDR_FIELDS] = $blocks;
-		$output[UtilsConfig::FDR_FIELDS_ONLY] = $fieldsOnly;
+		$output[UtilsConfig::FD_TYPE] = $type;
+		$output[UtilsConfig::FD_INTEGRATION_TYPE] = $settings['integrationType'] ?? '';
+		$output[UtilsConfig::FD_LABEL] = $settings['labels']['title'] ?? '';
+		$output[UtilsConfig::FD_ICON] = $settings['labels']['icon'] ?? '';
+		$output[UtilsConfig::FD_ITEM_ID] = $blocks['innerBlocks'][0]['attrs']["{$type}IntegrationId"] ?? '';
+		$output[UtilsConfig::FD_INNER_ID] = $blocks['innerBlocks'][0]['attrs']["{$type}IntegrationInnerId"] ?? '';
+		$output[UtilsConfig::FD_FIELDS] = $blocks;
+		$output[UtilsConfig::FD_FIELDS_ONLY] = $fieldsOnly;
 
-		switch ($output[UtilsConfig::FDR_INTEGRATION_TYPE]) {
+		switch ($output[UtilsConfig::FD_INTEGRATION_TYPE]) {
 			case UtilsConfig::INTEGRATION_TYPE_COMPLEX:
-				if ($output[UtilsConfig::FDR_ITEM_ID] && $output[UtilsConfig::FDR_TYPE] && $output[UtilsConfig::FDR_INNER_ID]) {
-					$output[UtilsConfig::FDR_IS_VALID] = true;
+				if ($output[UtilsConfig::FD_ITEM_ID] && $output[UtilsConfig::FD_TYPE] && $output[UtilsConfig::FD_INNER_ID]) {
+					$output[UtilsConfig::FD_IS_VALID] = true;
 
-					if ($output[UtilsConfig::FDR_FIELDS_ONLY]) {
-						$output[UtilsConfig::FDR_IS_API_VALID] = true;
+					if ($output[UtilsConfig::FD_FIELDS_ONLY]) {
+						$output[UtilsConfig::FD_IS_API_VALID] = true;
 					}
 				}
 				break;
 			case UtilsConfig::INTEGRATION_TYPE_NO_BUILDER:
-				if ($output[UtilsConfig::FDR_TYPE]) {
-					$output[UtilsConfig::FDR_IS_VALID] = true;
+				if ($output[UtilsConfig::FD_TYPE]) {
+					$output[UtilsConfig::FD_IS_VALID] = true;
 
-					if ($output[UtilsConfig::FDR_FIELDS_ONLY]) {
-						$output[UtilsConfig::FDR_IS_API_VALID] = true;
+					if ($output[UtilsConfig::FD_FIELDS_ONLY]) {
+						$output[UtilsConfig::FD_IS_API_VALID] = true;
 					}
 				}
 				break;
 			default:
-				if ($output[UtilsConfig::FDR_ITEM_ID] && $output[UtilsConfig::FDR_TYPE]) {
-					$output[UtilsConfig::FDR_IS_VALID] = true;
+				if ($output[UtilsConfig::FD_ITEM_ID] && $output[UtilsConfig::FD_TYPE]) {
+					$output[UtilsConfig::FD_IS_VALID] = true;
 
-					if ($output[UtilsConfig::FDR_FIELDS_ONLY]) {
-						$output[UtilsConfig::FDR_IS_API_VALID] = true;
+					if ($output[UtilsConfig::FD_FIELDS_ONLY]) {
+						$output[UtilsConfig::FD_IS_API_VALID] = true;
 					}
 				}
 				break;
@@ -448,7 +448,7 @@ final class UtilsGeneralHelper
 			'submit',
 		]);
 
-		foreach ($output[UtilsConfig::FDR_FIELDS_ONLY] as $item) {
+		foreach ($output[UtilsConfig::FD_FIELDS_ONLY] as $item) {
 			$blockItemName = self::getBlockNameDetails($item['blockName'])['nameAttr'];
 
 			$value = $item['attrs'][Components::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
@@ -457,32 +457,32 @@ final class UtilsGeneralHelper
 				continue;
 			}
 
-			$output[UtilsConfig::FDR_FIELD_NAMES_FULL][] = $value;
+			$output[UtilsConfig::FD_FIELD_NAMES_FULL][] = $value;
 
 			if (isset($ignoreBlocks[$blockItemName])) {
 				continue;
 			}
 
-			$output[UtilsConfig::FDR_FIELD_NAMES][] = $value;
+			$output[UtilsConfig::FD_FIELD_NAMES][] = $value;
 
 			if ($blockItemName === 'file') {
 				continue;
 			}
 
-			$output[UtilsConfig::FDR_FIELD_NAMES_TAGS][] = $value;
+			$output[UtilsConfig::FD_FIELD_NAMES_TAGS][] = $value;
 		}
 
 		// Check if this form uses steps.
-		$hasSteps = \array_search($namespace . '/step', \array_column($output[UtilsConfig::FDR_FIELDS_ONLY], 'blockName'), true);
+		$hasSteps = \array_search($namespace . '/step', \array_column($output[UtilsConfig::FD_FIELDS_ONLY], 'blockName'), true);
 		$hasSteps = $hasSteps !== false;
 
 		if ($hasSteps) {
 			$stepCurrent = 'step-init';
 
 			// If the users don't add first step add it to the list.
-			if ($output[UtilsConfig::FDR_FIELDS_ONLY][0]['blockName'] !== "{$namespace}/step") {
+			if ($output[UtilsConfig::FD_FIELDS_ONLY][0]['blockName'] !== "{$namespace}/step") {
 				\array_unshift(
-					$output[UtilsConfig::FDR_FIELDS_ONLY],
+					$output[UtilsConfig::FD_FIELDS_ONLY],
 					[
 						'blockName' => "{$namespace}/step",
 						'attrs' => [
@@ -497,7 +497,7 @@ final class UtilsGeneralHelper
 				);
 			}
 
-			foreach ($output[UtilsConfig::FDR_FIELDS_ONLY] as $block) {
+			foreach ($output[UtilsConfig::FD_FIELDS_ONLY] as $block) {
 				$blockName = self::getBlockNameDetails($block['blockName']);
 				$name = $blockName['name'];
 
@@ -508,7 +508,7 @@ final class UtilsGeneralHelper
 					if (!$stepLabel) {
 						$stepLabel = $stepCurrent;
 					}
-					$output[UtilsConfig::FDR_STEPS_SETUP]['steps'][$stepCurrent] = [
+					$output[UtilsConfig::FD_STEPS_SETUP]['steps'][$stepCurrent] = [
 						'label' => $stepLabel,
 						'value' => $stepCurrent,
 					];
@@ -525,11 +525,11 @@ final class UtilsGeneralHelper
 					continue;
 				}
 
-				$output[UtilsConfig::FDR_STEPS_SETUP]['steps'][$stepCurrent]['subItems'][] = $itemName;
-				$output[UtilsConfig::FDR_STEPS_SETUP]['relations'][$itemName] = $stepCurrent;
+				$output[UtilsConfig::FD_STEPS_SETUP]['steps'][$stepCurrent]['subItems'][] = $itemName;
+				$output[UtilsConfig::FD_STEPS_SETUP]['relations'][$itemName] = $stepCurrent;
 			}
 
-			$output[UtilsConfig::FDR_STEPS_SETUP]['multiflow'] = $output[UtilsConfig::FDR_FIELDS]['innerBlocks'][0]['attrs']["{$type}StepMultiflowRules"] ?? [];
+			$output[UtilsConfig::FD_STEPS_SETUP]['multiflow'] = $output[UtilsConfig::FD_FIELDS]['innerBlocks'][0]['attrs']["{$type}StepMultiflowRules"] ?? [];
 		}
 
 		return $output;

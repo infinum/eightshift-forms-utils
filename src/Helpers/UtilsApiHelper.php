@@ -144,22 +144,23 @@ final class UtilsApiHelper
 	/**
 	 * Return Integration API final response array depending on the status - in combination with getIntegrationApiReponseDetails response.
 	 *
-	 * @param array<string, mixed> $details Details provided by getIntegrationApiReponseDetails method.
+	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
 	 * @param string $msg Message to output.
 	 *
 	 * @return array<string, array<mixed>|int|string>
 	 */
-	public static function getIntegrationApiPublicOutput(array $details, string $msg): array
+	public static function getIntegrationApiPublicOutput(array $formDetails, string $msg): array
 	{
-		$status = $details[UtilsConfig::IARD_STATUS] ?? UtilsConfig::STATUS_ERROR;
+		$response = $formDetails[UtilsConfig::IARD_RESPONSE] ?? [];
+		$status = $response[UtilsConfig::IARD_STATUS] ?? UtilsConfig::STATUS_ERROR;
 
 		$additionalOutput = [];
 
 		$allowedOutputKeys = UtilsHelper::getStateResponseOutputKeys();
 
 		foreach ($allowedOutputKeys as $value) {
-			if (isset($details[$value])) {
-				$additionalOutput[$value] = $details[$value];
+			if (isset($response[$value])) {
+				$additionalOutput[$value] = $response[$value];
 			}
 		}
 
@@ -167,14 +168,14 @@ final class UtilsApiHelper
 			return self::getApiSuccessPublicOutput(
 				$msg,
 				$additionalOutput,
-				$details
+				$response
 			);
 		}
 
 		return self::getApiErrorPublicOutput(
 			$msg,
 			$additionalOutput,
-			$details
+			$response
 		);
 	}
 

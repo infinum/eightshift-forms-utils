@@ -475,6 +475,7 @@ class UtilsConfig
 	public const FD_FIELD_NAMES_TAGS = 'fieldNamesTags';
 	public const FD_FIELD_NAMES_FULL = 'fieldNamesFull';
 	public const FD_STEPS_SETUP = 'stepsSetup';
+	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
 
 	// ------------------------------------------------------------------
 	// CAPS

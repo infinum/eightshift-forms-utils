@@ -99,7 +99,7 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getIntegrationApiErrorOutput(array $details, string $msg, array $additional = []): array
+	public static function getIntegrationErrorOutput(array $details, string $msg, array $additional = []): array
 	{
 		unset($details['status']);
 		unset($details['message']);

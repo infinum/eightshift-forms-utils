@@ -227,7 +227,12 @@
 		"responseOutputKeys": {
 			"validation": "validation",
 			"addon": "addon",
-			"successRedirectData": "successRedirectData"
+			"successRedirectData": "successRedirectData",
+			"file": "file",
+			"stepType": "stepType",
+			"stepNextStep": "stepNextStep",
+			"stepProgressBarItems": "stepProgressBarItems",
+			"stepIsDisableNextButton": "stepIsDisableNextButton"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

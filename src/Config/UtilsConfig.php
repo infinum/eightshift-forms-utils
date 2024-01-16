@@ -135,7 +135,6 @@ class UtilsConfig
 	 */
 	public const INTEGRATION_TYPE_COMPLEX = 'complex';
 
-
 	// ------------------------------------------------------------------
 	// FILE UPLOAD
 	// ------------------------------------------------------------------
@@ -442,7 +441,7 @@ class UtilsConfig
 	public const ROUTE_VERSION = 'v1';
 
 	// ------------------------------------------------------------------
-	// Form Data Keys
+	// Form details keys
 	// ------------------------------------------------------------------
 
 	public const FD_DIRECT_IMPORT = 'directImport';
@@ -455,7 +454,6 @@ class UtilsConfig
 	public const FD_PARAMS = 'params';
 	public const FD_PARAMS_RAW = 'paramsRaw';
 	public const FD_FILES = 'files';
-
 	public const FD_SETTINGS_TYPE = 'settingsType';
 	public const FD_FIELDS_ONLY = 'fieldsOnly';
 	public const FD_FILES_UPLOAD = 'filesUpload';
@@ -476,6 +474,24 @@ class UtilsConfig
 	public const FD_FIELD_NAMES_FULL = 'fieldNamesFull';
 	public const FD_STEPS_SETUP = 'stepsSetup';
 	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
+
+
+	// ------------------------------------------------------------------
+	// Integration API response details data Keys
+	// ------------------------------------------------------------------
+
+	public const IARD_TYPE = self::FD_TYPE;
+	public const IARD_STATUS = 'status';
+	public const IARD_MSG = 'message';
+	public const IARD_PARAMS = self::FD_PARAMS;
+	public const IARD_FILES = self::FD_FILES;
+	public const IARD_RESPONSE = 'response';
+	public const IARD_CODE = 'code';
+	public const IARD_BODY = 'body';
+	public const IARD_URL = 'url';
+	public const IARD_ITEM_ID = self::FD_ITEM_ID;
+	public const IARD_FORM_ID = self::FD_FORM_ID;
+	public const IARD_IS_DISABLED = 'isDisabled';
 
 	// ------------------------------------------------------------------
 	// CAPS

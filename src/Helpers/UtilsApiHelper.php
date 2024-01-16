@@ -75,21 +75,23 @@ final class UtilsApiHelper
 		}
 
 		return [
-			'integration' => Components::kebabToCamelCase($integration, '-'),
-			'params' => $params,
-			'files' => $files,
-			'response' => $response['response'] ?? [],
-			'code' => $code,
-			'body' => !\is_string($body) ? $body : [],
-			'url' => $url,
-			'itemId' => $itemId,
-			'formId' => $formId,
-			'isDisabled' => $isDisabled,
+			UtilsConfig::IARD_TYPE => Components::kebabToCamelCase($integration, '-'),
+			UtilsConfig::IARD_PARAMS => $params,
+			UtilsConfig::IARD_FILES => $files,
+			UtilsConfig::IARD_RESPONSE => $response['response'] ?? [],
+			UtilsConfig::IARD_CODE => $code,
+			UtilsConfig::IARD_BODY => !\is_string($body) ? $body : [],
+			UtilsConfig::IARD_URL => $url,
+			UtilsConfig::IARD_ITEM_ID => $itemId,
+			UtilsConfig::IARD_FORM_ID => $formId,
+			UtilsConfig::IARD_IS_DISABLED => $isDisabled,
 		];
 	}
 
 	/**
 	 * Return Integration API error response array - in combination with getIntegrationApiReponseDetails response.
+	 * 
+	 * NOTE: Not for public response on API.
 	 *
 	 * @param array<string, mixed> $details Details provided by getIntegrationApiReponseDetails method.
 	 * @param string $msg Message to output.
@@ -115,12 +117,14 @@ final class UtilsApiHelper
 	/**
 	 * Return Integration API success response array - in combination with getIntegrationApiReponseDetails response.
 	 *
+	 * NOTE: Not for public response on API.
+	 *
 	 * @param array<string, mixed> $details Details provided by getIntegrationApiReponseDetails method.
 	 * @param array<string, mixed> $additional Additional array details to attach to the success output.
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getIntegrationApiSuccessOutput(array $details, array $additional = []): array
+	public static function getIntegrationSuccessOutput(array $details, array $additional = []): array
 	{
 		$integration = $details['integration'] ?? '';
 
@@ -146,7 +150,7 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, array<mixed>|int|string>
 	 */
-	public static function getIntegrationApiOutput(array $details, string $msg, array $additional = []): array
+	public static function getIntegrationApiPublicOutput(array $details, string $msg, array $additional = []): array
 	{
 		$status = $details['status'] ?? UtilsConfig::STATUS_ERROR;
 

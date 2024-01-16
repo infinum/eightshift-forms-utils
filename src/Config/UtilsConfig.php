@@ -441,33 +441,6 @@ class UtilsConfig
 	 */
 	public const ROUTE_VERSION = 'v1';
 
-	/**
-	 * Route output validator key.
-	 *
-	 * Note: This key is used in manifest enum.
-	 *
-	 * @var string
-	 */
-	public const ROUTE_OUTPUT_VALIDATION_KEY = 'validation';
-
-	/**
-	 * Route output add-on data key.
-	 *
-	 * Note: This key is used in manifest enum.
-	 *
-	 * @var string
-	 */
-	public const ROUTE_OUTPUT_ADDON_DATA_KEY = 'addon';
-
-	/**
-	 * Route output success redirect data key.
-	 *
-	 * Note: This key is used in manifest enum.
-	 *
-	 * @var string
-	 */
-	public const ROUTE_OUTPUT_SUCCESS_REDIRECT_DATA_KEY = 'successRedirectData';
-
 	// ------------------------------------------------------------------
 	// Form Data Keys
 	// ------------------------------------------------------------------

@@ -153,9 +153,9 @@ final class UtilsApiHelper
 		$additionalOutput = [];
 
 		$additional = [
-			UtilsConfig::ROUTE_OUTPUT_VALIDATION_KEY,
-			UtilsConfig::ROUTE_OUTPUT_ADDON_DATA_KEY,
-			UtilsConfig::ROUTE_OUTPUT_SUCCESS_REDIRECT_DATA_KEY,
+			UtilsHelper::getStateResponseOutputKey('validation'),
+			UtilsHelper::getStateResponseOutputKey('addon'),
+			UtilsHelper::getStateResponseOutputKey('successRedirectData'),
 			...$additional,
 		];
 

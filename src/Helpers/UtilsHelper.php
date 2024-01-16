@@ -43,7 +43,7 @@ class UtilsHelper
 	}
 
 	/**
-	 * Return selector admin enum values by name.
+	 * Return selector admin enum value by name.
 	 *
 	 * @param string $name Name of the enum.
 	 *
@@ -55,7 +55,7 @@ class UtilsHelper
 	}
 
 	/**
-	 * Return selector enum values by name.
+	 * Return selector enum value by name.
 	 *
 	 * @param string $name Name of the enum.
 	 *
@@ -67,7 +67,7 @@ class UtilsHelper
 	}
 
 	/**
-	 * Return attribute enum values by name.
+	 * Return attribute enum value by name.
 	 *
 	 * @param string $name Name of the enum.
 	 *
@@ -89,7 +89,7 @@ class UtilsHelper
 	}
 
 	/**
-	 * Return param enum values by name.
+	 * Return param enum value by name.
 	 *
 	 * @param string $name Name of the enum.
 	 *
@@ -98,5 +98,29 @@ class UtilsHelper
 	public static function getStateParam(string $name): string
 	{
 		return self::getStateParams()[$name] ?? '';
+	}
+
+	/**
+	 * Return responseOutputKeys enum value by name.
+	 *
+	 * @param string $name Name of the enum.
+	 *
+	 * @return string
+	 */
+	public static function getStateResponseOutputKey(string $name): string
+	{
+		return self::getUtilsManifest()['enums']['responseOutputKeys'][$name] ?? '';
+	}
+
+	/**
+	 * Return successRedirectUrlKeys enum value by name.
+	 *
+	 * @param string $name Name of the enum.
+	 *
+	 * @return string
+	 */
+	public static function getStateSuccessRedirectUrlKeys(string $name): string
+	{
+		return self::getUtilsManifest()['enums']['successRedirectUrlKeys'][$name] ?? '';
 	}
 }

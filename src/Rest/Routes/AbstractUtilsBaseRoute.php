@@ -12,8 +12,10 @@ namespace EightshiftFormsUtils\Rest\Routes;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
 use EightshiftFormsUtils\Helpers\UtilsApiHelper;
+use EightshiftFormsUtils\Helpers\UtilsEncryption;
 use EightshiftFormsUtils\Helpers\UtilsGeneralHelper;
 use EightshiftFormsUtils\Helpers\UtilsHelper;
+use EightshiftFormsUtils\Helpers\UtilsHooksHelper;
 use EightshiftFormsUtils\Helpers\UtilsUploadHelper;
 use EightshiftLibs\Rest\CallableRouteInterface;
 use EightshiftLibs\Rest\Routes\AbstractRoute;
@@ -461,6 +463,30 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		$output[UtilsConfig::FD_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
 
 		return $output;
+	}
+
+	/**
+	 * This function will take form details and apply additional data to it before it is processed.
+	 * It is used in both integrations and non integrations like mailer so it can share the same functionality.
+	 *
+	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
+	 * @return array<string, mixed>
+	 */
+	protected function processCommonSubmitActionFormData(array $formDetails): array
+	{
+		// Pre response filter for addon data.
+		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseAddonData']);
+		if (\has_filter($filterName)) {
+			$formDetails[UtilsConfig::FD_ADDON] = \apply_filters($filterName, [], $formDetails);
+		}
+
+		// Pre response filter for success redirect data.
+		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseSuccessRedirectData']);
+		if (\has_filter($filterName)) {
+			$formDetails[UtilsConfig::FD_SUCCESS_REDIRECT] = UtilsEncryption::encryptor(\wp_json_encode(\apply_filters($filterName, [], $formDetails)));
+		}
+
+		return $formDetails;
 	}
 
 	/**

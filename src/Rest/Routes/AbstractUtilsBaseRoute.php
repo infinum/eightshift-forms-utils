@@ -248,10 +248,6 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 					$value['value'] = (!empty($value['value'])) ? \json_decode($value['value'], true) : [];
 					$output['params'][$key] = $value;
 					break;
-				case UtilsHelper::getStateParam('additionalParam'):
-					$value['value'] = (!empty($value['value'])) ? \json_decode($value['value'], true) : [];
-					$output['params'][$key] = $value;
-					break;
 				case UtilsHelper::getStateParam('steps'):
 					$output['apiSteps'] = [
 						'fields' => $value['value'],

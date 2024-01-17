@@ -153,15 +153,13 @@
 			"captcha": "es-form-captcha",
 			"direct": "es-form-direct",
 			"itemId": "es-form-item-id",
-			"innerId": "es-form-inner-id",
-			"additionalParam": "es-form-additional-param"
+			"innerId": "es-form-inner-id"
 		},
 		"attrs": {
 			"formType": "data-form-type",
 			"formCustomName": "data-form-custom-name",
 			"formId": "data-form-id",
 			"formGeolocation": "data-form-geolocation",
-			"formAdditionalParam": "data-form-additional-param",
 
 			"bulkId": "data-bulk-id",
 			"bulkType": "data-bulk-type",

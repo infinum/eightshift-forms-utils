@@ -152,7 +152,7 @@ final class UtilsApiHelper
 		$allowedOutput = [
 			UtilsConfig::FD_SUCCESS_REDIRECT => UtilsHelper::getStateResponseOutputKey('successRedirect'),
 			UtilsConfig::FD_ADDON => UtilsHelper::getStateResponseOutputKey('addon'),
-			UtilsConfig::FD_VALIDATION => UtilsHelper::getStateResponseOutputKey('validation'),
+			UtilsConfig::IARD_VALIDATION => UtilsHelper::getStateResponseOutputKey('validation'),
 		];
 
 		// Populate additional output with allowed keys and aproppriate allowed output keys used in JS.

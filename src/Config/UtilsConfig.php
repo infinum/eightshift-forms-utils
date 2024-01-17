@@ -482,7 +482,6 @@ class UtilsConfig
 	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
 	public const FD_ADDON = 'addon';
 	public const FD_SUCCESS_REDIRECT = 'successRedirect';
-	public const FD_VALIDATION = 'validation';
 
 	// ------------------------------------------------------------------
 	// Integration API response details data Keys
@@ -500,7 +499,7 @@ class UtilsConfig
 	public const IARD_ITEM_ID = self::FD_ITEM_ID;
 	public const IARD_FORM_ID = self::FD_FORM_ID;
 	public const IARD_IS_DISABLED = 'isDisabled';
-	public const IARD_VALIDATION = self::FD_VALIDATION;
+	public const IARD_VALIDATION = 'validation';
 
 	// ------------------------------------------------------------------
 	// CAPS

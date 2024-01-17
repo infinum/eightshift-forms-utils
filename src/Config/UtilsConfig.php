@@ -441,6 +441,7 @@ class UtilsConfig
 	public const ROUTE_VERSION = 'v1';
 
 	public const API_RESPONSE_CODE_SUCCESS = 200;
+	public const API_RESPONSE_CODE_SUCCESS_RANGE = 299;
 	public const API_RESPONSE_CODE_ERROR = 400;
 
 	// ------------------------------------------------------------------

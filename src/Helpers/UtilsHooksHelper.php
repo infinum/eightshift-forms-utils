@@ -21,24 +21,34 @@ final class UtilsHooksHelper
 	 * Get public filter name.
 	 *
 	 * @param array<int, string> $names Array of names.
+	 * @param array<mixed> $data Array of data.
 	 *
 	 * @return string
 	 */
-	public static function getFilterName(array $names): string
+	public static function getFilterName(array $names, array $data = []): string
 	{
-		return self::getHookName($names, 'filters', 'filter', \apply_filters(UtilsConfig::FILTER_PUBLIC_FILTERS_DATA, []));
+		if (!$data) {
+			$data = \apply_filters(UtilsConfig::FILTER_PUBLIC_FILTERS_DATA, []);
+		}
+
+		return self::getHookName($names, 'filters', 'filter', $data);
 	}
 
 	/**
 	 * Get public action name.
 	 *
 	 * @param array<int, string> $names Array of names.
+	 * @param array<mixed> $data Array of data.
 	 *
 	 * @return string
 	 */
-	public static function getActionName(array $names): string
+	public static function getActionName(array $names, array $data = []): string
 	{
-		return self::getHookName($names, 'actions', 'action', \apply_filters(UtilsConfig::FILTER_PUBLIC_ACTIONS_DATA, []));
+		if (!$data) {
+			$data = \apply_filters(UtilsConfig::FILTER_PUBLIC_ACTIONS_DATA, []);
+		}
+
+		return self::getHookName($names, 'actions', 'action', $data);
 	}
 
 	/**

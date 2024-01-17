@@ -55,10 +55,10 @@ final class UtilsApiHelper
 		// Do regular stuff if this is not and WP_Error.
 		if (!\is_wp_error($response)) {
 			if ($isCurl) {
-				$code = $response['status'] ?? 200;
+				$code = $response['status'] ?? UtilsConfig::API_RESPONSE_CODE_SUCCESS;
 				$body = $response;
 			} else {
-				$code = $response['response']['code'] ?? 200;
+				$code = $response['response']['code'] ?? UtilsConfig::API_RESPONSE_CODE_SUCCESS;
 				$body = $response['body'] ?? '';
 
 				if (Components::isJson($body)) {
@@ -67,7 +67,7 @@ final class UtilsApiHelper
 			}
 		} else {
 			// Mock response for WP_Error.
-			$code = 404;
+			$code = UtilsConfig::API_RESPONSE_CODE_ERROR;
 			$body = [
 				'error' => $response->get_error_message(),
 			];
@@ -185,7 +185,7 @@ final class UtilsApiHelper
 	{
 		$output = [
 			'status' => UtilsConfig::STATUS_ERROR,
-			'code' => 400,
+			'code' => UtilsConfig::API_RESPONSE_CODE_ERROR,
 			'message' => $msg,
 		];
 
@@ -213,7 +213,7 @@ final class UtilsApiHelper
 	{
 		$output = [
 			'status' => UtilsConfig::STATUS_SUCCESS,
-			'code' => 200,
+			'code' => UtilsConfig::API_RESPONSE_CODE_SUCCESS,
 			'message' => $msg,
 		];
 
@@ -241,7 +241,7 @@ final class UtilsApiHelper
 	{
 		$output = [
 			'status' => UtilsConfig::STATUS_WARNING,
-			'code' => 200,
+			'code' => UtilsConfig::API_RESPONSE_CODE_SUCCESS,
 			'message' => $msg,
 		];
 

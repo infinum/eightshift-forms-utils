@@ -460,9 +460,6 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		// Get form storage from params.
 		$output[UtilsConfig::FD_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
 
-		// Create placeholder for addon data.
-		$output[UtilsConfig::FD_ADDON_DATA] = [];
-
 		return $output;
 	}
 

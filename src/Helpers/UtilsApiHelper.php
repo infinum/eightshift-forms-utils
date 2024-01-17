@@ -149,10 +149,15 @@ final class UtilsApiHelper
 
 		$additionalOutput = [];
 
-		$allowedOutputKeys = UtilsHelper::getStateResponseOutputKeys();
+		$allowedOutput = [
+			UtilsConfig::FD_SUCCESS_REDIRECT => UtilsHelper::getStateResponseOutputKey('successRedirect'),
+			UtilsConfig::FD_ADDON => UtilsHelper::getStateResponseOutputKey('addon'),
+			UtilsConfig::FD_VALIDATION => UtilsHelper::getStateResponseOutputKey('validation'),
+		];
 
-		foreach ($allowedOutputKeys as $value) {
-			if (isset($response[$value])) {
+		// Populate additional output with allowed keys and aproppriate allowed output keys used in JS.
+		foreach ($allowedOutput as $key => $value) {
+			if (isset($response[$key])) {
 				$additionalOutput[$value] = $response[$value];
 			}
 		}

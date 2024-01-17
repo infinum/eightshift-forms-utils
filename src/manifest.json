@@ -226,8 +226,8 @@
 		},
 		"responseOutputKeys": {
 			"validation": "validation",
-			"addon": "addon",
-			"successRedirectData": "successRedirectData",
+			"addon": "addonData",
+			"successRedirect": "successRedirectData",
 			"file": "file",
 			"stepType": "stepType",
 			"stepNextStep": "stepNextStep",

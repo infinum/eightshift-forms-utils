@@ -22,16 +22,17 @@ final class UtilsHooksHelper
 	 *
 	 * @param array<int, string> $names Array of names.
 	 * @param array<mixed> $data Array of data.
+	 * @param string $filterPrefix Filter prefix.
 	 *
 	 * @return string
 	 */
-	public static function getFilterName(array $names, array $data = []): string
+	public static function getFilterName(array $names, array $data = [], string $filterPrefix = UtilsConfig::FILTER_PREFIX): string
 	{
 		if (!$data) {
 			$data = \apply_filters(UtilsConfig::FILTER_PUBLIC_FILTERS_DATA, []);
 		}
 
-		return self::getHookName($names, 'filters', 'filter', $data);
+		return self::getHookName($names, 'filters', 'filter', $data, $filterPrefix);
 	}
 
 	/**
@@ -39,16 +40,17 @@ final class UtilsHooksHelper
 	 *
 	 * @param array<int, string> $names Array of names.
 	 * @param array<mixed> $data Array of data.
+	 * @param string $filterPrefix Filter prefix.
 	 *
 	 * @return string
 	 */
-	public static function getActionName(array $names, array $data = []): string
+	public static function getActionName(array $names, array $data = [], string $filterPrefix = UtilsConfig::FILTER_PREFIX): string
 	{
 		if (!$data) {
 			$data = \apply_filters(UtilsConfig::FILTER_PUBLIC_ACTIONS_DATA, []);
 		}
 
-		return self::getHookName($names, 'actions', 'action', $data);
+		return self::getHookName($names, 'actions', 'action', $data, $filterPrefix);
 	}
 
 	/**
@@ -58,18 +60,19 @@ final class UtilsHooksHelper
 	 * @param string $cacheName Cache name.
 	 * @param string $label Label.
 	 * @param array<mixed> $dataSet Data set.
+	 * @param string $filterPrefix Filter prefix.
 	 *
 	 * @return string
 	 */
-	private static function getHookName(array $names, string $cacheName, string $label, array $dataSet): string
+	private static function getHookName(array $names, string $cacheName, string $label, array $dataSet, string $filterPrefix = UtilsConfig::FILTER_PREFIX): string
 	{
-		$output = \wp_cache_get(UtilsConfig::FILTER_PREFIX . "_{$cacheName}_public_list", UtilsConfig::FILTER_PREFIX);
+		$output = \wp_cache_get($filterPrefix . "_{$cacheName}_public_list", $filterPrefix);
 
 		// Cache filter names for faster access.
 		if (!$output) {
-			$output = self::getHooksList($dataSet);
+			$output = self::getHooksList($dataSet, '', $filterPrefix);
 
-			\wp_cache_add(UtilsConfig::FILTER_PREFIX . "_{$cacheName}_public_list", $output, UtilsConfig::FILTER_PREFIX, \HOUR_IN_SECONDS);
+			\wp_cache_add($filterPrefix . "_{$cacheName}_public_list", $output, $filterPrefix, \HOUR_IN_SECONDS);
 		}
 
 		// List of all keys provided for the filter name.
@@ -84,7 +87,7 @@ final class UtilsHooksHelper
 		$names = \implode('_', $names);
 
 		// Create a full filter name.
-		$outputName = UtilsConfig::FILTER_PREFIX . "_{$names}";
+		$outputName = $filterPrefix . "_{$names}";
 
 		if (!\in_array($outputName, $output, true)) {
 			// translators: %s is the filter name.
@@ -100,19 +103,20 @@ final class UtilsHooksHelper
 	 *
 	 * @param array<mixed> $data Array of data.
 	 * @param string $prefix Prefix to add to all filter names.
+	 * @param string $filterPrefix Filter prefix.
 	 *
 	 * @return array<int, string>
 	 */
-	private static function getHooksList(array $data, string $prefix = ''): array
+	private static function getHooksList(array $data, string $prefix = '', string $filterPrefix = UtilsConfig::FILTER_PREFIX): array
 	{
 		$output = [];
 
 		foreach ($data as $key => $value) {
 			if (\is_array($value)) {
-				$nestedKeys = self::getHooksList($value, $prefix . UtilsGeneralHelper::kebabToSnakeCase(UtilsGeneralHelper::camelToSnakeCase($key)) . '_');
+				$nestedKeys = self::getHooksList($value, $prefix . UtilsGeneralHelper::kebabToSnakeCase(UtilsGeneralHelper::camelToSnakeCase($key)) . '_', $filterPrefix);
 				$output = \array_merge($output, $nestedKeys);
 			} else {
-				$output[] = UtilsConfig::FILTER_PREFIX . '_' . $prefix . UtilsGeneralHelper::kebabToSnakeCase(UtilsGeneralHelper::camelToSnakeCase($value));
+				$output[] = $filterPrefix . '_' . $prefix . UtilsGeneralHelper::kebabToSnakeCase(UtilsGeneralHelper::camelToSnakeCase($value));
 			}
 		}
 

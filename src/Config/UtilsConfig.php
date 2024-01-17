@@ -443,6 +443,9 @@ class UtilsConfig
 	public const API_RESPONSE_CODE_SUCCESS = 200;
 	public const API_RESPONSE_CODE_SUCCESS_RANGE = 299;
 	public const API_RESPONSE_CODE_ERROR = 400;
+	public const API_RESPONSE_CODE_ERROR_MISSING = 404;
+	public const API_RESPONSE_CODE_ERROR_SERVER = 500;
+	public const API_RESPONSE_CODE_ERROR_FORBIDDEN = 403;
 
 	// ------------------------------------------------------------------
 	// Form details keys

@@ -500,7 +500,7 @@ class UtilsConfig
 	public const IARD_ITEM_ID = self::FD_ITEM_ID;
 	public const IARD_FORM_ID = self::FD_FORM_ID;
 	public const IARD_IS_DISABLED = 'isDisabled';
-	public const IARD_VALIDATION = 'validation';
+	public const IARD_VALIDATION = self::FD_VALIDATION;
 
 	// ------------------------------------------------------------------
 	// CAPS

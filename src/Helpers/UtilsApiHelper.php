@@ -94,17 +94,17 @@ final class UtilsApiHelper
 	 * NOTE: Not for public response on API.
 	 *
 	 * @param array<string, mixed> $details Details provided by getIntegrationApiReponseDetails method.
-	 * @param string $msg Message to output.
 	 * @param array<string, mixed> $additional Additional array details to attach to the success output.
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getIntegrationErrorInternalOutput(array $details, string $msg, array $additional = []): array
+	public static function getIntegrationErrorInternalOutput(array $details, array $additional = []): array
 	{
 		return \array_merge(
 			$details,
 			[
 				'status' => UtilsConfig::STATUS_ERROR,
+				'message' => $details[UtilsConfig::IARD_MSG] ?? '',
 			],
 			$additional
 		);

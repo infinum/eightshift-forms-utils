@@ -135,6 +135,28 @@ final class UtilsApiHelper
 	}
 
 	/**
+	 * Get api public output additional data used on both integrations and none integrations.
+	 *
+	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public static function getApiPublicAdditionalDataOutput(array $formDetails): array
+	{
+		$output = [];
+
+		if (isset($formDetails[UtilsConfig::FD_SUCCESS_REDIRECT])) {
+			$output[UtilsHelper::getStateResponseOutputKey('successRedirect')] = $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT];
+		}
+
+		if (isset($formDetails[UtilsConfig::FD_ADDON])) {
+			$output[UtilsHelper::getStateResponseOutputKey('addon')] = $formDetails[UtilsConfig::FD_ADDON];
+		}
+
+		return $output;
+	}
+
+	/**
 	 * Return Integration API final response array depending on the status - in combination with getIntegrationApiReponseDetails response.
 	 *
 	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
@@ -147,15 +169,7 @@ final class UtilsApiHelper
 		$response = $formDetails[UtilsConfig::IARD_RESPONSE] ?? [];
 		$status = $response[UtilsConfig::IARD_STATUS] ?? UtilsConfig::STATUS_ERROR;
 
-		$additionalOutput = [];
-
-		if (isset($formDetails[UtilsConfig::FD_SUCCESS_REDIRECT])) {
-			$additionalOutput[UtilsHelper::getStateResponseOutputKey('successRedirect')] = $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT];
-		}
-
-		if (isset($formDetails[UtilsConfig::FD_ADDON])) {
-			$additionalOutput[UtilsHelper::getStateResponseOutputKey('addon')] = $formDetails[UtilsConfig::FD_ADDON];
-		}
+		$additionalOutput = self::getApiPublicAdditionalDataOutput($formDetails);
 
 		if (isset($response[UtilsConfig::IARD_VALIDATION])) {
 			$additionalOutput[UtilsHelper::getStateResponseOutputKey('validation')] = $response[UtilsConfig::IARD_VALIDATION];

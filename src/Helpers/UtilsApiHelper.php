@@ -145,11 +145,11 @@ final class UtilsApiHelper
 	{
 		$output = [];
 
-		if (isset($formDetails[UtilsConfig::FD_SUCCESS_REDIRECT])) {
+		if (isset($formDetails[UtilsConfig::FD_SUCCESS_REDIRECT]) && $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT]) {
 			$output[UtilsHelper::getStateResponseOutputKey('successRedirect')] = $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT];
 		}
 
-		if (isset($formDetails[UtilsConfig::FD_ADDON])) {
+		if (isset($formDetails[UtilsConfig::FD_ADDON]) && $formDetails[UtilsConfig::FD_ADDON]) {
 			$output[UtilsHelper::getStateResponseOutputKey('addon')] = $formDetails[UtilsConfig::FD_ADDON];
 		}
 

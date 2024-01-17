@@ -75,7 +75,7 @@ final class UtilsApiHelper
 		}
 
 		return [
-			UtilsConfig::IARD_TYPE => Components::kebabToCamelCase($integration, '-'),
+			UtilsConfig::IARD_TYPE => $integration,
 			UtilsConfig::IARD_PARAMS => $params,
 			UtilsConfig::IARD_FILES => $files,
 			UtilsConfig::IARD_RESPONSE => $response['response'] ?? [],
@@ -99,17 +99,13 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getIntegrationErrorOutput(array $details, string $msg, array $additional = []): array
+	public static function getIntegrationErrorInternalOutput(array $details, string $msg, array $additional = []): array
 	{
-		unset($details[UtilsConfig::IARD_STATUS]);
-		unset($details[UtilsConfig::IARD_MSG]);
-
 		return \array_merge(
+			$details,
 			[
 				'status' => UtilsConfig::STATUS_ERROR,
-				'message' => $msg,
 			],
-			$details,
 			$additional
 		);
 	}
@@ -124,19 +120,16 @@ final class UtilsApiHelper
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getIntegrationSuccessOutput(array $details, array $additional = []): array
+	public static function getIntegrationSuccessInternalOutput(array $details, array $additional = []): array
 	{
 		$type = $details[UtilsConfig::IARD_TYPE] ?? '';
 
-		unset($details[UtilsConfig::IARD_STATUS]);
-		unset($details[UtilsConfig::IARD_MSG]);
-
 		return \array_merge(
+			$details,
 			[
 				'status' => UtilsConfig::STATUS_SUCCESS,
 				'message' => "{$type}Success",
 			],
-			$details,
 			$additional
 		);
 	}

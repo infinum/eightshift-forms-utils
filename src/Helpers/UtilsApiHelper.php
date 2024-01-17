@@ -166,7 +166,7 @@ final class UtilsApiHelper
 	 */
 	public static function getIntegrationApiPublicOutput(array $formDetails, string $msg): array
 	{
-		$response = $formDetails[UtilsConfig::IARD_RESPONSE] ?? [];
+		$response = $formDetails[UtilsConfig::FD_RESPONSE_OUTPUT_DATA] ?? [];
 		$status = $response[UtilsConfig::IARD_STATUS] ?? UtilsConfig::STATUS_ERROR;
 
 		$additionalOutput = self::getApiPublicAdditionalDataOutput($formDetails);
@@ -176,6 +176,11 @@ final class UtilsApiHelper
 		}
 
 		if ($status === UtilsConfig::STATUS_SUCCESS) {
+			$actionName = UtilsHooksHelper::getActionName(['entries', 'saveEntry']);
+			if (\has_action($actionName)) {
+				\do_action($actionName, $formDetails);
+			}
+
 			return self::getApiSuccessPublicOutput(
 				$msg,
 				$additionalOutput,

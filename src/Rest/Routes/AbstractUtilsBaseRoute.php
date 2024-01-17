@@ -477,13 +477,21 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		// Pre response filter for addon data.
 		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseAddonData']);
 		if (\has_filter($filterName)) {
-			$formDetails[UtilsConfig::FD_ADDON] = \apply_filters($filterName, [], $formDetails);
+			$filterDetails = \apply_filters($filterName, [], $formDetails);
+
+			if ($filterDetails) {
+				$formDetails[UtilsConfig::FD_ADDON] = $filterDetails;
+			}
 		}
 
 		// Pre response filter for success redirect data.
 		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseSuccessRedirectData']);
 		if (\has_filter($filterName)) {
-			$formDetails[UtilsConfig::FD_SUCCESS_REDIRECT] = UtilsEncryption::encryptor(\wp_json_encode(\apply_filters($filterName, [], $formDetails)));
+			$filterDetails = \apply_filters($filterName, [], $formDetails);
+
+			if ($filterDetails) {
+				$formDetails[UtilsConfig::FD_SUCCESS_REDIRECT] = UtilsEncryption::encryptor(\wp_json_encode($filterDetails));
+			}
 		}
 
 		return $formDetails;

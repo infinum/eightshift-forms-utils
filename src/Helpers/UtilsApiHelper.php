@@ -177,6 +177,30 @@ final class UtilsApiHelper
 	}
 
 	/**
+	 * This function will take form details and apply additional data to it before it is processed.
+	 * It is used in both integrations and non integrations like mailer so it can share the same functionality.
+	 *
+	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
+	 * @return array<string, mixed>
+	 */
+	public function processCommonSubmitActionFormData(array $formDetails): array
+	{
+		// Pre response filter for addon data.
+		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseAddonData']);
+		if (\has_filter($filterName)) {
+			$formDetails[UtilsConfig::FD_ADDON] = \apply_filters($filterName, [], $formDetails);
+		}
+
+		// Pre response filter for success redirect data.
+		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseSuccessRedirectData']);
+		if (\has_filter($filterName)) {
+			$formDetails[UtilsConfig::FD_SUCCESS_REDIRECT] = UtilsEncryption::encryptor(\wp_json_encode(\apply_filters($filterName, [], $formDetails)));
+		}
+
+		return $formDetails;
+	}
+
+	/**
 	 * Return API error response array.
 	 *
 	 * @param string $msg Msg for the user.

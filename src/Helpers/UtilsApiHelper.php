@@ -149,17 +149,16 @@ final class UtilsApiHelper
 
 		$additionalOutput = [];
 
-		$allowedOutput = [
-			UtilsConfig::FD_SUCCESS_REDIRECT => UtilsHelper::getStateResponseOutputKey('successRedirect'),
-			UtilsConfig::FD_ADDON => UtilsHelper::getStateResponseOutputKey('addon'),
-			UtilsConfig::IARD_VALIDATION => UtilsHelper::getStateResponseOutputKey('validation'),
-		];
+		if (isset($formDetails[UtilsConfig::FD_SUCCESS_REDIRECT])) {
+			$additionalOutput[UtilsHelper::getStateResponseOutputKey('successRedirect')] = $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT];
+		}
 
-		// Populate additional output with allowed keys and aproppriate allowed output keys used in JS.
-		foreach ($allowedOutput as $key => $value) {
-			if (isset($response[$key])) {
-				$additionalOutput[$value] = $response[$value];
-			}
+		if (isset($formDetails[UtilsConfig::FD_ADDON])) {
+			$additionalOutput[UtilsHelper::getStateResponseOutputKey('addon')] = $formDetails[UtilsConfig::FD_ADDON];
+		}
+
+		if (isset($response[UtilsConfig::IARD_VALIDATION])) {
+			$additionalOutput[UtilsHelper::getStateResponseOutputKey('validation')] = $response[UtilsConfig::IARD_VALIDATION];
 		}
 
 		if ($status === UtilsConfig::STATUS_SUCCESS) {

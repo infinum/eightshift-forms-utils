@@ -287,7 +287,7 @@ final class UtilsApiHelper
 	public static function getApiPermissionsErrorPublicOutput(): array
 	{
 		return self::getApiErrorPublicOutput(
-			\esc_html__('You don\'t have enough permissions to perform this action!', 'eightshift-forms'),
+			\__('You don\'t have enough permissions to perform this action!', 'eightshift-forms'),
 		);
 	}
 }

@@ -102,11 +102,11 @@ final class UtilsSettingsOutputHelper
 	}
 
 	/**
-	 * Settings output misc disclamer.
+	 * Settings output misc disclaimer.
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getMiscDisclamer(): array
+	public static function getMiscDisclaimer(): array
 	{
 		return [
 			'component' => 'layout',

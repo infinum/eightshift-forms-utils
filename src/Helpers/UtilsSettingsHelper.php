@@ -271,7 +271,9 @@ final class UtilsSettingsHelper
 	{
 		$sufix = '';
 
-		if (!isset(\array_flip(\apply_filters(UtilsConfig::FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES, []))[$key])) {
+		$data = \EIGHTSHIFT_FORMS[UtilsConfig::PUBLIC_NONE_TRANSLATABLE_NAMES_NAME] ?? []; // @phpstan-ignore-line
+
+		if (!isset(\array_flip($data)[$key])) {
 			$locale = UtilsI18nHelper::getLocale();
 
 			if ($locale) {

@@ -72,25 +72,25 @@ class UtilsConfig
 	public const FILTER_SETTINGS_DATA = self::FILTER_PREFIX . '_settings_data';
 
 	/**
-	 * Filter name for public filters.
+	 * Constant name for all public filters set on the global variable.
 	 *
 	 * @var string
 	 */
-	public const FILTER_PUBLIC_FILTERS_DATA = self::FILTER_PREFIX . '_public_filters_data';
+	public const PUBLIC_FILTERS_NAME = 'filters';
 
 	/**
-	 * Filter name for public actions.
+	 * Constant name for all public actions set on the global variable.
 	 *
 	 * @var string
 	 */
-	public const FILTER_PUBLIC_ACTIONS_DATA = self::FILTER_PREFIX . '_public_actions_data';
+	public const PUBLIC_ACTIONS_NAME = 'actions';
 
 	/**
-	 * Filter name for fields that are not translatable.
+	 * Constant name for all public none translatable names set on the global variable.
 	 *
 	 * @var string
 	 */
-	public const FILTER_SETTINGS_NONE_TRANSLATABLE_NAMES = self::FILTER_PREFIX . '_settings_none_translatable_names';
+	public const PUBLIC_NONE_TRANSLATABLE_NAMES_NAME = 'noneTranslatableNames';
 
 	// ------------------------------------------------------------------
 	// BLOCKS

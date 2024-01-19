@@ -29,7 +29,7 @@ final class UtilsHooksHelper
 	public static function getFilterName(array $names, array $data = [], string $filterPrefix = UtilsConfig::FILTER_PREFIX): string
 	{
 		if (!$data) {
-			$data = \apply_filters(UtilsConfig::FILTER_PUBLIC_FILTERS_DATA, []);
+			$data = \EIGHTSHIFT_FORMS[UtilsConfig::PUBLIC_FILTERS_NAME]; // @phpstan-ignore-line
 		}
 
 		return self::getHookName($names, 'filters', 'filter', $data, $filterPrefix);
@@ -47,7 +47,7 @@ final class UtilsHooksHelper
 	public static function getActionName(array $names, array $data = [], string $filterPrefix = UtilsConfig::FILTER_PREFIX): string
 	{
 		if (!$data) {
-			$data = \apply_filters(UtilsConfig::FILTER_PUBLIC_ACTIONS_DATA, []);
+			$data = \EIGHTSHIFT_FORMS[UtilsConfig::PUBLIC_ACTIONS_NAME]; // @phpstan-ignore-line
 		}
 
 		return self::getHookName($names, 'actions', 'action', $data, $filterPrefix);

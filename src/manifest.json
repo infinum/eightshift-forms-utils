@@ -132,7 +132,8 @@
 			"group": "js-es-block-group",
 			"field": "js-es-block-field",
 			"fieldNoFormsBlock": "js-es-block-field-custom",
-			"rating": "js-es-block-rating"
+			"rating": "js-es-block-rating",
+			"debugPreview": "js-es-block-debug-preview"
 		},
 		"params": {
 			"formId": "es-form-form-id",

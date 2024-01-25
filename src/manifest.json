@@ -119,6 +119,7 @@
 			"isDisabled": "es-form-is-disabled",
 			"isGeoLoading": "es-form-is-geolocation-loading",
 			"hasError": "es-form-has-error",
+			"isStepPreviewActive": "es-form-is-step-preview-active",
 			"forms": "js-es-block-forms",
 			"form": "js-es-block-form",
 			"submitSingle": "js-es-block-single-submit",
@@ -126,14 +127,14 @@
 			"stepProgressBar": "js-es-block-step-progress-bar",
 			"stepProgressBarMultiflow": "js-es-block-step-progress-bar-multiflow",
 			"stepSubmit": "js-es-block-step-trigger",
+			"stepDebugPreview": "js-es-block-step-debug-preview",
 			"error": "js-es-block-error",
 			"loader": "js-es-block-loader",
 			"globalMsg": "js-es-block-global-msg",
 			"group": "js-es-block-group",
 			"field": "js-es-block-field",
 			"fieldNoFormsBlock": "js-es-block-field-custom",
-			"rating": "js-es-block-rating",
-			"debugPreview": "js-es-block-debug-preview"
+			"rating": "js-es-block-rating"
 		},
 		"params": {
 			"formId": "es-form-form-id",

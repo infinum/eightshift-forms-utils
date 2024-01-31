@@ -281,16 +281,24 @@ final class UtilsSettingsOutputHelper
 	 * Get all field names from the form.
 	 *
 	 * @param array<int, string> $fieldNames Form field IDs.
+	 * @param string $wrapper Wrapper for the field name.
 	 *
 	 * @return string
 	 */
-	public static function getPartialFormFieldNames(array $fieldNames): string
+	public static function getPartialFormFieldNames(array $fieldNames, string $wrapper = '{}'): string
 	{
 		$output = [];
 
 		// Populate output.
 		foreach ($fieldNames as $item) {
-			$output[] = "<li><code>{" . $item . "}</code></li>";
+			switch ($wrapper) {
+				case '$':
+					$output[] = "<li><code>$" . $item . "</code></li>";
+					break;
+				default:
+					$output[] = "<li><code>{" . $item . "}</code></li>";
+					break;
+			}
 		}
 
 		return \implode("\n", $output);

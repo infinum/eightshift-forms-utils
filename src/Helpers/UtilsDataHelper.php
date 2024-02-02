@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace EightshiftFormsUtils\Helpers;
 
+use EightshiftLibs\Helpers\Components;
+
 /**
  * Class UtilsDataHelper
  */
@@ -63,6 +65,7 @@ final class UtilsDataHelper
 	 */
 	public static function getDataManifestPath(string $type, string $file = 'manifest.json'): string
 	{
-		return \dirname(__FILE__, 3) . "/data/{$type}/{$file}";
+		$sep = \DIRECTORY_SEPARATOR;
+		return Components::getProjectPaths('srcPath') . "vendor/infinum/eightshift-forms-utils/{$sep}data{$sep}{$type}{$sep}{$file}";
 	}
 }

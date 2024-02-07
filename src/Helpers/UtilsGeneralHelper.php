@@ -574,6 +574,21 @@ final class UtilsGeneralHelper
 		return $attribute;
 	}
 
+	/**
+	 * Get field details by name.
+	 *
+	 * @param array<string, mixed> $params Form fields params.
+	 * @param string $key Field key.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public static function getFieldDetailsByName(array $params, string $key): array
+	{
+		return \array_values(\array_filter($params, function ($item) use ($key) {
+			return isset($item['name']) && $item['name'] === $key;
+		}))[0] ?? [];
+	}
+
 
 	/**
 	 * Find email field from params sent by form.

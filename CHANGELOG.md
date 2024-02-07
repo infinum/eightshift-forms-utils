@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.1.5]
+
+### Added
+
+- New function `getFieldDetailsByName` that will extract field details from the form data params.
+
 ## [1.1.4]
 
 ### Changed
@@ -34,6 +40,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.1.5]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.4...1.1.5
 [1.1.4]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.3...1.1.4
 [1.1.3]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.1...1.1.2

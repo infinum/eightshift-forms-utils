@@ -114,7 +114,7 @@ final class UtilsSettingsOutputHelper
 			'layoutContent' => [
 				[
 					'component' => 'intro',
-					'introTitle' => \__('Disclamer', 'eightshift-forms'),
+					'introTitle' => \__('Disclaimer', 'eightshift-forms'),
 					'introSubtitle' => \__("Eightshift Forms doesn't configure the Wpml app or any other third-party tools. However, enabling this feature adds necessary configurations in the backend for everything to function correctly.", 'eightshift-forms'),
 				],
 			],

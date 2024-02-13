@@ -112,7 +112,8 @@
 			"tabsItem": "js-es-tabs-item",
 			"debugEncryption": "js-es-debug-encryption",
 			"debugEncryptionType": "js-es-debug-encryption-type",
-			"debugEncryptionOutput": "js-es-debug-encryption-output"
+			"debugEncryptionOutput": "js-es-debug-encryption-output",
+			"debugEncryptionRun": "js-es-debug-encryption-run"
 		},
 		"selectors": {
 			"isActive": "es-form-is-active",

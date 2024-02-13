@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.1.9]
+
+### Changed
+
+- `getIntegrationApiPublicOutput` now supports callback param instead of calling entries action.
+
 ## [1.1.8]
 
 ### Added
@@ -58,6 +64,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.1.9]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.8...1.1.9
 [1.1.8]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.7...1.1.8
 [1.1.7]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.6...1.1.7
 [1.1.6]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.5...1.1.6

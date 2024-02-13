@@ -161,11 +161,15 @@ final class UtilsApiHelper
 	 *
 	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
 	 * @param string $msg Message to output.
+	 * @param mixed $callbackSuccess Callback on success.
 	 *
 	 * @return array<string, array<mixed>|int|string>
 	 */
-	public static function getIntegrationApiPublicOutput(array $formDetails, string $msg): array
-	{
+	public static function getIntegrationApiPublicOutput(
+		array $formDetails,
+		string $msg,
+		$callbackSuccess = null
+	): array {
 		$response = $formDetails[UtilsConfig::FD_RESPONSE_OUTPUT_DATA] ?? [];
 		$status = $response[UtilsConfig::IARD_STATUS] ?? UtilsConfig::STATUS_ERROR;
 
@@ -176,9 +180,9 @@ final class UtilsApiHelper
 		}
 
 		if ($status === UtilsConfig::STATUS_SUCCESS) {
-			$actionName = UtilsHooksHelper::getActionName(['entries', 'saveEntry']);
-			if (\has_action($actionName)) {
-				\do_action($actionName, $formDetails);
+			// Run any function callback if it is set.
+			if (\is_callable($callbackSuccess)) {
+				\call_user_func($callbackSuccess);
 			}
 
 			return self::getApiSuccessPublicOutput(

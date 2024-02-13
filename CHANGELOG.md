@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.1.7]
+
+### Added
+
+- Three new admin selectors.
+
 ## [1.1.6]
 
 ### Changed
@@ -46,6 +52,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.1.7]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.6...1.1.7
 [1.1.6]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.5...1.1.6
 [1.1.5]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.4...1.1.5
 [1.1.4]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.3...1.1.4

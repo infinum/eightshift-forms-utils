@@ -109,7 +109,10 @@
 			"manualImportApiOutput": "js-es-manual-import-api-output",
 			"manualImportApiData": "js-es-manual-import-api-data",
 			"tabs": "js-es-tabs",
-			"tabsItem": "js-es-tabs-item"
+			"tabsItem": "js-es-tabs-item",
+			"debugEncryption": "js-es-debug-encryption",
+			"debugEncryptionType": "js-es-debug-encryption-type",
+			"debugEncryptionOutput": "js-es-debug-encryption-output"
 		},
 		"selectors": {
 			"isActive": "es-form-is-active",

@@ -157,49 +157,6 @@ final class UtilsApiHelper
 	}
 
 	/**
-	 * Return Integration API final response array depending on the status - in combination with getIntegrationApiReponseDetails response.
-	 *
-	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
-	 * @param string $msg Message to output.
-	 * @param mixed $callbackSuccess Callback on success.
-	 *
-	 * @return array<string, array<mixed>|int|string>
-	 */
-	public static function getIntegrationApiPublicOutput(
-		array $formDetails,
-		string $msg,
-		$callbackSuccess = null
-	): array {
-		$response = $formDetails[UtilsConfig::FD_RESPONSE_OUTPUT_DATA] ?? [];
-		$status = $response[UtilsConfig::IARD_STATUS] ?? UtilsConfig::STATUS_ERROR;
-
-		$additionalOutput = self::getApiPublicAdditionalDataOutput($formDetails);
-
-		if (isset($response[UtilsConfig::IARD_VALIDATION])) {
-			$additionalOutput[UtilsHelper::getStateResponseOutputKey('validation')] = $response[UtilsConfig::IARD_VALIDATION];
-		}
-
-		if ($status === UtilsConfig::STATUS_SUCCESS) {
-			// Run any function callback if it is set.
-			if (\is_callable($callbackSuccess)) {
-				\call_user_func($callbackSuccess);
-			}
-
-			return self::getApiSuccessPublicOutput(
-				$msg,
-				$additionalOutput,
-				$response
-			);
-		}
-
-		return self::getApiErrorPublicOutput(
-			$msg,
-			$additionalOutput,
-			$response
-		);
-	}
-
-	/**
 	 * Return API error response array.
 	 *
 	 * @param string $msg Msg for the user.

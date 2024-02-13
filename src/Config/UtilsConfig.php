@@ -482,6 +482,7 @@ class UtilsConfig
 	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
 	public const FD_ADDON = 'addon';
 	public const FD_SUCCESS_REDIRECT = 'successRedirect';
+	public const FD_ENTRY_ID = 'entryId';
 
 	// ------------------------------------------------------------------
 	// Integration API response details data Keys

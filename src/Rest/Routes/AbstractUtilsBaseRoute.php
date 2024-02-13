@@ -462,38 +462,6 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 	}
 
 	/**
-	 * This function will take form details and apply additional data to it before it is processed.
-	 * It is used in both integrations and non integrations like mailer so it can share the same functionality.
-	 *
-	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
-	 * @return array<string, mixed>
-	 */
-	protected function processCommonSubmitActionFormData(array $formDetails): array
-	{
-		// Pre response filter for addon data.
-		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseAddonData']);
-		if (\has_filter($filterName)) {
-			$filterDetails = \apply_filters($filterName, [], $formDetails);
-
-			if ($filterDetails) {
-				$formDetails[UtilsConfig::FD_ADDON] = $filterDetails;
-			}
-		}
-
-		// Pre response filter for success redirect data.
-		$filterName = UtilsHooksHelper::getFilterName(['block', 'form', 'preResponseSuccessRedirectData']);
-		if (\has_filter($filterName)) {
-			$filterDetails = \apply_filters($filterName, [], $formDetails);
-
-			if ($filterDetails) {
-				$formDetails[UtilsConfig::FD_SUCCESS_REDIRECT] = UtilsEncryption::encryptor(\wp_json_encode($filterDetails));
-			}
-		}
-
-		return $formDetails;
-	}
-
-	/**
 	 * Prepare form details api data for direct import.
 	 *
 	 * @param array<string, mixed> $params Params to use.

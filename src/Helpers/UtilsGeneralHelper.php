@@ -124,6 +124,18 @@ final class UtilsGeneralHelper
 	}
 
 	/**
+	 * Method that returns locations page url.
+	 *
+	 * @param string $formId Form ID.
+	 *
+	 * @return string
+	 */
+	public static function getFormsLocationsPageUrl(string $formId): string
+	{
+		return self::getListingPageUrl() . "&type=locations&formId={$formId}";
+	}
+
+	/**
 	 * Method that returns form edit page url.
 	 *
 	 * @param string $formId Form ID.

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.2.1]
+
+### Added
+
+- `getFormsLocationsPageUrl` function.
+
 ## [1.2.0]
 
 ### Removed
@@ -81,6 +87,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.2.1]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.10...1.2.0
 [1.1.10]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.9...1.1.10
 [1.1.9]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.8...1.1.9

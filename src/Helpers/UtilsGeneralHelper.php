@@ -536,45 +536,6 @@ final class UtilsGeneralHelper
 	}
 
 	/**
-	 * Convert all special characters in attributes.
-	 * Logic got from the core `serialize_block_attributes` function.
-	 *
-	 * @param string $attribute Attribute value to check.
-	 *
-	 * @return string
-	 */
-	public static function unserializeAttributes(string $attribute): string
-	{
-		// It can happen that we get null here because WP that is why.
-		if (\is_string($attribute)) {
-			$attribute = \preg_replace('/\u002d\u002d/', '--', $attribute);
-		}
-
-		if (\is_string($attribute)) {
-			$attribute = \preg_replace('/\u003c/', '<', $attribute);
-		}
-
-		if (\is_string($attribute)) {
-			$attribute = \preg_replace('/\u003e/', '>', $attribute);
-		}
-
-		if (\is_string($attribute)) {
-			$attribute = \preg_replace('/\u0026/', '&', $attribute);
-		}
-
-		if (\is_string($attribute)) {
-			// Regex: /\\"/.
-			$attribute = \preg_replace('/\u0022/', '"', $attribute);
-		}
-
-		if (!\is_string($attribute)) {
-			return '';
-		}
-
-		return $attribute;
-	}
-
-	/**
 	 * Get field details by name.
 	 *
 	 * @param array<string, mixed> $params Form fields params.

@@ -12,10 +12,8 @@ namespace EightshiftFormsUtils\Rest\Routes;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
 use EightshiftFormsUtils\Helpers\UtilsApiHelper;
-use EightshiftFormsUtils\Helpers\UtilsEncryption;
 use EightshiftFormsUtils\Helpers\UtilsGeneralHelper;
 use EightshiftFormsUtils\Helpers\UtilsHelper;
-use EightshiftFormsUtils\Helpers\UtilsHooksHelper;
 use EightshiftFormsUtils\Helpers\UtilsUploadHelper;
 use EightshiftLibs\Rest\CallableRouteInterface;
 use EightshiftLibs\Rest\Routes\AbstractRoute;

@@ -460,6 +460,7 @@ class UtilsConfig
 	public const FD_POST_ID = 'postId';
 	public const FD_PARAMS = 'params';
 	public const FD_PARAMS_RAW = 'paramsRaw';
+	public const FD_PARAMS_SKIPPED = 'paramsSkipped';
 	public const FD_FILES = 'files';
 	public const FD_SETTINGS_TYPE = 'settingsType';
 	public const FD_FIELDS_ONLY = 'fieldsOnly';

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.2.3]
+
+### Added
+
+- new `FD_PARAMS_SKIPPED` constant for skipped params.
+
 ## [1.2.2]
 
 ### Added
@@ -93,6 +99,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.2.3]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.2...1.2.3
 [1.2.2]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.1...1.2.2
 [1.2.1]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.1.10...1.2.0

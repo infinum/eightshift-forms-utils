@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.2.2]
+
+### Added
+
+- `skippedParams` enum param for setting skipped params on multistep forms.
+
 ## [1.2.1]
 
 ### Added

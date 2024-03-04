@@ -343,7 +343,7 @@ class UtilsConfig
 	 *
 	 * @var string
 	 */
-	public const SLUG_CALCULATOR_POST_TYPE = self::SLUG_POST_TYPE . '-calc';
+	public const SLUG_CALCULATOR_POST_TYPE = 'es-forms-calc';
 
 	/**
 	 * Slug name for admin prefix.
@@ -554,15 +554,15 @@ class UtilsConfig
 	 *
 	 * @var string
 	 */
-	public const CAP_FORM_CALCULATOR = 'eightshift_forms_calc';
-	public const CAP_FORM_CALCULATOR_EDIT = 'edit_eightshift_forms_calc';
-	public const CAP_FORM_CALCULATOR_READ = 'read_eightshift_forms_calc';
-	public const CAP_FORM_CALCULATOR_DELETE = 'delete_eightshift_forms_calc';
-	public const CAP_FORM_CALCULATOR_EDIT_MULTIPLE = 'edit_eightshift_forms_calcs';
-	public const CAP_FORM_CALCULATOR_EDIT_OTHERS = 'edit_others_eightshift_forms_calcs';
-	public const CAP_FORM_CALCULATOR_DELETE_MULTIPLE = 'delete_eightshift_forms_calcs';
-	public const CAP_FORM_CALCULATOR_PUBLISH = 'publish_eightshift_forms_calcs';
-	public const CAP_FORM_CALCULATOR_READ_PRIVATE = 'read_private_eightshift_forms_calcs';
+	public const CAP_FORM_CALCULATOR = 'eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_EDIT = 'edit_eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_READ = 'read_eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_DELETE = 'delete_eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_EDIT_MULTIPLE = 'edit_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_EDIT_OTHERS = 'edit_others_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_DELETE_MULTIPLE = 'delete_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_PUBLISH = 'publish_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_READ_PRIVATE = 'read_private_eightshift_forms_calculators';
 
 	/**
 	 * Capability list.

@@ -138,7 +138,9 @@
 			"group": "js-es-block-group",
 			"field": "js-es-block-field",
 			"fieldNoFormsBlock": "js-es-block-field-custom",
-			"rating": "js-es-block-rating"
+			"rating": "js-es-block-rating",
+			"calculator": "js-es-block-calculator",
+			"calculatorItem": "js-es-block-calculator-item"
 		},
 		"params": {
 			"formId": "es-form-form-id",
@@ -227,6 +229,8 @@
 			"hideCaptchaBadge": "data-hide-captcha-badge",
 			"reload": "data-reload",
 			"hubspotTypeId": "data-hubspot-type-id",
+
+			"calculatorItem": "data-calculator-item",
 
 			"adminIntegrationType": "data-integration-type"
 		},

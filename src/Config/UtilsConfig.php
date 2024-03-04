@@ -339,6 +339,13 @@ class UtilsConfig
 	public const SLUG_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	/**
+	 * Post type name - calculator.
+	 *
+	 * @var string
+	 */
+	public const SLUG_CALCULATOR_POST_TYPE = self::SLUG_POST_TYPE . '-calculator';
+
+	/**
 	 * Slug name for admin prefix.
 	 *
 	 * @var string
@@ -543,6 +550,21 @@ class UtilsConfig
 	public const CAP_FORM_READ_PRIVATE = 'read_private_eightshift_formss';
 
 	/**
+	 * Caps for block editor page.
+	 *
+	 * @var string
+	 */
+	public const CAP_FORM_CALCULATOR = 'eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_EDIT = 'edit_eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_READ = 'read_eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_DELETE = 'delete_eightshift_forms_calculator';
+	public const CAP_FORM_CALCULATOR_EDIT_MULTIPLE = 'edit_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_EDIT_OTHERS = 'edit_others_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_DELETE_MULTIPLE = 'delete_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_PUBLISH = 'publish_eightshift_forms_calculators';
+	public const CAP_FORM_CALCULATOR_READ_PRIVATE = 'read_private_eightshift_forms_calculators';
+
+	/**
 	 * Capability list.
 	 *
 	 * @var array<string>
@@ -560,5 +582,14 @@ class UtilsConfig
 		self::CAP_FORM_DELETE_MULTIPLE,
 		self::CAP_FORM_PUBLISH,
 		self::CAP_FORM_READ_PRIVATE,
+		self::CAP_FORM_CALCULATOR,
+		self::CAP_FORM_CALCULATOR_EDIT,
+		self::CAP_FORM_CALCULATOR_READ,
+		self::CAP_FORM_CALCULATOR_DELETE,
+		self::CAP_FORM_CALCULATOR_EDIT_MULTIPLE,
+		self::CAP_FORM_CALCULATOR_EDIT_OTHERS,
+		self::CAP_FORM_CALCULATOR_DELETE_MULTIPLE,
+		self::CAP_FORM_CALCULATOR_PUBLISH,
+		self::CAP_FORM_CALCULATOR_READ_PRIVATE,
 	];
 }

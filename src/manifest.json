@@ -238,7 +238,9 @@
 			"stepType": "stepType",
 			"stepNextStep": "stepNextStep",
 			"stepProgressBarItems": "stepProgressBarItems",
-			"stepIsDisableNextButton": "stepIsDisableNextButton"
+			"stepIsDisableNextButton": "stepIsDisableNextButton",
+			"calculatorOutput": "calculatorOutput",
+			"calculatorOutputItems": "calculatorOutputItems"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

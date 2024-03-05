@@ -41,13 +41,33 @@ final class UtilsGeneralHelper
 	/**
 	 * Method that returns listing page url.
 	 *
+	 * @param string $type Type key.
+	 * @param string $formId Form ID.
+	 * @param string $postType Post type.
+	 *
 	 * @return string
 	 */
-	public static function getListingPageUrl(): string
+	public static function getListingPageUrl(string $type = '', string $formId = '', string $postType = ''): string
 	{
 		$page = UtilsConfig::SLUG_ADMIN;
 
-		return \get_admin_url(null, "admin.php?page={$page}");
+		$typeKey = '';
+		$formIdKey = '';
+		$postTypeKey = '';
+
+		if (!empty($type)) {
+			$typeKey = "&type={$type}";
+		}
+
+		if (!empty($formId)) {
+			$formIdKey = "&formId={$formId}";
+		}
+
+		if (!empty($postType)) {
+			$postTypeKey = "&postType={$postType}";
+		}
+
+		return \get_admin_url(null, "admin.php?page={$page}{$typeKey}{$formIdKey}{$postTypeKey}");
 	}
 
 	/**
@@ -110,7 +130,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getFormsTrashPageUrl(string $postType): string
 	{
-		return self::getListingPageUrl() . "&type=trash&post_type={$postType}";
+		return self::getListingPageUrl('trash', '', $postType);
 	}
 
 	/**
@@ -122,7 +142,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getFormsEntriesPageUrl(string $formId): string
 	{
-		return self::getListingPageUrl() . "&type=entries&formId={$formId}";
+		return self::getListingPageUrl('entries', $formId);
 	}
 
 	/**
@@ -134,7 +154,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getFormsLocationsPageUrl(string $formId): string
 	{
-		return self::getListingPageUrl() . "&type=locations&formId={$formId}";
+		return self::getListingPageUrl('locations', $formId);
 	}
 
 	/**
@@ -144,7 +164,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getFormsCalculatorOutputPageUrl(): string
 	{
-		return self::getListingPageUrl() . "&type=calculator";
+		return self::getListingPageUrl('calculator');
 	}
 
 	/**

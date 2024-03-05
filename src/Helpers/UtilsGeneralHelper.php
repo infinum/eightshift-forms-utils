@@ -92,23 +92,25 @@ final class UtilsGeneralHelper
 	/**
 	 * Method that returns new form page url.
 	 *
+	 * @param string $postType Post type.
+	 *
 	 * @return string
 	 */
-	public static function getNewFormPageUrl(): string
+	public static function getNewFormPageUrl(string $postType): string
 	{
-		$postType = UtilsConfig::SLUG_POST_TYPE;
-
 		return \get_admin_url(null, "post-new.php?post_type={$postType}");
 	}
 
 	/**
 	 * Method that returns trash page url.
 	 *
+	 * @param string $postType Post type.
+	 *
 	 * @return string
 	 */
-	public static function getFormsTrashPageUrl(): string
+	public static function getFormsTrashPageUrl(string $postType): string
 	{
-		return self::getListingPageUrl() . '&type=trash';
+		return self::getListingPageUrl() . "&type=trash&post_type={$postType}";
 	}
 
 	/**

@@ -139,8 +139,8 @@
 			"field": "js-es-block-field",
 			"fieldNoFormsBlock": "js-es-block-field-custom",
 			"rating": "js-es-block-rating",
-			"calculator": "js-es-block-calculator",
-			"calculatorItem": "js-es-block-calculator-item"
+			"calculatorOutput": "js-es-block-calculator",
+			"calculatorOutputItem": "js-es-block-calculator-item"
 		},
 		"params": {
 			"formId": "es-form-form-id",

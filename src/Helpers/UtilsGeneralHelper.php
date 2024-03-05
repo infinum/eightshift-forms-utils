@@ -122,52 +122,6 @@ final class UtilsGeneralHelper
 	}
 
 	/**
-	 * Method that returns trash page url.
-	 *
-	 * @param string $postType Post type.
-	 *
-	 * @return string
-	 */
-	public static function getFormsTrashPageUrl(string $postType): string
-	{
-		return self::getListingPageUrl('trash', '', $postType);
-	}
-
-	/**
-	 * Method that returns entries page url.
-	 *
-	 * @param string $formId Form ID.
-	 *
-	 * @return string
-	 */
-	public static function getFormsEntriesPageUrl(string $formId): string
-	{
-		return self::getListingPageUrl('entries', $formId);
-	}
-
-	/**
-	 * Method that returns locations page url.
-	 *
-	 * @param string $formId Form ID.
-	 *
-	 * @return string
-	 */
-	public static function getFormsLocationsPageUrl(string $formId): string
-	{
-		return self::getListingPageUrl('locations', $formId);
-	}
-
-	/**
-	 * Method that returns calculator output page url.
-	 *
-	 * @return string
-	 */
-	public static function getFormsCalculatorOutputPageUrl(): string
-	{
-		return self::getListingPageUrl('calculator');
-	}
-
-	/**
 	 * Method that returns form edit page url.
 	 *
 	 * @param string $formId Form ID.

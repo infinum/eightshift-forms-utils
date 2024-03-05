@@ -140,13 +140,11 @@ final class UtilsGeneralHelper
 	/**
 	 * Method that returns calculator output page url.
 	 *
-	 * @param string $formId Form ID.
-	 *
 	 * @return string
 	 */
-	public static function getFormsCalculatorOutputPageUrl(string $formId): string
+	public static function getFormsCalculatorOutputPageUrl(): string
 	{
-		return self::getListingPageUrl() . "&type=calculator&formId={$formId}";
+		return self::getListingPageUrl() . "&type=calculator";
 	}
 
 	/**

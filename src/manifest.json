@@ -143,7 +143,8 @@
 			"fieldNoFormsBlock": "js-es-block-field-custom",
 			"rating": "js-es-block-rating",
 			"calculatorOutput": "js-es-block-calculator",
-			"calculatorOutputItem": "js-es-block-calculator-item"
+			"calculatorOutputItem": "js-es-block-calculator-item",
+			"calculatorOutputPart": "js-es-block-calculator-part"
 		},
 		"params": {
 			"formId": "es-form-form-id",
@@ -234,6 +235,8 @@
 			"hubspotTypeId": "data-hubspot-type-id",
 
 			"calculatorItem": "data-calculator-item",
+			"calculatorItemValue": "data-calculator-item-value",
+			"calculatorPart": "data-calculator-part",
 
 			"adminIntegrationType": "data-integration-type"
 		},

@@ -339,11 +339,11 @@ class UtilsConfig
 	public const SLUG_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	/**
-	 * Post type name - result.
+	 * Post type name - result output.
 	 *
 	 * @var string
 	 */
-	public const SLUG_RESULT_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG . '-out';
+	public const SLUG_RESULT_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG . '-res';
 
 	/**
 	 * Slug name for admin prefix.

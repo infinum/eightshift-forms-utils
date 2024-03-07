@@ -367,6 +367,13 @@ class UtilsConfig
 	public const SLUG_ADMIN_SETTINGS_GLOBAL = 'es-settings-global';
 
 	/**
+	 * Slug page name for results page.
+	 *
+	 * @var string
+	 */
+	public const SLUG_ADMIN_RESULTS = 'es-settings-results';
+
+	/**
 	 * Slug page name for global settings dashboard page.
 	 *
 	 * @var string

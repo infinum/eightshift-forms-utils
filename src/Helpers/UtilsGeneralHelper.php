@@ -43,17 +43,17 @@ final class UtilsGeneralHelper
 	 *
 	 * @param string $type Type key.
 	 * @param string $formId Form ID.
-	 * @param string $postType Post type.
+	 * @param string $parent Parent key.
 	 *
 	 * @return string
 	 */
-	public static function getListingPageUrl(string $type = '', string $formId = '', string $postType = ''): string
+	public static function getListingPageUrl(string $type = '', string $formId = '', string $parent = ''): string
 	{
 		$page = UtilsConfig::SLUG_ADMIN;
 
 		$typeKey = '';
 		$formIdKey = '';
-		$postTypeKey = '';
+		$parentKey = '';
 
 		if (!empty($type)) {
 			$typeKey = "&type={$type}";
@@ -63,11 +63,11 @@ final class UtilsGeneralHelper
 			$formIdKey = "&formId={$formId}";
 		}
 
-		if (!empty($postType)) {
-			$postTypeKey = "&postType={$postType}";
+		if (!empty($parent)) {
+			$parentKey = "&parent={$parent}";
 		}
 
-		return \get_admin_url(null, "admin.php?page={$page}{$typeKey}{$formIdKey}{$postTypeKey}");
+		return \get_admin_url(null, "admin.php?page={$page}{$typeKey}{$formIdKey}{$parentKey}");
 	}
 
 	/**
@@ -80,14 +80,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getSettingsPageUrl(string $formId, string $type): string
 	{
-		$page = UtilsConfig::SLUG_ADMIN_SETTINGS;
-		$typeKey = '';
-
-		if (!empty($type)) {
-			$typeKey = "&type={$type}";
-		}
-
-		return \get_admin_url(null, "admin.php?page={$page}&formId={$formId}{$typeKey}");
+		return self::getListingPageUrl(UtilsConfig::SLUG_ADMIN_SETTINGS, $formId, $type);
 	}
 
 	/**
@@ -99,14 +92,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getSettingsGlobalPageUrl(string $type): string
 	{
-		$page = UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL;
-		$typeKey = '';
-
-		if (!empty($type)) {
-			$typeKey = "&type={$type}";
-		}
-
-		return \get_admin_url(null, "admin.php?page={$page}{$typeKey}");
+		return self::getListingPageUrl(UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL, '', $type);
 	}
 
 	/**

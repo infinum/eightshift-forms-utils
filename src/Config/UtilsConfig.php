@@ -535,6 +535,13 @@ class UtilsConfig
 	public const CAP_SETTINGS_GLOBAL = 'eightshift_forms_global_settings';
 
 	/**
+	 * Cap for listing page.
+	 *
+	 * @var string
+	 */
+	public const CAP_RESULTS = 'eightshift_forms_results';
+
+	/**
 	 * Caps for block editor page - forms.
 	 *
 	 * @var string
@@ -573,6 +580,7 @@ class UtilsConfig
 		self::CAP_LISTING,
 		self::CAP_SETTINGS,
 		self::CAP_SETTINGS_GLOBAL,
+		self::CAP_RESULTS,
 		self::CAP_FORM,
 		self::CAP_FORM_EDIT,
 		self::CAP_FORM_READ,

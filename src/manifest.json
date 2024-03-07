@@ -143,9 +143,9 @@
 			"field": "js-es-block-field",
 			"fieldNoFormsBlock": "js-es-block-field-custom",
 			"rating": "js-es-block-rating",
-			"resultOutput": "js-es-block-result",
-			"resultOutputItem": "js-es-block-result-item",
-			"resultOutputPart": "js-es-block-result-part"
+			"resultOutput": "js-es-block-result-output",
+			"resultOutputItem": "js-es-block-result-output-item",
+			"resultOutputPart": "js-es-block-result-output-part"
 		},
 		"params": {
 			"formId": "es-form-form-id",
@@ -238,6 +238,7 @@
 			"resultOutputItemKey": "data-result-output-item-key",
 			"resultOutputItemValue": "data-result-output-item-value",
 			"resultOutputPart": "data-result-output-part",
+			"resultOutputPartDefault": "data-result-output-part-default",
 
 			"adminIntegrationType": "data-integration-type"
 		},

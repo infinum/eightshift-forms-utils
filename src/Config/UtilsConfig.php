@@ -380,6 +380,17 @@ class UtilsConfig
 	 */
 	public const SLUG_ADMIN_DASHBOARD = 'dashboard';
 
+
+	/**
+	 * Slug page name for listing type page.
+	 *
+	 * @var string
+	 */
+	public const SLUG_ADMIN_LISTING_ENTRIES = 'entries';
+	public const SLUG_ADMIN_LISTING_TRASH = 'trash';
+	public const SLUG_ADMIN_LISTING_RESULTS = 'results';
+	public const SLUG_ADMIN_LISTING_LOCATIONS = 'locations';
+
 	// ------------------------------------------------------------------
 	// REST API
 	// ------------------------------------------------------------------

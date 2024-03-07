@@ -142,9 +142,9 @@
 			"field": "js-es-block-field",
 			"fieldNoFormsBlock": "js-es-block-field-custom",
 			"rating": "js-es-block-rating",
-			"calculatorOutput": "js-es-block-calculator",
-			"calculatorOutputItem": "js-es-block-calculator-item",
-			"calculatorOutputPart": "js-es-block-calculator-part"
+			"resultOutput": "js-es-block-result",
+			"resultOutputItem": "js-es-block-result-item",
+			"resultOutputPart": "js-es-block-result-part"
 		},
 		"params": {
 			"formId": "es-form-form-id",
@@ -234,9 +234,9 @@
 			"reload": "data-reload",
 			"hubspotTypeId": "data-hubspot-type-id",
 
-			"calculatorItem": "data-calculator-item",
-			"calculatorItemValue": "data-calculator-item-value",
-			"calculatorPart": "data-calculator-part",
+			"resultItem": "data-result-item",
+			"resultItemValue": "data-result-item-value",
+			"resultPart": "data-result-part",
 
 			"adminIntegrationType": "data-integration-type"
 		},
@@ -249,8 +249,8 @@
 			"stepNextStep": "stepNextStep",
 			"stepProgressBarItems": "stepProgressBarItems",
 			"stepIsDisableNextButton": "stepIsDisableNextButton",
-			"calculatorOutput": "calculatorOutput",
-			"calculatorOutputItems": "calculatorOutputItems"
+			"resultOutput": "resultOutput",
+			"resultOutputItems": "resultOutputItems"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

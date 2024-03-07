@@ -241,6 +241,8 @@
 			"resultOutputPart": "data-result-output-part",
 			"resultOutputPartDefault": "data-result-output-part-default",
 
+			"singleSubmit": "data-single-submit",
+
 			"adminIntegrationType": "data-integration-type"
 		},
 		"responseOutputKeys": {

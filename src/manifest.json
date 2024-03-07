@@ -231,6 +231,7 @@
 			"disabledDefaultStyles": "data-disabled-default-styles",
 			"globalMsgHeadingSuccess": "data-msg-heading-success",
 			"globalMsgHeadingError": "data-msg-heading-error",
+			"globalMsgHideOnSuccess": "data-msg-hide-on-success",
 			"hideCaptchaBadge": "data-hide-captcha-badge",
 			"reload": "data-reload",
 			"hubspotTypeId": "data-hubspot-type-id",

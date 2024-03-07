@@ -250,8 +250,8 @@
 			"stepNextStep": "stepNextStep",
 			"stepProgressBarItems": "stepProgressBarItems",
 			"stepIsDisableNextButton": "stepIsDisableNextButton",
-			"resultOutput": "resultOutput",
-			"resultOutputItems": "resultOutputItems"
+			"resultOutputItems": "resultOutputItems",
+			"resultOutputParts": "resultOutputParts"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

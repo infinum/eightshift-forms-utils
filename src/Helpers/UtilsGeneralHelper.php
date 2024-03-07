@@ -91,7 +91,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getSettingsGlobalPageUrl(string $type): string
 	{
-		return self::getListingPageUrl($type, '', '', UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL );
+		return self::getListingPageUrl($type, '', '', UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL);
 	}
 
 	/**

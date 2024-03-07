@@ -339,11 +339,11 @@ class UtilsConfig
 	public const SLUG_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	/**
-	 * Post type name - calculator.
+	 * Post type name - result.
 	 *
 	 * @var string
 	 */
-	public const SLUG_CALCULATOR_POST_TYPE = 'es-forms-calc';
+	public const SLUG_RESULT_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG . '-out';
 
 	/**
 	 * Slug name for admin prefix.
@@ -535,7 +535,7 @@ class UtilsConfig
 	public const CAP_SETTINGS_GLOBAL = 'eightshift_forms_global_settings';
 
 	/**
-	 * Caps for block editor page.
+	 * Caps for block editor page - forms.
 	 *
 	 * @var string
 	 */
@@ -550,19 +550,19 @@ class UtilsConfig
 	public const CAP_FORM_READ_PRIVATE = 'read_private_eightshift_formss';
 
 	/**
-	 * Caps for block editor page.
+	 * Caps for block editor page - results.
 	 *
 	 * @var string
 	 */
-	public const CAP_FORM_CALCULATOR = 'eightshift_forms_calculator';
-	public const CAP_FORM_CALCULATOR_EDIT = 'edit_eightshift_forms_calculator';
-	public const CAP_FORM_CALCULATOR_READ = 'read_eightshift_forms_calculator';
-	public const CAP_FORM_CALCULATOR_DELETE = 'delete_eightshift_forms_calculator';
-	public const CAP_FORM_CALCULATOR_EDIT_MULTIPLE = 'edit_eightshift_forms_calculators';
-	public const CAP_FORM_CALCULATOR_EDIT_OTHERS = 'edit_others_eightshift_forms_calculators';
-	public const CAP_FORM_CALCULATOR_DELETE_MULTIPLE = 'delete_eightshift_forms_calculators';
-	public const CAP_FORM_CALCULATOR_PUBLISH = 'publish_eightshift_forms_calculators';
-	public const CAP_FORM_CALCULATOR_READ_PRIVATE = 'read_private_eightshift_forms_calculators';
+	public const CAP_FORM_RESULT = 'eightshift_forms_result';
+	public const CAP_FORM_RESULT_EDIT = 'edit_eightshift_forms_result';
+	public const CAP_FORM_RESULT_READ = 'read_eightshift_forms_result';
+	public const CAP_FORM_RESULT_DELETE = 'delete_eightshift_forms_result';
+	public const CAP_FORM_RESULT_EDIT_MULTIPLE = 'edit_eightshift_forms_results';
+	public const CAP_FORM_RESULT_EDIT_OTHERS = 'edit_others_eightshift_forms_results';
+	public const CAP_FORM_RESULT_DELETE_MULTIPLE = 'delete_eightshift_forms_results';
+	public const CAP_FORM_RESULT_PUBLISH = 'publish_eightshift_forms_results';
+	public const CAP_FORM_RESULT_READ_PRIVATE = 'read_private_eightshift_forms_results';
 
 	/**
 	 * Capability list.
@@ -582,14 +582,14 @@ class UtilsConfig
 		self::CAP_FORM_DELETE_MULTIPLE,
 		self::CAP_FORM_PUBLISH,
 		self::CAP_FORM_READ_PRIVATE,
-		self::CAP_FORM_CALCULATOR,
-		self::CAP_FORM_CALCULATOR_EDIT,
-		self::CAP_FORM_CALCULATOR_READ,
-		self::CAP_FORM_CALCULATOR_DELETE,
-		self::CAP_FORM_CALCULATOR_EDIT_MULTIPLE,
-		self::CAP_FORM_CALCULATOR_EDIT_OTHERS,
-		self::CAP_FORM_CALCULATOR_DELETE_MULTIPLE,
-		self::CAP_FORM_CALCULATOR_PUBLISH,
-		self::CAP_FORM_CALCULATOR_READ_PRIVATE,
+		self::CAP_FORM_RESULT,
+		self::CAP_FORM_RESULT_EDIT,
+		self::CAP_FORM_RESULT_READ,
+		self::CAP_FORM_RESULT_DELETE,
+		self::CAP_FORM_RESULT_EDIT_MULTIPLE,
+		self::CAP_FORM_RESULT_EDIT_OTHERS,
+		self::CAP_FORM_RESULT_DELETE_MULTIPLE,
+		self::CAP_FORM_RESULT_PUBLISH,
+		self::CAP_FORM_RESULT_READ_PRIVATE,
 	];
 }

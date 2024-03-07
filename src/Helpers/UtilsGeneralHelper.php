@@ -44,13 +44,12 @@ final class UtilsGeneralHelper
 	 * @param string $type Type key.
 	 * @param string $formId Form ID.
 	 * @param string $parent Parent key.
+	 * @param string $pare Top page key.
 	 *
 	 * @return string
 	 */
-	public static function getListingPageUrl(string $type = '', string $formId = '', string $parent = ''): string
+	public static function getListingPageUrl(string $type = '', string $formId = '', string $parent = '', string $page = UtilsConfig::SLUG_ADMIN): string
 	{
-		$page = UtilsConfig::SLUG_ADMIN;
-
 		$typeKey = '';
 		$formIdKey = '';
 		$parentKey = '';
@@ -80,7 +79,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getSettingsPageUrl(string $formId, string $type): string
 	{
-		return self::getListingPageUrl(UtilsConfig::SLUG_ADMIN_SETTINGS, $formId, $type);
+		return self::getListingPageUrl($type, $formId, '', UtilsConfig::SLUG_ADMIN_SETTINGS);
 	}
 
 	/**
@@ -92,7 +91,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getSettingsGlobalPageUrl(string $type): string
 	{
-		return self::getListingPageUrl(UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL, '', $type);
+		return self::getListingPageUrl($type, '', '', UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL );
 	}
 
 	/**

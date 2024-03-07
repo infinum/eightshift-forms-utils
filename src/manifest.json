@@ -235,9 +235,9 @@
 			"reload": "data-reload",
 			"hubspotTypeId": "data-hubspot-type-id",
 
-			"resultItem": "data-result-item",
-			"resultItemValue": "data-result-item-value",
-			"resultPart": "data-result-part",
+			"resultOutputItemKey": "data-result-output-item-key",
+			"resultOutputItemValue": "data-result-output-item-value",
+			"resultOutputPart": "data-result-output-part",
 
 			"adminIntegrationType": "data-integration-type"
 		},

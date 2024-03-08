@@ -44,7 +44,7 @@ final class UtilsGeneralHelper
 	 * @param string $type Type key.
 	 * @param string $formId Form ID.
 	 * @param string $parent Parent key.
-	 * @param string $pare Top page key.
+	 * @param string $page Top page key.
 	 *
 	 * @return string
 	 */

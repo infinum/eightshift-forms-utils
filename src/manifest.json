@@ -166,7 +166,10 @@
 			"rating": "js-es-block-rating",
 			"resultOutput": "js-es-block-result-output",
 			"resultOutputItem": "js-es-block-result-output-item",
-			"resultOutputPart": "js-es-block-result-output-part"
+			"resultOutputPart": "js-es-block-result-output-part",
+			"inputRangeMin": "js-es-block-input-range-min",
+			"inputRangeMax": "js-es-block-input-range-max",
+			"inputRangeCurrent": "js-es-block-input-range-current"
 		},
 		"params": {
 			"formId": "es-form-form-id",

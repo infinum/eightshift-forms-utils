@@ -339,6 +339,13 @@ class UtilsConfig
 	public const SLUG_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG;
 
 	/**
+	 * Post type name - result output.
+	 *
+	 * @var string
+	 */
+	public const SLUG_RESULT_POST_TYPE = self::MAIN_PLUGIN_PROJECT_SLUG . '-res';
+
+	/**
 	 * Slug name for admin prefix.
 	 *
 	 * @var string
@@ -360,11 +367,29 @@ class UtilsConfig
 	public const SLUG_ADMIN_SETTINGS_GLOBAL = 'es-settings-global';
 
 	/**
+	 * Slug page name for results page.
+	 *
+	 * @var string
+	 */
+	public const SLUG_ADMIN_RESULTS = 'es-settings-results';
+
+	/**
 	 * Slug page name for global settings dashboard page.
 	 *
 	 * @var string
 	 */
 	public const SLUG_ADMIN_DASHBOARD = 'dashboard';
+
+
+	/**
+	 * Slug page name for listing type page.
+	 *
+	 * @var string
+	 */
+	public const SLUG_ADMIN_LISTING_ENTRIES = 'entries';
+	public const SLUG_ADMIN_LISTING_TRASH = 'trash';
+	public const SLUG_ADMIN_LISTING_RESULTS = 'results';
+	public const SLUG_ADMIN_LISTING_LOCATIONS = 'locations';
 
 	// ------------------------------------------------------------------
 	// REST API
@@ -528,7 +553,14 @@ class UtilsConfig
 	public const CAP_SETTINGS_GLOBAL = 'eightshift_forms_global_settings';
 
 	/**
-	 * Caps for block editor page.
+	 * Cap for listing page.
+	 *
+	 * @var string
+	 */
+	public const CAP_RESULTS = 'eightshift_forms_results';
+
+	/**
+	 * Caps for block editor page - forms.
 	 *
 	 * @var string
 	 */
@@ -543,6 +575,21 @@ class UtilsConfig
 	public const CAP_FORM_READ_PRIVATE = 'read_private_eightshift_formss';
 
 	/**
+	 * Caps for block editor page - results.
+	 *
+	 * @var string
+	 */
+	public const CAP_FORM_RESULT = 'eightshift_forms_result';
+	public const CAP_FORM_RESULT_EDIT = 'edit_eightshift_forms_result';
+	public const CAP_FORM_RESULT_READ = 'read_eightshift_forms_result';
+	public const CAP_FORM_RESULT_DELETE = 'delete_eightshift_forms_result';
+	public const CAP_FORM_RESULT_EDIT_MULTIPLE = 'edit_eightshift_forms_results';
+	public const CAP_FORM_RESULT_EDIT_OTHERS = 'edit_others_eightshift_forms_results';
+	public const CAP_FORM_RESULT_DELETE_MULTIPLE = 'delete_eightshift_forms_results';
+	public const CAP_FORM_RESULT_PUBLISH = 'publish_eightshift_forms_results';
+	public const CAP_FORM_RESULT_READ_PRIVATE = 'read_private_eightshift_forms_results';
+
+	/**
 	 * Capability list.
 	 *
 	 * @var array<string>
@@ -551,6 +598,7 @@ class UtilsConfig
 		self::CAP_LISTING,
 		self::CAP_SETTINGS,
 		self::CAP_SETTINGS_GLOBAL,
+		self::CAP_RESULTS,
 		self::CAP_FORM,
 		self::CAP_FORM_EDIT,
 		self::CAP_FORM_READ,
@@ -560,5 +608,14 @@ class UtilsConfig
 		self::CAP_FORM_DELETE_MULTIPLE,
 		self::CAP_FORM_PUBLISH,
 		self::CAP_FORM_READ_PRIVATE,
+		self::CAP_FORM_RESULT,
+		self::CAP_FORM_RESULT_EDIT,
+		self::CAP_FORM_RESULT_READ,
+		self::CAP_FORM_RESULT_DELETE,
+		self::CAP_FORM_RESULT_EDIT_MULTIPLE,
+		self::CAP_FORM_RESULT_EDIT_OTHERS,
+		self::CAP_FORM_RESULT_DELETE_MULTIPLE,
+		self::CAP_FORM_RESULT_PUBLISH,
+		self::CAP_FORM_RESULT_READ_PRIVATE,
 	];
 }

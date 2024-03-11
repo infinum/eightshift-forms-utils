@@ -41,13 +41,24 @@ final class UtilsGeneralHelper
 	/**
 	 * Method that returns listing page url.
 	 *
+	 * @param string $type Type key.
+	 * @param string $formId Form ID.
+	 * @param string $parent Parent key.
+	 * @param string $page Top page key.
+	 *
 	 * @return string
 	 */
-	public static function getListingPageUrl(): string
+	public static function getListingPageUrl(string $type = '', string $formId = '', string $parent = '', string $page = UtilsConfig::SLUG_ADMIN): string
 	{
-		$page = UtilsConfig::SLUG_ADMIN;
-
-		return \get_admin_url(null, "admin.php?page={$page}");
+		return \add_query_arg(
+			[
+				'page' => $page,
+				'type' => $type,
+				'formId' => $formId,
+				'parent' => $parent,
+			],
+			\get_admin_url(null, "admin.php")
+		);
 	}
 
 	/**
@@ -60,14 +71,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function getSettingsPageUrl(string $formId, string $type): string
 	{
-		$page = UtilsConfig::SLUG_ADMIN_SETTINGS;
-		$typeKey = '';
-
-		if (!empty($type)) {
-			$typeKey = "&type={$type}";
-		}
-
-		return \get_admin_url(null, "admin.php?page={$page}&formId={$formId}{$typeKey}");
+		return self::getListingPageUrl($type, $formId, '', UtilsConfig::SLUG_ADMIN_SETTINGS);
 	}
 
 	/**
@@ -79,60 +83,24 @@ final class UtilsGeneralHelper
 	 */
 	public static function getSettingsGlobalPageUrl(string $type): string
 	{
-		$page = UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL;
-		$typeKey = '';
-
-		if (!empty($type)) {
-			$typeKey = "&type={$type}";
-		}
-
-		return \get_admin_url(null, "admin.php?page={$page}{$typeKey}");
+		return self::getListingPageUrl($type, '', '', UtilsConfig::SLUG_ADMIN_SETTINGS_GLOBAL);
 	}
 
 	/**
 	 * Method that returns new form page url.
 	 *
-	 * @return string
-	 */
-	public static function getNewFormPageUrl(): string
-	{
-		$postType = UtilsConfig::SLUG_POST_TYPE;
-
-		return \get_admin_url(null, "post-new.php?post_type={$postType}");
-	}
-
-	/**
-	 * Method that returns trash page url.
+	 * @param string $postType Post type.
 	 *
 	 * @return string
 	 */
-	public static function getFormsTrashPageUrl(): string
+	public static function getNewFormPageUrl(string $postType): string
 	{
-		return self::getListingPageUrl() . '&type=trash';
-	}
-
-	/**
-	 * Method that returns entries page url.
-	 *
-	 * @param string $formId Form ID.
-	 *
-	 * @return string
-	 */
-	public static function getFormsEntriesPageUrl(string $formId): string
-	{
-		return self::getListingPageUrl() . "&type=entries&formId={$formId}";
-	}
-
-	/**
-	 * Method that returns locations page url.
-	 *
-	 * @param string $formId Form ID.
-	 *
-	 * @return string
-	 */
-	public static function getFormsLocationsPageUrl(string $formId): string
-	{
-		return self::getListingPageUrl() . "&type=locations&formId={$formId}";
+		return \add_query_arg(
+			[
+				'post_type' => $postType,
+			],
+			\get_admin_url(null, "post-new.php")
+		);
 	}
 
 	/**

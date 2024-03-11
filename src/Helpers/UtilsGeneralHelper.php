@@ -50,23 +50,15 @@ final class UtilsGeneralHelper
 	 */
 	public static function getListingPageUrl(string $type = '', string $formId = '', string $parent = '', string $page = UtilsConfig::SLUG_ADMIN): string
 	{
-		$typeKey = '';
-		$formIdKey = '';
-		$parentKey = '';
-
-		if (!empty($type)) {
-			$typeKey = "&type={$type}";
-		}
-
-		if (!empty($formId)) {
-			$formIdKey = "&formId={$formId}";
-		}
-
-		if (!empty($parent)) {
-			$parentKey = "&parent={$parent}";
-		}
-
-		return \get_admin_url(null, "admin.php?page={$page}{$typeKey}{$formIdKey}{$parentKey}");
+		return \add_query_arg(
+			[
+				'page' => $page,
+				'type' => $type,
+				'formId' => $formId,
+				'parent' => $parent,
+			],
+			\get_admin_url(null, "admin.php")
+		);
 	}
 
 	/**
@@ -103,7 +95,12 @@ final class UtilsGeneralHelper
 	 */
 	public static function getNewFormPageUrl(string $postType): string
 	{
-		return \get_admin_url(null, "post-new.php?post_type={$postType}");
+		return \add_query_arg(
+			[
+				'post_type' => $postType,
+			],
+			\get_admin_url(null, "post-new.php")
+		);
 	}
 
 	/**

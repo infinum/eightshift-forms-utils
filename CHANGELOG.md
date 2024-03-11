@@ -10,7 +10,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 - new constants for CPT result.
 
 ### Changed
-- `getListingPageUrl` function is now mor dynamic.
+- `getListingPageUrl` function is now more dynamic.
 
 ### Removed
 - `getFormsLocationsPageUrl` function.

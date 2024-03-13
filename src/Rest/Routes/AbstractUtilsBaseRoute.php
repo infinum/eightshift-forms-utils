@@ -169,7 +169,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 						return $inner[0];
 					}
 
-					// If multiple values this is checkbox or select multiple.
+					// If multiple values this is checkbox.
 					if (\count($innerNotEmpty) > 1) {
 						$multiple = \array_values(
 							\array_map(
@@ -286,6 +286,11 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 					// Checkbox.
 					if ($fieldType === 'checkbox') {
 						$fieldValue = \explode(UtilsConfig::DELIMITER, $fieldValue);
+					}
+
+					// Select multiple.
+					if ($fieldType === 'select' && \gettype($fieldValue) === 'array') {
+						$value['value'] = \implode(UtilsConfig::DELIMITER, $fieldValue);
 					}
 
 					$output['paramsRaw'][$fieldName] = $fieldValue;

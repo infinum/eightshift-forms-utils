@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.2.5]
+
+### Added
+
+- fix for multi-select props parsing.
+
 ## [1.2.4]
 
 ### Removed
@@ -105,6 +111,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.2.5]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.4...1.2.5
 [1.2.4]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.3...1.2.4
 [1.2.3]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.2...1.2.3
 [1.2.2]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.1...1.2.2

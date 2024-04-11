@@ -190,8 +190,27 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 					return $innerNotEmpty[0];
 				}
 
-				// Just decode value.
-				return \json_decode(\sanitize_text_field($item), true);
+				// Try to clean the string.
+				// Parts of the code taken from https://developer.wordpress.org/reference/functions/_sanitize_text_fields/
+				$item = \wp_check_invalid_utf8($item);
+				$item = \wp_strip_all_tags($item);
+
+				$filtered = trim($item);
+
+				// Remove percent-encoded characters.
+				$found = false;
+				while (preg_match('/%[a-f0-9]{2}/i', $filtered, $match)) {
+					$filtered = str_replace($match[0], '', $filtered);
+					$found = true;
+				}
+
+				if ($found) {
+					// Strip out the whitespace that may now exist after removing percent-encoded characters.
+					$filtered = trim(preg_replace('/ +/', ' ', $filtered));
+				}
+
+				// Decode value.
+				return \json_decode($filtered, true);
 			},
 			$params
 		);

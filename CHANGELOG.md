@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.3.3]
+
+### Changed
+
+- improvements on the `sanitize_text_field` function on the usage with the forms params data.
+
 ## [1.3.2]
 
 ### Added
@@ -122,6 +128,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.3.3]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.2...1.3.3
 [1.3.2]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.1...1.3.2
 [1.3.1]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.2.5...1.3.0

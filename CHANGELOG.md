@@ -8,7 +8,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ### Changed
 
-- improvements onf the `sanitize_text_field` function on the usage with the forms params data.
+- improvements on the `sanitize_text_field` function on the usage with the forms params data.
 
 ## [1.3.2]
 

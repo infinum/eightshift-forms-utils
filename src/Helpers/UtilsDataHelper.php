@@ -66,6 +66,6 @@ final class UtilsDataHelper
 	public static function getDataManifestPath(string $type, string $file = 'manifest.json'): string
 	{
 		$sep = \DIRECTORY_SEPARATOR;
-		return Components::getProjectPaths('srcPath') . "vendor/infinum/eightshift-forms-utils/{$sep}data{$sep}{$type}{$sep}{$file}";
+		return Components::getProjectPaths('srcPath') . "vendor-prefixed/infinum/eightshift-forms-utils/{$sep}Data{$sep}{$type}{$sep}{$file}";
 	}
 }

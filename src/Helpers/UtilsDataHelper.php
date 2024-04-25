@@ -18,6 +18,13 @@ use EightshiftLibs\Helpers\Components;
 final class UtilsDataHelper
 {
 	/**
+	 * Manifest file path getter for better loading time.
+	 *
+	 * @var array<mixed>
+	 */
+	private static $esFormsUtilsDataManifests = [];
+
+	/**
 	 * Return files from data folder.
 	 *
 	 * @param string $type Folder name.
@@ -27,10 +34,16 @@ final class UtilsDataHelper
 	 */
 	public static function getDataManifest(string $type, string $file = 'manifest.json'): array
 	{
+		if (isset(self::$esFormsUtilsDataManifests[$type]) && !empty(self::$esFormsUtilsDataManifests[$type])) {
+			return self::$esFormsUtilsDataManifests[$type];
+		}
+
 		$path = self::getDataManifestRaw($type, $file);
 
 		if ($path) {
-			return \json_decode($path, true);
+			self::$esFormsUtilsDataManifests[$type] = \json_decode($path, true);
+
+			return self::$esFormsUtilsDataManifests[$type];
 		}
 
 		return [];

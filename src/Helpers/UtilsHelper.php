@@ -18,16 +18,29 @@ use EightshiftLibs\Helpers\Components;
 class UtilsHelper
 {
 	/**
+	 * Manifest file path getter for better loading time.
+	 *
+	 * @var array<mixed>
+	 */
+	private static $esFormsUtilsManifest = [];
+
+	/**
 	 * Return main manifest.json file.
 	 *
 	 * @return array<mixed>
 	 */
 	public static function getUtilsManifest(): array
 	{
+		if (!empty(self::$esFormsUtilsManifest)) {
+			return self::$esFormsUtilsManifest;
+		}
+
 		$sep = \DIRECTORY_SEPARATOR;
 		$filePath = \dirname(__FILE__, 2) . "{$sep}manifest.json";
 
-		return \json_decode(\implode(' ', (array)\file($filePath)), true);
+		self::$esFormsUtilsManifest = \json_decode(\implode(' ', (array)\file($filePath)), true);
+
+		return self::$esFormsUtilsManifest;
 	}
 
 	/**

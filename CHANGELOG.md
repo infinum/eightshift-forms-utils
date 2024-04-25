@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [1.3.6]
+
+### Changed
+- `getUtilsManifest` and `getDataManifest` helpers will now get the manifest from memory for better performance.
+
 ## [1.3.5]
 
 ### Fixed
@@ -136,6 +141,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[1.3.6]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.5...1.3.6
 [1.3.5]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.4...1.3.5
 [1.3.4]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.3...1.3.4
 [1.3.3]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.2...1.3.3

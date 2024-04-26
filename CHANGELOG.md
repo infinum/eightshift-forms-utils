@@ -9,6 +9,9 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ### Changed
 - `getUtilsManifest` and `getDataManifest` helpers will now get the manifest from memory for better performance.
 
+### Removed
+- `getDataManifestRaw` function as it's not used anymore.
+
 ## [1.3.5]
 
 ### Fixed

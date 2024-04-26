@@ -38,34 +38,21 @@ final class UtilsDataHelper
 			return self::$esFormsUtilsDataManifests[$type];
 		}
 
-		$path = self::getDataManifestRaw($type, $file);
+		$filePath = self::getDataManifestPath($type, $file);
 
-		if ($path) {
-			self::$esFormsUtilsDataManifests[$type] = \json_decode($path, true);
-
-			return self::$esFormsUtilsDataManifests[$type];
+		if (!\file_exists($filePath)) {
+			return [];
 		}
 
-		return [];
-	}
+		$file = \file_get_contents($filePath); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
-	/**
-	 * Return files from data folder in raw format.
-	 *
-	 * @param string $type Folder name.
-	 * @param string $file File name with ext.
-	 *
-	 * @return string
-	 */
-	public static function getDataManifestRaw(string $type, string $file = 'manifest.json'): string
-	{
-		$path = self::getDataManifestPath($type, $file);
-
-		if (\file_exists($path)) {
-			return \file_get_contents($path); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		if (!$file) {
+			return [];
 		}
 
-		return '';
+		self::$esFormsUtilsDataManifests[$type] = \json_decode($file, true);
+
+		return self::$esFormsUtilsDataManifests[$type];
 	}
 
 	/**

@@ -38,7 +38,13 @@ class UtilsHelper
 		$sep = \DIRECTORY_SEPARATOR;
 		$filePath = \dirname(__FILE__, 2) . "{$sep}manifest.json";
 
-		self::$esFormsUtilsManifest = \json_decode(\implode(' ', (array)\file($filePath)), true);
+		$file = \file_get_contents($filePath); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+
+		if (!$file) {
+			return [];
+		}
+
+		self::$esFormsUtilsManifest = \json_decode($file, true);
 
 		return self::$esFormsUtilsManifest;
 	}

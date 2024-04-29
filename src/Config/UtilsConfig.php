@@ -180,11 +180,11 @@ class UtilsConfig
 	// ------------------------------------------------------------------
 
 	/**
-	 * Main plugin manifest item hook name.
+	 * Main plugin manifest cache name.
 	 *
 	 * @var string
 	 */
-	public const MAIN_PLUGIN_MANIFEST_ITEM_HOOK_NAME = 'es-forms-manifest-item';
+	public const MAIN_PLUGIN_MANIFEST_CACHE_NAME = 'es_forms';
 
 	// ------------------------------------------------------------------
 	// DEVELOPER

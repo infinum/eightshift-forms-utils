@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
+use EightshiftLibs\Helpers\Helpers;
 
 /**
  * Class UtilsHooksHelper
@@ -78,7 +79,7 @@ final class UtilsHooksHelper
 		// List of all keys provided for the filter name.
 		$names = \array_map(
 			function ($item) {
-				return UtilsGeneralHelper::kebabToSnakeCase(UtilsGeneralHelper::camelToSnakeCase($item));
+				return Helpers::kebabToSnakeCase(Helpers::camelToSnakeCase($item));
 			},
 			$names
 		);
@@ -113,10 +114,10 @@ final class UtilsHooksHelper
 
 		foreach ($data as $key => $value) {
 			if (\is_array($value)) {
-				$nestedKeys = self::getHooksList($value, $prefix . UtilsGeneralHelper::kebabToSnakeCase(UtilsGeneralHelper::camelToSnakeCase($key)) . '_', $filterPrefix);
+				$nestedKeys = self::getHooksList($value, $prefix . Helpers::kebabToSnakeCase(Helpers::camelToSnakeCase($key)) . '_', $filterPrefix);
 				$output = \array_merge($output, $nestedKeys);
 			} else {
-				$output[] = $filterPrefix . '_' . $prefix . UtilsGeneralHelper::kebabToSnakeCase(UtilsGeneralHelper::camelToSnakeCase($value));
+				$output[] = $filterPrefix . '_' . $prefix . Helpers::kebabToSnakeCase(Helpers::camelToSnakeCase($value));
 			}
 		}
 

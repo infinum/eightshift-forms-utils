@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [2.0.0]
+
+### Updated
+- `Eightshift-forms-utils` to the latest version `2.0.0`.
+- `@infinum/eightshift-libs` to the latest version `8.0.0`.
+
+### Removed
+- `MAIN_PLUGIN_MANIFEST_ITEM_HOOK_NAME` constant.
+- `getDataManifest`, `getDataManifestRaw`, `getProjectVersion`, `getCountrySelectList` functions.
+- `src/Manifest/UtilsManifest.php` class.
+
+### Changed
+- `getDataManifestPath` helper now supports only `$path` param.
+- `camelToSnakeCase`, `kebabToSnakeCase`, `recursiveFind`, `getCurrentUrl`, `cleanPageUrl` are now used from the `@infinum/eightshift-libs` package.
+
 ## [1.3.5]
 
 ### Fixed
@@ -136,6 +151,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[2.0.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.5...2.0.0
 [1.3.5]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.4...1.3.5
 [1.3.4]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.3...1.3.4
 [1.3.3]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.2...1.3.3

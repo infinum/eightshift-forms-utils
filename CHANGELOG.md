@@ -7,8 +7,8 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ## [2.0.0]
 
 ### Updated
-- `Eightshift-forms-utils` to the latest version `2.0.0`.
-- `@infinum/eightshift-libs` to the latest version `8.0.0`.
+- `eightshift-forms-utils` to version `2.0.0`.
+- `@infinum/eightshift-libs` to version `8.0.0`.
 
 ### Removed
 - `MAIN_PLUGIN_MANIFEST_ITEM_HOOK_NAME` constant.

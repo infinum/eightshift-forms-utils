@@ -18,6 +18,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ### Changed
 - `getDataManifestPath` helper now supports only `$path` param.
 - `camelToSnakeCase`, `kebabToSnakeCase`, `recursiveFind`, `getCurrentUrl`, `cleanPageUrl` are now used from the `@infinum/eightshift-libs` package.
+- Minimum PHP version is now `8.2`.
 
 ## [1.3.5]
 

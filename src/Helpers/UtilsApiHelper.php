@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
-use EightshiftLibs\Helpers\Components;
+use EightshiftLibs\Helpers\Helpers;
 
 /**
  * UtilsApiHelper class.
@@ -61,7 +61,7 @@ final class UtilsApiHelper
 				$code = $response['response']['code'] ?? UtilsConfig::API_RESPONSE_CODE_SUCCESS;
 				$body = $response['body'] ?? '';
 
-				if (Components::isJson($body)) {
+				if (Helpers::isJson($body)) {
 					$body = \json_decode($body, true) ?? [];
 				}
 			}

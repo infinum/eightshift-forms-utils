@@ -11,33 +11,13 @@ declare(strict_types=1);
 namespace EightshiftFormsUtils\Helpers;
 
 use EightshiftFormsUtils\Config\UtilsConfig;
-use EightshiftLibs\Helpers\Components;
-use RecursiveArrayIterator;
-use RecursiveIteratorIterator;
+use EightshiftLibs\Helpers\Helpers;
 
 /**
  * UtilsGeneralHelper class.
  */
 final class UtilsGeneralHelper
 {
-	/**
-	 * Method that returns project version.
-	 *
-	 * Generally used for versioning asset handlers while enqueueing them.
-	 *
-	 * @return string
-	 */
-	public static function getProjectVersion(): string
-	{
-		if (!\function_exists('get_plugin_data')) {
-			require_once(\ABSPATH . 'wp-admin/includes/plugin.php');
-		}
-
-		$details = \get_plugin_data(Components::getProjectPaths('cliOutput') . \DIRECTORY_SEPARATOR . UtilsConfig::MAIN_PLUGIN_FILE_NAME);
-
-		return isset($details['Version']) ? (string) $details['Version'] : '1.0.0';
-	}
-
 	/**
 	 * Method that returns listing page url.
 	 *
@@ -242,32 +222,8 @@ final class UtilsGeneralHelper
 		return [
 			'namespace' => $block[0] ?? '',
 			'name' => $blockName,
-			'nameAttr' => Components::kebabToCamelCase($blockName),
+			'nameAttr' => Helpers::kebabToCamelCase($blockName),
 		];
-	}
-
-	/**
-	 * Convert camel to snake case
-	 *
-	 * @param string $input Name to change.
-	 *
-	 * @return string
-	 */
-	public static function camelToSnakeCase($input): string
-	{
-		return \strtolower((string) \preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
-	}
-
-	/**
-	 * Convert string from kebab to snake case.
-	 *
-	 * @param string $stringToConvert String to convert.
-	 *
-	 * @return string
-	 */
-	public static function kebabToSnakeCase(string $stringToConvert): string
-	{
-		return \str_replace('-', '_', $stringToConvert);
 	}
 
 	/**
@@ -431,7 +387,7 @@ final class UtilsGeneralHelper
 		foreach ($output[UtilsConfig::FD_FIELDS_ONLY] as $item) {
 			$blockItemName = self::getBlockNameDetails($item['blockName'])['nameAttr'];
 
-			$value = $item['attrs'][Components::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
+			$value = $item['attrs'][Helpers::kebabToCamelCase("{$blockItemName}-{$blockItemName}-Name")] ?? '';
 
 			if (!$value) {
 				continue;
@@ -482,8 +438,8 @@ final class UtilsGeneralHelper
 				$name = $blockName['name'];
 
 				if ($name === 'step') {
-					$stepCurrent = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
-					$stepLabel = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
+					$stepCurrent = $block['attrs'][Helpers::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+					$stepLabel = $block['attrs'][Helpers::kebabToCamelCase("{$name}-{$name}Label")] ?? '';
 
 					if (!$stepLabel) {
 						$stepLabel = $stepCurrent;
@@ -500,7 +456,7 @@ final class UtilsGeneralHelper
 					continue;
 				}
 
-				$itemName = $block['attrs'][Components::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
+				$itemName = $block['attrs'][Helpers::kebabToCamelCase("{$name}-{$name}Name")] ?? '';
 				if (!$itemName) {
 					continue;
 				}
@@ -622,16 +578,6 @@ final class UtilsGeneralHelper
 	}
 
 	/**
-	 * Return counries filtered by some key for multiple usages.
-	 *
-	 * @return array<int, array<int, string>>
-	 */
-	public static function getCountrySelectList(): array
-	{
-		return UtilsDataHelper::getDataManifest('country');
-	}
-
-	/**
 	 * Output additional content from filter by block.
 	 * Limited to front page only.
 	 *
@@ -657,29 +603,6 @@ final class UtilsGeneralHelper
 		}
 
 		return '';
-	}
-
-	/**
-	 * Find array value by key in recursive array.
-	 *
-	 * @param array<mixed> $array Array to find.
-	 * @param string $needle Key name to find.
-	 *
-	 * @return array<int, string>
-	 */
-	public static function recursiveFind(array $array, string $needle): array
-	{
-		$iterator  = new RecursiveArrayIterator($array);
-		$recursive = new RecursiveIteratorIterator($iterator, RecursiveIteratorIterator::SELF_FIRST);
-		$aHitList = [];
-
-		foreach ($recursive as $key => $value) {
-			if ($key === $needle) {
-				\array_push($aHitList, $value);
-			}
-		}
-
-		return $aHitList;
 	}
 
 	/**
@@ -739,20 +662,6 @@ final class UtilsGeneralHelper
 	}
 
 	/**
-	 * Get current url with params.
-	 *
-	 * @return string
-	 */
-	public static function getCurrentUrl(): string
-	{
-		$port = isset($_SERVER['HTTPS']) ? \sanitize_text_field(\wp_unslash($_SERVER['HTTPS'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$host = isset($_SERVER['HTTP_HOST']) ? \sanitize_text_field(\wp_unslash($_SERVER['HTTP_HOST'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$request = isset($_SERVER['REQUEST_URI']) ? \sanitize_text_field(\wp_unslash($_SERVER['REQUEST_URI'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
-		return ($port ? "https" : "http") . "://{$host}{$request}";
-	}
-
-	/**
 	 * Remove unecesery custom params.
 	 *
 	 * @param array<string, mixed> $params Params to check.
@@ -762,7 +671,7 @@ final class UtilsGeneralHelper
 	 */
 	public static function removeUneceseryParamFields(array $params, array $additional = []): array
 	{
-		$customFields = \array_flip(Components::flattenArray(UtilsHelper::getStateParams()));
+		$customFields = \array_flip(Helpers::flattenArray(UtilsHelper::getStateParams()));
 		$additional = \array_flip($additional);
 
 		return \array_filter(
@@ -791,18 +700,6 @@ final class UtilsGeneralHelper
 	public static function canIntegrationUseSync(string $integrationName): bool
 	{
 		return isset(\apply_filters(UtilsConfig::FILTER_SETTINGS_DATA, [])[$integrationName]['fields']);
-	}
-
-	/**
-	 * Clean url from query params.
-	 *
-	 * @param string $url Url to clean.
-	 *
-	 * @return string
-	 */
-	public static function cleanPageUrl(string $url): string
-	{
-		return \preg_replace('/\\?.*/', '', $url);
 	}
 
 	/**

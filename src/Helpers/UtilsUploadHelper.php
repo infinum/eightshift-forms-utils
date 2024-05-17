@@ -100,7 +100,7 @@ final class UtilsUploadHelper
 		}
 
 		if (!\is_dir($folderPath)) {
-			$newFolder = \mkdir($folderPath);
+			$newFolder = \mkdir($folderPath); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
 
 			if (!$newFolder) {
 				return \array_merge(
@@ -173,7 +173,7 @@ final class UtilsUploadHelper
 
 			foreach ($items as $file) {
 				if (\file_exists($file['path'])) {
-					\unlink($file['path']);
+					\unlink($file['path']); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPress.WP.AlternativeFunctions.unlink_unlink
 				}
 			}
 		}
@@ -210,7 +210,7 @@ final class UtilsUploadHelper
 			}
 
 			// Remove old files.
-			\unlink($file);
+			\unlink($file); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPress.WP.AlternativeFunctions.unlink_unlink
 		}
 	}
 

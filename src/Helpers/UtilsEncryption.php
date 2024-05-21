@@ -25,9 +25,13 @@ class UtilsEncryption
 	 */
 	public static function encryptor(string $value, string $action = 'encrypt')
 	{
+		$filterNameSecretKey = UtilsHooksHelper::getFilterName(['encryption', 'secretKey']);
+		$secretKey = \apply_filters($filterNameSecretKey, \wp_salt()); // user define private key.
+
+		$filterNameSecretIv = UtilsHooksHelper::getFilterName(['encryption', 'secretIvKey']);
+		$secretIv = \apply_filters($filterNameSecretIv, \wp_salt('SECURE_AUTH_KEY')); // user define secret key.
+
 		$encryptMethod = "AES-256-CBC";
-		$secretKey = \wp_salt(); // user define private key.
-		$secretIv = \wp_salt('SECURE_AUTH_KEY'); // user define secret key.
 		$key = \hash('sha256', $secretKey);
 		$iv = \substr(\hash('sha256', $secretIv), 0, 16); // sha256 is hash_hmac_algo.
 

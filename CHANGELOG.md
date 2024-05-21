@@ -20,6 +20,11 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 - `camelToSnakeCase`, `kebabToSnakeCase`, `recursiveFind`, `getCurrentUrl`, `cleanPageUrl` are now used from the `@infinum/eightshift-libs` package.
 - Minimum PHP version is now `8.2`.
 
+## [1.3.6]
+
+### Fixed
+- Encrypted data now supports filters to provide custom keys.
+
 ## [1.3.5]
 
 ### Fixed
@@ -152,7 +157,8 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
-[2.0.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.5...2.0.0
+[2.0.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.6...2.0.0
+[1.3.6]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.5...1.3.6
 [1.3.5]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.4...1.3.5
 [1.3.4]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.3...1.3.4
 [1.3.3]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.2...1.3.3

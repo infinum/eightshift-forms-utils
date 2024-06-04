@@ -104,9 +104,11 @@ final class UtilsSettingsOutputHelper
 	/**
 	 * Settings output misc disclaimer.
 	 *
+	 * @param string $type Type of disclaimer.
+	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getMiscDisclaimer(): array
+	public static function getMiscDisclaimer(string $type = ''): array
 	{
 		return [
 			'component' => 'layout',
@@ -115,7 +117,7 @@ final class UtilsSettingsOutputHelper
 				[
 					'component' => 'intro',
 					'introTitle' => \__('Disclaimer', 'eightshift-forms'),
-					'introSubtitle' => \__("Eightshift Forms doesn't configure the Wpml app or any other third-party tools. However, enabling this feature adds necessary configurations in the backend for everything to function correctly.", 'eightshift-forms'),
+					'introSubtitle' => \sprintf(\__("Eightshift Forms doesn't configure the %s app or any other third-party tools. However, enabling this feature adds necessary configurations in the backend for everything to function correctly.", 'eightshift-forms'), esc_html($type)),
 				],
 			],
 		];

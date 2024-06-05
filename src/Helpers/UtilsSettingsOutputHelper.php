@@ -117,7 +117,8 @@ final class UtilsSettingsOutputHelper
 				[
 					'component' => 'intro',
 					'introTitle' => \__('Disclaimer', 'eightshift-forms'),
-					'introSubtitle' => \sprintf(\__("Eightshift Forms doesn't configure the %s or any other third-party tools. However, enabling this feature adds necessary configurations in the backend for everything to function correctly.", 'eightshift-forms'), esc_html($type)),
+					// translators: %s will be replaced with the type of disclaimer.
+					'introSubtitle' => \sprintf(\__("Eightshift Forms doesn't configure the %s or any other third-party tools. However, enabling this feature adds necessary configurations in the backend for everything to function correctly.", 'eightshift-forms'), \esc_html($type)),
 				],
 			],
 		];

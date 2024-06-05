@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "475ccaf428f96c3cce3f7ada5f094f0e",
+    "content-hash": "f2201a3e387866a1ab3fee3c127049d5",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "dev-develop",
+            "version": "8.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "249a574558abafb9a98d4935577bbe5687ef4eca"
+                "reference": "034ed7734ea488ddae6c77f1ee726e8cd6b00e90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/249a574558abafb9a98d4935577bbe5687ef4eca",
-                "reference": "249a574558abafb9a98d4935577bbe5687ef4eca",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/034ed7734ea488ddae6c77f1ee726e8cd6b00e90",
+                "reference": "034ed7734ea488ddae6c77f1ee726e8cd6b00e90",
                 "shasum": ""
             },
             "require": {
@@ -26,19 +26,18 @@
                 "ext-libxml": "*",
                 "php": ">=8.2",
                 "php-di/invoker": "^2.3.4",
-                "php-di/php-di": "^7"
+                "php-di/php-di": "^7.0.6"
             },
             "require-dev": {
-                "captainhook/captainhook": "^5.10",
-                "dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
-                "infinum/eightshift-coding-standards": "2.0.0-beta",
-                "php-parallel-lint/php-parallel-lint": "^1.3",
-                "php-stubs/wordpress-stubs": "^6.3",
+                "captainhook/captainhook": "^5.23.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "v1.0.0",
+                "infinum/eightshift-coding-standards": "^3.0.0",
+                "php-parallel-lint/php-parallel-lint": "^v1.4.0",
+                "php-stubs/wordpress-stubs": "^v6.5.3",
                 "roave/security-advisories": "dev-master",
-                "szepeviktor/phpstan-wordpress": "^1.3",
-                "wp-cli/wp-cli": "^2.9"
+                "szepeviktor/phpstan-wordpress": "^v1.3.4",
+                "wp-cli/wp-cli": "^v2.10.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -71,7 +70,7 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2024-05-17T08:39:27+00:00"
+            "time": "2024-06-05T08:00:15+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -396,16 +395,16 @@
         },
         {
             "name": "infinum/eightshift-coding-standards",
-            "version": "2.0.0-beta",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-coding-standards.git",
-                "reference": "57719e1c758e48129b5fd03a88859b7f4afa2dd9"
+                "reference": "aaceba336d7effefcbf6c29a3525d2b859ab0a6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-coding-standards/zipball/57719e1c758e48129b5fd03a88859b7f4afa2dd9",
-                "reference": "57719e1c758e48129b5fd03a88859b7f4afa2dd9",
+                "url": "https://api.github.com/repos/infinum/eightshift-coding-standards/zipball/aaceba336d7effefcbf6c29a3525d2b859ab0a6f",
+                "reference": "aaceba336d7effefcbf6c29a3525d2b859ab0a6f",
                 "shasum": ""
             },
             "require": {
@@ -449,7 +448,7 @@
                 "issues": "https://github.com/infinum/eightshift-coding-standards/issues",
                 "source": "https://github.com/infinum/eightshift-coding-standards"
             },
-            "time": "2023-09-22T13:43:43+00:00"
+            "time": "2024-05-20T07:30:13+00:00"
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
@@ -843,22 +842,22 @@
         },
         {
             "name": "phpcsstandards/phpcsutils",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
-                "reference": "c457da9dabb60eb7106dd5e3c05132b1a6539c6a"
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/c457da9dabb60eb7106dd5e3c05132b1a6539c6a",
-                "reference": "c457da9dabb60eb7106dd5e3c05132b1a6539c6a",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/87b233b00daf83fb70f40c9a28692be017ea7c6c",
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
                 "php": ">=5.4",
-                "squizlabs/php_codesniffer": "^3.9.0 || 4.0.x-dev@dev"
+                "squizlabs/php_codesniffer": "^3.10.0 || 4.0.x-dev@dev"
             },
             "require-dev": {
                 "ext-filter": "*",
@@ -927,20 +926,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-04-24T11:47:18+00:00"
+            "time": "2024-05-20T13:34:27+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.29.0",
+            "version": "1.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc"
+                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/536889f2b340489d328f5ffb7b02bb6b183ddedc",
-                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fcaefacf2d5c417e928405b71b400d4ce10daaf4",
+                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4",
                 "shasum": ""
             },
             "require": {
@@ -972,22 +971,22 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.1"
             },
-            "time": "2024-05-06T12:04:23+00:00"
+            "time": "2024-05-31T08:52:43+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.11.1",
+            "version": "1.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "e524358f930e41a2b4cca1320e3b04fc26b39e0b"
+                "reference": "e64220a05c1209fc856d58e789c3b7a32c0bb9a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e524358f930e41a2b4cca1320e3b04fc26b39e0b",
-                "reference": "e524358f930e41a2b4cca1320e3b04fc26b39e0b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e64220a05c1209fc856d58e789c3b7a32c0bb9a5",
+                "reference": "e64220a05c1209fc856d58e789c3b7a32c0bb9a5",
                 "shasum": ""
             },
             "require": {
@@ -1032,7 +1031,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-15T08:00:59+00:00"
+            "time": "2024-05-31T13:53:37+00:00"
         },
         {
             "name": "slevomat/coding-standard",
@@ -1101,16 +1100,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.9.2",
+            "version": "3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "aac1f6f347a5c5ac6bc98ad395007df00990f480"
+                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/aac1f6f347a5c5ac6bc98ad395007df00990f480",
-                "reference": "aac1f6f347a5c5ac6bc98ad395007df00990f480",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/8f90f7a53ce271935282967f53d0894f8f1ff877",
+                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877",
                 "shasum": ""
             },
             "require": {
@@ -1177,7 +1176,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-04-23T20:25:34+00:00"
+            "time": "2024-05-22T21:24:41+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -1386,9 +1385,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "infinum/eightshift-libs": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

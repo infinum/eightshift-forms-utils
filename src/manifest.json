@@ -215,7 +215,7 @@
 			"fieldTypeCustom": "data-type-custom",
 			"fieldUncheckedValue": "data-unchecked-value",
 
-			"formData": "data-form-data",
+			"formSecureData": "data-form-data",
 			"trackingEventName": "data-tracking-event-name",
 			"trackingAdditionalData": "data-tracking-additional-data",
 			"tracking": "data-tracking",

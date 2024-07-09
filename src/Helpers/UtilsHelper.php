@@ -123,14 +123,24 @@ class UtilsHelper
 	}
 
 	/**
+	 * Return successRedirectUrlKeys enum values.
+	 *
+	 * @return array<string>
+	 */
+	public static function getStateSuccessRedirectUrlKeys(): array
+	{
+		return self::getUtilsManifest()['enums']['successRedirectUrlKeys'] ?? [];
+	}
+
+	/**
 	 * Return successRedirectUrlKeys enum value by name.
 	 *
 	 * @param string $name Name of the enum.
 	 *
 	 * @return string
 	 */
-	public static function getStateSuccessRedirectUrlKeys(string $name): string
+	public static function getStateSuccessRedirectUrlKey(string $name): string
 	{
-		return self::getUtilsManifest()['enums']['successRedirectUrlKeys'][$name] ?? '';
+		return self::getStateSuccessRedirectUrlKeys()[$name] ?? '';
 	}
 }

@@ -135,32 +135,6 @@ final class UtilsApiHelper
 	}
 
 	/**
-	 * Get api public output additional data used on both integrations and none integrations.
-	 *
-	 * @param array<string, mixed> $formDetails Data passed from the `getFormDetailsApi` function.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public static function getApiPublicAdditionalDataOutput(array $formDetails): array
-	{
-		$output = [];
-
-		if (isset($formDetails[UtilsConfig::FD_SUCCESS_REDIRECT_URL]) && $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT_URL]) {
-			$output[UtilsHelper::getStateResponseOutputKey('successRedirectUrl')] = $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT_URL];
-		}
-
-		if (isset($formDetails[UtilsConfig::FD_SUCCESS_REDIRECT_DATA]) && $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT_DATA]) {
-			$output[UtilsHelper::getStateResponseOutputKey('successRedirectData')] = $formDetails[UtilsConfig::FD_SUCCESS_REDIRECT_DATA];
-		}
-
-		if (isset($formDetails[UtilsConfig::FD_ADDON]) && $formDetails[UtilsConfig::FD_ADDON]) {
-			$output[UtilsHelper::getStateResponseOutputKey('addon')] = $formDetails[UtilsConfig::FD_ADDON];
-		}
-
-		return $output;
-	}
-
-	/**
 	 * Return API error response array.
 	 *
 	 * @param string $msg Msg for the user.

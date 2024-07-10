@@ -274,7 +274,7 @@
 			"validation": "validation",
 			"addon": "addonData",
 			"successRedirectData": "successRedirectData",
-			"successRedirectUrl": "successRedirectData",
+			"successRedirectUrl": "successRedirectUrl",
 			"file": "file",
 			"stepType": "stepType",
 			"stepNextStep": "stepNextStep",

@@ -494,7 +494,6 @@ class UtilsConfig
 	public const FD_API_STEPS = 'apiSteps';
 	public const FD_CAPTCHA = 'captcha';
 	public const FD_STORAGE = 'storage';
-	public const FD_EMAIL_RESPONSE_TAGS = 'emailResponseTags';
 	public const FD_IS_VALID = 'isValid';
 	public const FD_IS_API_VALID = 'isApiValid';
 	public const FD_LABEL = 'label';

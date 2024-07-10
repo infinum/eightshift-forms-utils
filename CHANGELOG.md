@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [2.0.1]
+
+### Updated
+- `@infinum/eightshift-libs` to version `8.0.7`.
+
 ## [2.0.0]
 
 ### Updated
@@ -157,6 +162,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[2.0.1]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.6...2.0.0
 [1.3.6]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.5...1.3.6
 [1.3.5]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.4...1.3.5

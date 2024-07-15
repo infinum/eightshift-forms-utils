@@ -167,6 +167,7 @@
 			"resultOutput": "js-es-block-result-output",
 			"resultOutputItem": "js-es-block-result-output-item",
 			"resultOutputPart": "js-es-block-result-output-part",
+			"resultOutputShowForm": "js-es-block-result-output-show-form",
 			"inputRangeMin": "js-es-block-input-range-min",
 			"inputRangeMax": "js-es-block-input-range-max",
 			"inputRangeCurrent": "js-es-block-input-range-current"
@@ -256,12 +257,15 @@
 			"globalMsgHeadingSuccess": "data-msg-heading-success",
 			"globalMsgHeadingError": "data-msg-heading-error",
 			"globalMsgHideOnSuccess": "data-msg-hide-on-success",
+			"formHideOnSuccess": "data-form-hide-on-success",
 			"hideCaptchaBadge": "data-hide-captcha-badge",
 			"reload": "data-reload",
 			"hubspotTypeId": "data-hubspot-type-id",
 
 			"resultOutputItemKey": "data-result-output-item-key",
 			"resultOutputItemValue": "data-result-output-item-value",
+			"resultOutputItemValueEnd": "data-result-output-item-value-end",
+			"resultOutputItemOperator": "data-result-output-item-operator",
 			"resultOutputPart": "data-result-output-part",
 			"resultOutputPartDefault": "data-result-output-part-default",
 

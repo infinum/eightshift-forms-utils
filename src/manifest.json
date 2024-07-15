@@ -256,6 +256,7 @@
 			"globalMsgHeadingSuccess": "data-msg-heading-success",
 			"globalMsgHeadingError": "data-msg-heading-error",
 			"globalMsgHideOnSuccess": "data-msg-hide-on-success",
+			"formHideOnSuccess": "data-form-hide-on-success",
 			"hideCaptchaBadge": "data-hide-captcha-badge",
 			"reload": "data-reload",
 			"hubspotTypeId": "data-hubspot-type-id",

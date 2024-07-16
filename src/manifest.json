@@ -288,7 +288,8 @@
 			"resultOutputParts": "resultOutputParts",
 			"trackingEventName": "trackingEventName",
 			"trackingAdditionalData": "trackingAdditionalData",
-			"hideGlobalMsgOnSuccess": "hideGlobalMsgOnSuccess"
+			"hideGlobalMsgOnSuccess": "hideGlobalMsgOnSuccess",
+			"hideFormOnSuccess": "hideFormOnSuccess"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

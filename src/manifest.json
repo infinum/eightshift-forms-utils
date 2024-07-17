@@ -293,6 +293,7 @@
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",
+			"entry": "es-entry",
 			"downloads": "es-downloads",
 			"data": "es-data"
 		}

@@ -288,7 +288,8 @@
 			"hideGlobalMsgOnSuccess": "hideGlobalMsgOnSuccess",
 			"hideFormOnSuccess": "hideFormOnSuccess",
 			"variation": "variation",
-			"entry": "entry"
+			"entry": "entry",
+			"formId": "formId"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

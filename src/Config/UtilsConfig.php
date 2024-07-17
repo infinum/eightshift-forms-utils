@@ -504,9 +504,6 @@ class UtilsConfig
 	public const FD_FIELD_NAMES_FULL = 'fieldNamesFull';
 	public const FD_STEPS_SETUP = 'stepsSetup';
 	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
-	public const FD_ADDON = 'addon';
-	public const FD_SUCCESS_REDIRECT_URL = 'successRedirectUrl';
-	public const FD_ENTRY_ID = 'entryId';
 
 	// ------------------------------------------------------------------
 	// Integration API response details data Keys

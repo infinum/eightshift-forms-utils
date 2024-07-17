@@ -287,7 +287,8 @@
 			"trackingAdditionalData": "trackingAdditionalData",
 			"hideGlobalMsgOnSuccess": "hideGlobalMsgOnSuccess",
 			"hideFormOnSuccess": "hideFormOnSuccess",
-			"variation": "variation"
+			"variation": "variation",
+			"entry": "entry"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

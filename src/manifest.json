@@ -277,19 +277,17 @@
 		"responseOutputKeys": {
 			"validation": "validation",
 			"addon": "addonData",
-			"successRedirectData": "successRedirectData",
 			"successRedirectUrl": "successRedirectUrl",
 			"file": "file",
 			"stepType": "stepType",
 			"stepNextStep": "stepNextStep",
 			"stepProgressBarItems": "stepProgressBarItems",
 			"stepIsDisableNextButton": "stepIsDisableNextButton",
-			"resultOutputItems": "resultOutputItems",
-			"resultOutputParts": "resultOutputParts",
 			"trackingEventName": "trackingEventName",
 			"trackingAdditionalData": "trackingAdditionalData",
 			"hideGlobalMsgOnSuccess": "hideGlobalMsgOnSuccess",
-			"hideFormOnSuccess": "hideFormOnSuccess"
+			"hideFormOnSuccess": "hideFormOnSuccess",
+			"variation": "variation"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

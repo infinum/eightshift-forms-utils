@@ -244,6 +244,10 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 					$output['type'] = $value['value'];
 					$output['params'][$key] = $value;
 					break;
+				case UtilsHelper::getStateParam('secureData'):
+					$output['secureData'] = $value['value'];
+					$output['params'][$key] = $value;
+					break;
 				case UtilsHelper::getStateParam('action'):
 					$output['action'] = $value['value'];
 					$output['params'][$key] = $value;
@@ -461,6 +465,9 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 		// Populare files on upload. Only populated on file upload.
 		$output[UtilsConfig::FD_FILES_UPLOAD] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
+
+		// Populare action.
+		$output[UtilsConfig::FD_SECURE_DATA] = $params['secureData'] ?? '';
 
 		// Populare action.
 		$output[UtilsConfig::FD_ACTION] = $params['action'] ?? '';

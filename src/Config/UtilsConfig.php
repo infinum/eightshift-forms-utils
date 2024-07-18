@@ -490,6 +490,7 @@ class UtilsConfig
 	public const FD_FIELDS_ONLY = 'fieldsOnly';
 	public const FD_FILES_UPLOAD = 'filesUpload';
 	public const FD_ACTION = 'action';
+	public const FD_SECURE_DATA = 'secureData';
 	public const FD_ACTION_EXTERNAL = 'actionExternal';
 	public const FD_API_STEPS = 'apiSteps';
 	public const FD_CAPTCHA = 'captcha';

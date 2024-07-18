@@ -193,7 +193,8 @@
 			"direct": "es-form-direct",
 			"itemId": "es-form-item-id",
 			"innerId": "es-form-inner-id",
-			"skippedParams": "es-form-skipped"
+			"skippedParams": "es-form-skipped",
+			"secureData": "es-form-secure-data"
 		},
 		"attrs": {
 			"formType": "data-form-type",
@@ -216,7 +217,7 @@
 			"fieldTypeCustom": "data-type-custom",
 			"fieldUncheckedValue": "data-unchecked-value",
 
-			"formSecureData": "data-form-data",
+			"formSecureData": "data-secure-data",
 			"trackingEventName": "data-tracking-event-name",
 			"trackingAdditionalData": "data-tracking-additional-data",
 			"tracking": "data-tracking",

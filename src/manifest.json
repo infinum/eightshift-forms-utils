@@ -296,7 +296,7 @@
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",
 			"entry": "es-entry",
-			"downloads": "es-downloads",
+			"customResultOutput": "es-ro",
 			"data": "es-data"
 		}
 	}

@@ -217,8 +217,25 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 		$output = [];
 
+		// These are required keys for each field
+		$reqKeys = [
+			'name' => '',
+			'value' => '',
+			'type' => '',
+			'custom' => '',
+			'typeCustom' => '',
+		];
+
+		$paramsBroken = false;
+
 		// If this route is for public form prepare all params.
 		foreach ($paramsOutput as $key => $value) {
+			// Check if all required keys are present and baiout if not.
+			if (!is_array($value) || \array_diff_key($reqKeys, $value)) {
+				$paramsBroken = true;
+				break;
+			}
+
 			switch ($key) {
 				// Used for direct import from settings.
 				case UtilsHelper::getStateParam('direct'):
@@ -321,6 +338,11 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 					break;
 			}
+		}
+
+		// Bailout if there are no params.
+		if (!$paramsBroken) {
+			return [];
 		}
 
 		return $output;
@@ -487,6 +509,9 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		// Get form storage from params.
 		$output[UtilsConfig::FD_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
 
+		// Set debug original params.
+		$output[UtilsConfig::FD_PARAMS_ORIGINAL_DEBUG] = $this->getParamsOriginalDebug($request);
+
 		return $output;
 	}
 
@@ -516,5 +541,30 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
 
 		return $output;
+	}
+
+	/**
+	 * Get params original debug.
+	 *
+	 * @param mixed $request Data got from endpoint url.
+	 *
+	 * @return string
+	 */
+	private function getParamsOriginalDebug($request): string
+	{
+		$params = $this->getRequestParams($request);
+
+		$cleanParams = [
+			'captcha' => '',
+			'storage' => '',
+		];
+
+		foreach ($cleanParams as $key => $value) {
+			if (isset($params[UtilsHelper::getStateParam($key)])) {
+				unset($params[UtilsHelper::getStateParam($key)]);
+			}
+		}
+
+		return \sanitize_text_field(\wp_json_encode($params));
 	}
 }

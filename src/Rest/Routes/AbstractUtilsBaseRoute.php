@@ -340,8 +340,8 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 			}
 		}
 
-		// Bailout if there are no params.
-		if (!$paramsBroken) {
+		// Bailout if we have any broken param.
+		if ($paramsBroken) {
 			return [];
 		}
 

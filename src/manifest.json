@@ -277,6 +277,7 @@
 		},
 		"responseOutputKeys": {
 			"validation": "validation",
+			"processExternally": "processExternally",
 			"addon": "addonData",
 			"successRedirectUrl": "successRedirectUrl",
 			"successRedirectBaseUrl": "successRedirectBaseUrl",

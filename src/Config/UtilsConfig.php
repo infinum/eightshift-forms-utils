@@ -506,7 +506,7 @@ class UtilsConfig
 	public const FD_STEPS_SETUP = 'stepsSetup';
 	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
 
-	// Never use this param as it is only of fallback purposes.
+	// Never use this parameter because it is only used for fallback purposes.
 	public const FD_PARAMS_ORIGINAL_DEBUG = 'paramsOriginalDebug';
 
 	// ------------------------------------------------------------------

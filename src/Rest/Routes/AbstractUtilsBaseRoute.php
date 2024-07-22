@@ -217,7 +217,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 		$output = [];
 
-		// These are required keys for each field.
+		// These are the required keys for each field.
 		$reqKeys = [
 			'name' => '',
 			'value' => '',
@@ -230,7 +230,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 		// If this route is for public form prepare all params.
 		foreach ($paramsOutput as $key => $value) {
-			// Check if all required keys are present and baiout if not.
+			// Check if all required keys are present and bail out if not.
 			if (!\is_array($value) || \array_diff_key($reqKeys, $value)) {
 				$paramsBroken = true;
 				break;
@@ -340,7 +340,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 			}
 		}
 
-		// Bailout if we have any broken param.
+		// Bail out if we have a broken param.
 		if ($paramsBroken) {
 			return [];
 		}
@@ -488,7 +488,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		// Populare files on upload. Only populated on file upload.
 		$output[UtilsConfig::FD_FILES_UPLOAD] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
 
-		// Populare action.
+		// Populate action.
 		$output[UtilsConfig::FD_SECURE_DATA] = $params['secureData'] ?? '';
 
 		// Populare action.

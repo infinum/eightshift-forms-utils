@@ -476,28 +476,28 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 			$output[UtilsConfig::FD_STEPS_SETUP] = $formDetails[UtilsConfig::FD_STEPS_SETUP] ?? [];
 		}
 
-		// Populare params.
+		// Populate params.
 		$output[UtilsConfig::FD_PARAMS] = $params['params'] ?? [];
 
-		// Populare params raw.
+		// Populate params raw.
 		$output[UtilsConfig::FD_PARAMS_RAW] = $params['paramsRaw'] ?? [];
 
 		// Populate files from uploaded ID.
 		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
 
-		// Populare files on upload. Only populated on file upload.
+		// Populate files on upload. Only populated on file upload.
 		$output[UtilsConfig::FD_FILES_UPLOAD] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
 
 		// Populate action.
 		$output[UtilsConfig::FD_SECURE_DATA] = $params['secureData'] ?? '';
 
-		// Populare action.
+		// Populate action.
 		$output[UtilsConfig::FD_ACTION] = $params['action'] ?? '';
 
-		// Populare action external.
+		// Populate action external.
 		$output[UtilsConfig::FD_ACTION_EXTERNAL] = $params['actionExternal'] ?? '';
 
-		// Populare step fields.
+		// Populate step fields.
 		$output[UtilsConfig::FD_API_STEPS] = $params['apiSteps'] ?? [];
 
 		// Get form captcha from params.

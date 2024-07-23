@@ -217,8 +217,25 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 		$output = [];
 
+		// These are the required keys for each field.
+		$reqKeys = [
+			'name' => '',
+			'value' => '',
+			'type' => '',
+			'custom' => '',
+			'typeCustom' => '',
+		];
+
+		$paramsBroken = false;
+
 		// If this route is for public form prepare all params.
 		foreach ($paramsOutput as $key => $value) {
+			// Check if all required keys are present and bail out if not.
+			if (!\is_array($value) || \array_diff_key($reqKeys, $value)) {
+				$paramsBroken = true;
+				break;
+			}
+
 			switch ($key) {
 				// Used for direct import from settings.
 				case UtilsHelper::getStateParam('direct'):
@@ -242,6 +259,10 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 					break;
 				case UtilsHelper::getStateParam('type'):
 					$output['type'] = $value['value'];
+					$output['params'][$key] = $value;
+					break;
+				case UtilsHelper::getStateParam('secureData'):
+					$output['secureData'] = $value['value'];
 					$output['params'][$key] = $value;
 					break;
 				case UtilsHelper::getStateParam('action'):
@@ -317,6 +338,11 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 					break;
 			}
+		}
+
+		// Bail out if we have a broken param.
+		if ($paramsBroken) {
+			return [];
 		}
 
 		return $output;
@@ -450,25 +476,28 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 			$output[UtilsConfig::FD_STEPS_SETUP] = $formDetails[UtilsConfig::FD_STEPS_SETUP] ?? [];
 		}
 
-		// Populare params.
+		// Populate params.
 		$output[UtilsConfig::FD_PARAMS] = $params['params'] ?? [];
 
-		// Populare params raw.
+		// Populate params raw.
 		$output[UtilsConfig::FD_PARAMS_RAW] = $params['paramsRaw'] ?? [];
 
 		// Populate files from uploaded ID.
 		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
 
-		// Populare files on upload. Only populated on file upload.
+		// Populate files on upload. Only populated on file upload.
 		$output[UtilsConfig::FD_FILES_UPLOAD] = $this->prepareFile($request->get_file_params(), $params['params'] ?? []);
 
-		// Populare action.
+		// Populate action.
+		$output[UtilsConfig::FD_SECURE_DATA] = $params['secureData'] ?? '';
+
+		// Populate action.
 		$output[UtilsConfig::FD_ACTION] = $params['action'] ?? '';
 
-		// Populare action external.
+		// Populate action external.
 		$output[UtilsConfig::FD_ACTION_EXTERNAL] = $params['actionExternal'] ?? '';
 
-		// Populare step fields.
+		// Populate step fields.
 		$output[UtilsConfig::FD_API_STEPS] = $params['apiSteps'] ?? [];
 
 		// Get form captcha from params.
@@ -479,6 +508,9 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 		// Get form storage from params.
 		$output[UtilsConfig::FD_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
+
+		// Set debug original params.
+		$output[UtilsConfig::FD_PARAMS_ORIGINAL_DEBUG] = $this->getParamsOriginalDebug($request);
 
 		return $output;
 	}
@@ -509,5 +541,30 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
 
 		return $output;
+	}
+
+	/**
+	 * Get params original debug.
+	 *
+	 * @param mixed $request Data got from endpoint url.
+	 *
+	 * @return string
+	 */
+	private function getParamsOriginalDebug($request): string
+	{
+		$params = $this->getRequestParams($request);
+
+		$cleanParams = [
+			'captcha' => '',
+			'storage' => '',
+		];
+
+		foreach ($cleanParams as $key => $value) {
+			if (isset($params[UtilsHelper::getStateParam($key)])) {
+				unset($params[UtilsHelper::getStateParam($key)]);
+			}
+		}
+
+		return \sanitize_text_field(\wp_json_encode($params));
 	}
 }

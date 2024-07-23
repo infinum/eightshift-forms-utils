@@ -490,11 +490,11 @@ class UtilsConfig
 	public const FD_FIELDS_ONLY = 'fieldsOnly';
 	public const FD_FILES_UPLOAD = 'filesUpload';
 	public const FD_ACTION = 'action';
+	public const FD_SECURE_DATA = 'secureData';
 	public const FD_ACTION_EXTERNAL = 'actionExternal';
 	public const FD_API_STEPS = 'apiSteps';
 	public const FD_CAPTCHA = 'captcha';
 	public const FD_STORAGE = 'storage';
-	public const FD_EMAIL_RESPONSE_TAGS = 'emailResponseTags';
 	public const FD_IS_VALID = 'isValid';
 	public const FD_IS_API_VALID = 'isApiValid';
 	public const FD_LABEL = 'label';
@@ -505,9 +505,9 @@ class UtilsConfig
 	public const FD_FIELD_NAMES_FULL = 'fieldNamesFull';
 	public const FD_STEPS_SETUP = 'stepsSetup';
 	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
-	public const FD_ADDON = 'addon';
-	public const FD_SUCCESS_REDIRECT = 'successRedirect';
-	public const FD_ENTRY_ID = 'entryId';
+
+	// Never use this parameter because it is only used for fallback purposes.
+	public const FD_PARAMS_ORIGINAL_DEBUG = 'paramsOriginalDebug';
 
 	// ------------------------------------------------------------------
 	// Integration API response details data Keys

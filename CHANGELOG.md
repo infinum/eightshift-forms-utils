@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.0.0]
+
+### Removed
+- `FD_EMAIL_RESPONSE_TAGS`, `FD_ADDON`, `FD_SUCCESS_REDIRECT`, `FD_ENTRY_ID` constants.
+- `getApiPublicAdditionalDataOutput` method.
+- `resultOutputItems`, `resultOutputParts` responseOutputKeys enums.
+- `downloads` successRedirectUrlKeys enum.
+
+### Added
+- `FD_PARAMS_ORIGINAL_DEBUG`, `FD_SECURE_DATA` constants.
+- `getStateSuccessRedirectUrlKeys` and `getStateSuccessRedirectUrlKey` methods.
+- Additional level of security check for the form data.
+- `secureData` params enum.
+- `formSecureData` attr enum.
+- `processExternally`, `processExternally`, `trackingEventName`, `trackingAdditionalData`, `hideGlobalMsgOnSuccess`, `hideFormOnSuccess`, `variation`, `entry` and `formId` responseOutputKeys enums.
+- `entry`, `customResultOutput` successRedirectUrlKeys enums.
+
 ## [2.0.2]
 
 ### Added
@@ -167,7 +184,8 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
-[2.0.1]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.1...2.0.2
+[3.0.0]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.2...3.0.0
+[2.0.2]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.6...2.0.0
 [1.3.6]: https://github.com/infinum/eightshift-forms-utils/compare/1.3.5...1.3.6

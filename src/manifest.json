@@ -248,7 +248,6 @@
 			"selectOptionIsHidden": "data-option-is-hidden",
 			"selectId": "data-id",
 			"selectValue": "data-value",
-			"selectClassNames": "data-select-class-names",
 
 			"ratingValue": "data-rating",
 

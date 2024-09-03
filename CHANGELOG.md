@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.0.2]
+
+### Added
+
+- New icon for Talentlyft integration.
+
 ## [3.0.0]
 
 ### Removed
@@ -184,6 +190,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[3.0.2]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.0...3.0.2
 [3.0.0]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.2...3.0.0
 [2.0.2]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/infinum/eightshift-forms-utils/compare/2.0.0...2.0.1

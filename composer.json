@@ -30,12 +30,12 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
 		"infinum/eightshift-coding-standards": "^3.0.0",
 		"php-parallel-lint/php-parallel-lint": "^v1.4.0",
-		"php-stubs/wordpress-stubs": "v6.6.0",
+		"php-stubs/wordpress-stubs": "v6.6.2",
 		"szepeviktor/phpstan-wordpress": "^v1.3.5"
 	},
 	"require": {
-		"php": ">=8.2",
-		"infinum/eightshift-libs": "^9.1.5"
+		"php": ">=8.3",
+		"infinum/eightshift-libs": "^9.3.0"
 	},
 	"suggest": {
 		"ext-pcov": "* || This extension is used for code coverage generation. Use either pcov, or xdebug, but not both.",
@@ -58,8 +58,8 @@
 	},
 	"scripts": {
 		"test:types": "@php ./vendor/bin/phpstan analyze",
-		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.2-",
-		"standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 8.2-",
+		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.3-",
+		"standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 8.3-",
 		"test": [
 			"@test:standards",
 			"@test:types"

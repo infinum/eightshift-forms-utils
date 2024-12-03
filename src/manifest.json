@@ -226,6 +226,7 @@
 			"cacheType": "data-cache-type",
 			"testApiType": "data-test-api-type",
 			"locationsId": "data-locations-id",
+			"locationsType": "data-locations-type",
 			"migrationType": "data-migration-type",
 			"migrationExportItems": "data-migration-export-items",
 			"successRedirect": "data-success-redirect",

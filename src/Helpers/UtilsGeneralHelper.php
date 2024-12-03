@@ -706,11 +706,21 @@ final class UtilsGeneralHelper
 	 * Return all posts where form is assigned.
 	 *
 	 * @param string $formId Form Id.
+	 * @param string $type Type of the form.
 	 *
 	 * @return array<int, mixed>
 	 */
-	public static function getBlockLocations(string $formId): array
+	public static function getBlockLocations(string $formId, string $type): array
 	{
+		switch ($type) {
+			case UtilsConfig::SLUG_RESULT_POST_TYPE:
+				$outputString = "%\"resultOutputPostId\":\"{$formId}\"%";
+				break;
+			default:
+				$outputString = "%\"formsFormPostId\":\"{$formId}\"%";
+				break;
+		}
+
 		global $wpdb;
 
 		$items = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -721,7 +731,7 @@ final class UtilsGeneralHelper
 				 LIKE %s
 				 AND (post_status='publish' OR post_status='draft')
 				",
-				"%\"formsFormPostId\":\"{$formId}\"%"
+				$outputString
 			)
 		);
 

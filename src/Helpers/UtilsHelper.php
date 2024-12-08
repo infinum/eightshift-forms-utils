@@ -4,19 +4,23 @@
  * Class that holds all utils helpers.
  *
  * @package EightshiftFormsUtils\Helpers
+ *
+ * @license MIT
+ * Modified by Eightshift team on 08-December-2024 using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 declare(strict_types=1);
 
-namespace EightshiftFormsUtils\Helpers;
+namespace EightshiftFormsVendor\EightshiftFormsUtils\Helpers;
 
-use EightshiftLibs\Helpers\Helpers;
+use EightshiftFormsVendor\EightshiftLibs\Helpers\Helpers;
 
 /**
  * UtilsHelper class.
  */
 class UtilsHelper
 {
+	public static array $utilsManifest = [];
 	/**
 	 * Return main manifest.json file.
 	 *
@@ -24,10 +28,16 @@ class UtilsHelper
 	 */
 	public static function getUtilsManifest(): array
 	{
+		if (!empty(static::$utilsManifest)) {
+			return static::$utilsManifest;
+		}
+
 		$sep = \DIRECTORY_SEPARATOR;
 		$filePath = \dirname(__FILE__, 2) . "{$sep}manifest.json";
 
-		return \json_decode(\implode(' ', (array)\file($filePath)), true);
+		static::$utilsManifest = \json_decode(\implode(' ', (array)\file($filePath)), true);
+		
+		return static::$utilsManifest;
 	}
 
 	/**

@@ -24,7 +24,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperDebuggingActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_DEBUGGING_KEY) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_DEBUGGING_KEY);
 	}
 
 	/**
@@ -34,7 +34,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperSkipFormValidationActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_VALIDATION_KEY) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_SKIP_VALIDATION_KEY);
 	}
 
 	/**
@@ -44,7 +44,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperSkipFormResetActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_RESET_KEY) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_SKIP_RESET_KEY);
 	}
 
 	/**
@@ -54,7 +54,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperSkipCaptchaActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_CAPTCHA_KEY) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_SKIP_CAPTCHA_KEY);
 	}
 
 	/**
@@ -64,7 +64,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperSkipFormsSyncActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_FORMS_SYNC_KEY) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_SKIP_FORMS_SYNC_KEY);
 	}
 
 	/**
@@ -74,7 +74,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperSkipCacheActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_SKIP_CACHE_KEY) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_SKIP_CACHE_KEY);
 	}
 
 	/**
@@ -84,7 +84,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperModeActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_DEVELOPER_MODE_KEY) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_DEVELOPER_MODE_KEY);
 	}
 
 	/**
@@ -94,7 +94,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperQMLogActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_QM_LOG) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_QM_LOG);
 	}
 
 	/**
@@ -104,7 +104,7 @@ final class UtilsDeveloperHelper
 	 */
 	public static function isDeveloperForceDisabledFieldsActive(): bool
 	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, UtilsConfig::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS) ?? false;
+		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS);
 	}
 
 	/**

@@ -176,6 +176,7 @@
 		},
 		"params": {
 			"formId": "es-form-form-id",
+			"formHash": "es-form-form-hash",
 			"postId": "es-form-post-id",
 			"type": "es-form-type",
 			"name": "es-form-field-name",

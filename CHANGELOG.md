@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.0.11]
+
+### Added
+
+- New `attr` enum `formHash`.
+
 ## [3.0.10]
 
 ### Fixed
@@ -272,6 +278,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[3.0.11]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.10...3.0.11
 [3.0.10]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.9...3.0.10
 [3.0.9]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.8...3.0.9
 [3.0.8]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.7...3.0.8

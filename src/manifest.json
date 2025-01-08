@@ -202,7 +202,7 @@
 			"formType": "data-form-type",
 			"formCustomName": "data-form-custom-name",
 			"formId": "data-form-id",
-			"formHash": "data-form-hash",
+			"formFid": "data-form-fid",
 			"formGeolocation": "data-form-geolocation",
 
 			"bulkId": "data-bulk-id",

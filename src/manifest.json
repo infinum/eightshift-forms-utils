@@ -176,7 +176,6 @@
 		},
 		"params": {
 			"formId": "es-form-form-id",
-			"formHash": "es-form-form-hash",
 			"postId": "es-form-post-id",
 			"type": "es-form-type",
 			"name": "es-form-field-name",
@@ -203,6 +202,7 @@
 			"formType": "data-form-type",
 			"formCustomName": "data-form-custom-name",
 			"formId": "data-form-id",
+			"formHash": "data-form-hash",
 			"formGeolocation": "data-form-geolocation",
 
 			"bulkId": "data-bulk-id",

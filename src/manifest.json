@@ -297,7 +297,8 @@
 			"hideFormOnSuccess": "hideFormOnSuccess",
 			"variation": "variation",
 			"entry": "entry",
-			"formId": "formId"
+			"formId": "formId",
+			"geoId": "geoId"
 		},
 		"successRedirectUrlKeys": {
 			"variation": "es-variation",

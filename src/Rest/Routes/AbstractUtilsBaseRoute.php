@@ -510,7 +510,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		$output[UtilsConfig::FD_STORAGE] = \json_decode($params['storage'] ?? '', true) ?? [];
 
 		// Set debug original params.
-		$output[UtilsConfig::FD_PARAMS_ORIGINAL] = sanitize_text_field($request);
+		$output[UtilsConfig::FD_PARAMS_ORIGINAL] = $this->getParamsOriginal($request);
 
 		return $output;
 	}
@@ -541,5 +541,17 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
 
 		return $output;
+	}
+
+	/**
+	 * Get params original.
+	 *
+	 * @param mixed $request Data got from endpoint url.
+	 *
+	 * @return string
+	 */
+	private function getParamsOriginal($request): string
+	{
+		return \sanitize_text_field(\wp_json_encode($this->getRequestParams($request)));
 	}
 }

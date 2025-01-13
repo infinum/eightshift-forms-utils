@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.0.15]
+
+### Changed
+
+- `FD_PARAMS_ORIGINAL_DEBUG` to `FD_PARAMS_ORIGINAL`;
+
 ## [3.0.14]
 
 ### Added
@@ -296,6 +302,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[3.0.15]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.14...3.0.15
 [3.0.14]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.13...3.0.14
 [3.0.13]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.12...3.0.13
 [3.0.12]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.11...3.0.12

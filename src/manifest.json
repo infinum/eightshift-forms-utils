@@ -125,6 +125,7 @@
 			"listingExport": "js-es-admin-listing-export",
 			"listingSelectAll": "js-es-admin-listing-select-all",
 			"cacheDelete": "js-es-cache-delete",
+			"incrementReset": "js-es-increment-reset",
 			"migration": "js-es-migration",
 			"migrationOutput": "js-es-migration-output",
 			"transfer": "js-es-transfer",

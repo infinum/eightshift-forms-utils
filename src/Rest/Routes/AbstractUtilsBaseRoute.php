@@ -480,9 +480,6 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 		// Populate params.
 		$output[UtilsConfig::FD_PARAMS] = $params['params'] ?? [];
 
-		// Populate params raw.
-		$output[UtilsConfig::FD_PARAMS_RAW] = $params['paramsRaw'] ?? [];
-
 		// Populate files from uploaded ID.
 		$output[UtilsConfig::FD_FILES] = $params['files'] ?? [];
 

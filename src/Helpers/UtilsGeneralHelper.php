@@ -307,8 +307,6 @@ final class UtilsGeneralHelper
 			UtilsConfig::FD_FIELDS => [],
 			UtilsConfig::FD_FIELDS_ONLY => [],
 			UtilsConfig::FD_FIELD_NAMES => [],
-			UtilsConfig::FD_FIELD_NAMES_TAGS => [],
-			UtilsConfig::FD_FIELD_NAMES_FULL => [],
 			UtilsConfig::FD_STEPS_SETUP => [],
 		];
 
@@ -393,19 +391,11 @@ final class UtilsGeneralHelper
 				continue;
 			}
 
-			$output[UtilsConfig::FD_FIELD_NAMES_FULL][] = $value;
-
 			if (isset($ignoreBlocks[$blockItemName])) {
 				continue;
 			}
 
 			$output[UtilsConfig::FD_FIELD_NAMES][] = $value;
-
-			if ($blockItemName === 'file') {
-				continue;
-			}
-
-			$output[UtilsConfig::FD_FIELD_NAMES_TAGS][] = $value;
 		}
 
 		// Check if this form uses steps.

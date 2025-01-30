@@ -501,8 +501,6 @@ class UtilsConfig
 	public const FD_ICON = 'icon';
 	public const FD_FIELDS = 'fields';
 	public const FD_FIELD_NAMES = 'fieldNames';
-	public const FD_FIELD_NAMES_TAGS = 'fieldNamesTags';
-	public const FD_FIELD_NAMES_FULL = 'fieldNamesFull';
 	public const FD_STEPS_SETUP = 'stepsSetup';
 	public const FD_RESPONSE_OUTPUT_DATA = 'responseOutputData';
 	public const FD_PARAMS_ORIGINAL = 'paramsOriginal';

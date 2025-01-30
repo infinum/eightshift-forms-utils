@@ -181,7 +181,7 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 						);
 
 						// Append values to the first value.
-						$innerNotEmpty[0]['value'] = \implode(UtilsConfig::DELIMITER, $multiple);
+						$innerNotEmpty[0]['value'] = $multiple;
 
 						return $innerNotEmpty[0];
 					}
@@ -304,17 +304,22 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 					// File.
 					if ($fieldType === 'file') {
-						$output['files'][$key] = $fieldValue ? \array_merge(
-							$value,
-							[
-								'value' => \array_map(
-									function ($item) {
-										return UtilsUploadHelper::getFilePath($item);
-									},
-									\explode(UtilsConfig::DELIMITER, $fieldValue)
-								),
-							]
-						) : $value;
+						$output['files'][$key] = $value;
+
+						if (!$fieldValue) {
+							$output['files'][$key]['value'] = [];
+						} else {
+							if (!\is_array($fieldValue)) {
+								$fieldValue = [$fieldValue];
+							}
+
+							$output['files'][$key]['value'] = \array_map(
+								static function (string $file) {
+									return UtilsUploadHelper::getFilePath($file);
+								},
+								$fieldValue
+							);
+						}
 						break;
 					}
 
@@ -325,15 +330,13 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 
 					// Checkbox.
 					if ($fieldType === 'checkbox') {
-						$fieldValue = \explode(UtilsConfig::DELIMITER, $fieldValue);
+						if (!$fieldValue) {
+							$value['value'] = [];
+						} else {
+							$value['value'] = \is_string($fieldValue) ? [$fieldValue] : $fieldValue;
+						}
 					}
 
-					// Select multiple.
-					if ($fieldType === 'select' && \gettype($fieldValue) === 'array') {
-						$value['value'] = \implode(UtilsConfig::DELIMITER, $fieldValue);
-					}
-
-					$output['paramsRaw'][$fieldName] = $fieldValue;
 					$output['params'][$key] = $value;
 
 					break;
@@ -471,8 +474,6 @@ abstract class AbstractUtilsBaseRoute extends AbstractRoute implements CallableR
 			$output[UtilsConfig::FD_FIELDS] = $formDetails[UtilsConfig::FD_FIELDS] ?? [];
 			$output[UtilsConfig::FD_FIELDS_ONLY] = $formDetails[UtilsConfig::FD_FIELDS_ONLY] ?? [];
 			$output[UtilsConfig::FD_FIELD_NAMES] = $formDetails[UtilsConfig::FD_FIELD_NAMES] ?? [];
-			$output[UtilsConfig::FD_FIELD_NAMES_TAGS] = $formDetails[UtilsConfig::FD_FIELD_NAMES_TAGS] ?? [];
-			$output[UtilsConfig::FD_FIELD_NAMES_FULL] = $formDetails[UtilsConfig::FD_FIELD_NAMES_FULL] ?? [];
 			$output[UtilsConfig::FD_STEPS_SETUP] = $formDetails[UtilsConfig::FD_STEPS_SETUP] ?? [];
 		}
 

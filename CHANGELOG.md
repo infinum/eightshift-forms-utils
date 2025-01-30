@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.1.1]
+
+### Added
+
+- added `FD_FIELD_NAMES_FULL` constants.
+
 ## [3.1.0]
 
 ### Removed
@@ -330,6 +336,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[3.1.1]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.18...3.1.0
 [3.0.18]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.17...3.0.18
 [3.0.17]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.16...3.0.17

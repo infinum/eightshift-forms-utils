@@ -253,13 +253,6 @@ class UtilsConfig
 	 */
 	public const SETTINGS_DEBUG_QM_LOG = 'skip-qm-log';
 
-	/**
-	 * Debug settings name - skip force disabled fields mode.
-	 *
-	 * @var string
-	 */
-	public const SETTINGS_DEBUG_FORCE_DISABLED_FIELDS = 'skip-force-disabled-fields';
-
 	// ------------------------------------------------------------------
 	// SETTINGS TYPES
 	// ------------------------------------------------------------------

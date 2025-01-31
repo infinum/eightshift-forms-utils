@@ -127,16 +127,25 @@ final class UtilsSettingsOutputHelper
 	/**
 	 * Get settings input field with global variable.
 	 *
-	 * @param array<string, mixed> $options Field name.
+	 * @param string $constantValue Constant value.
+	 * @param string $optionName Option name.
+	 * @param string $constantName Constant name.
 	 * @param string $label Field label.
 	 * @param string $help Field help.
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getInputFieldWithGlobalVariable(array $options, string $label, string $help = ''): array
-	{
+	public static function getInputFieldWithGlobalVariable(
+		string $constantValue,
+		string $optionName,
+		string $constantName,
+		string $label,
+		string $help = ''
+	): array {
+		$options = static::getOptionFieldWithConstant($constantValue, $optionName, $constantName);
+
 		$internalHelp = !empty($help) ? $help . '<br/><br/>' : '';
-		$optionsHelp = !empty($options['help']) ? $internalHelp . $options['help'] : $help;
+		$optionsHelp = !empty($options['help']) ? "{$internalHelp}{$options['help']}" : $help;
 
 		return [
 			'component' => 'input',
@@ -153,19 +162,29 @@ final class UtilsSettingsOutputHelper
 	/**
 	 * Get settings password field with global variable.
 	 *
-	 * @param array<string, mixed> $options Field name.
+	 * @param string $constantValue Constant value.
+	 * @param string $optionName Option name.
+	 * @param string $constantName Constant name.
 	 * @param string $label Field label.
+	 * @param string $help Field help.
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getPasswordFieldWithGlobalVariable(array $options, string $label): array
-	{
+	public static function getPasswordFieldWithGlobalVariable(
+		string $constantValue,
+		string $optionName,
+		string $constantName,
+		string $label,
+		string $help = ''
+	): array {
+		$options = static::getOptionFieldWithConstant($constantValue, $optionName, $constantName);
+
 		$general = [
 			'component' => 'input',
 			'inputName' => $options['name'],
 			'inputFieldLabel' => $label,
 			'inputIsRequired' => true,
-			'inputFieldHelp' => $options['help'],
+			'inputFieldHelp' => "{$options['help']}{$help}",
 			'inputIsDisabled' => $options['isDisabled'],
 		];
 
@@ -203,6 +222,62 @@ final class UtilsSettingsOutputHelper
 				'inputValue' => $value,
 			]
 		);
+	}
+
+	/**
+	 * Get option with constant.
+	 *
+	 * @param string $constantValue Constant value.
+	 * @param string $optionName Option name.
+	 * @param string $constantName Constant name.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public static function getOptionFieldWithConstant(
+		string $constantValue,
+		string $optionName,
+		string $constantName
+	): array {
+		$isDisabled = !empty($constantValue);
+		$value = '';
+		$isContantValueUsed = false;
+
+		$option = UtilsSettingsHelper::getOptionValue($optionName);
+
+		if (empty($constantValue)) {
+			$value = $option;
+		} else {
+			$value = $constantValue;
+			$isContantValueUsed = true;
+		}
+
+		$helpOutput = '';
+
+		if ($constantName) {
+			// translators: %s will be replaced with global variable name.
+			$helpOutput .= \sprintf(\__('
+				<details class="is-filter-applied">
+					<summary>Available global variables</summary>
+					<ul>
+						<li>%s</li>
+					</ul>
+					<br />
+					This field value can also be set using a global variable via code.
+				</details>', 'eightshift-forms'), $constantName);
+
+			if ($isContantValueUsed) {
+				$helpOutput = '<span class="is-filter-applied">' . \__('This field value is set with a global variable via code.', 'eightshift-forms') . '</span>';
+			}
+		}
+
+		return [
+			'name' => UtilsSettingsHelper::getOptionName($optionName),
+			'value' => $value,
+			'isDisabled' => $isDisabled,
+			'help' => $helpOutput,
+			'constantValue' => $constantValue,
+			'isContantValueUsed' => $isContantValueUsed,
+		];
 	}
 
 	/**

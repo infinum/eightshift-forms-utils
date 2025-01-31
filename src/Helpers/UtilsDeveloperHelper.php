@@ -98,16 +98,6 @@ final class UtilsDeveloperHelper
 	}
 
 	/**
-	 * Check if Force Disabled Fields mode is active.
-	 *
-	 * @return boolean
-	 */
-	public static function isDeveloperForceDisabledFieldsActive(): bool
-	{
-		return \apply_filters(UtilsConfig::FILTER_SETTINGS_IS_DEBUG_ACTIVE, false, UtilsConfig::SETTINGS_DEBUG_FORCE_DISABLED_FIELDS);
-	}
-
-	/**
 	 * Set and output data to output log using Query Monitor plugin.
 	 *
 	 * @param mixed $data Data to output.

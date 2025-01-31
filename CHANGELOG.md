@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.1.3]
+
+### Removed
+
+- `SETTINGS_DEBUG_FORCE_DISABLED_FIELDS` constant.
+- `isDeveloperForceDisabledFieldsActive()` method.
+- `getSettingsDisabledOutputWithDebugFilter` method.
+
+### Added
+
+- `getOptionWithConstant` method.
+
 ## [3.1.2]
 
 ### Removed
@@ -342,6 +354,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
+[3.1.3]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.2...3.1.3
 [3.1.2]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.1...3.1.2
 [3.1.1]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.18...3.1.0

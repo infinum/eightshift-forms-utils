@@ -157,6 +157,21 @@ final class UtilsSettingsHelper
 	}
 
 	/**
+	 * Get option with constant.
+	 *
+	 * @param string $constantValue Constant value.
+	 * @param string $key Option name.
+	 *
+	 * @return string
+	 */
+	public static function getOptionWithConstant(
+		string $constantValue,
+		string $key,
+	): string {
+		return empty($constantValue) ? self::getOptionValue($key) : $constantValue;
+	}
+
+	/**
 	 * Get option value with fallback.
 	 *
 	 * @param string $key Key to find in db settings.
@@ -329,82 +344,6 @@ final class UtilsSettingsHelper
 
 		// Return the sorted array.
 		return $output;
-	}
-
-	// --------------------------------------------------
-	// Complex helper methods
-	// --------------------------------------------------
-
-	/**
-	 * Get settings option value or global variable depending on the debug settings.
-	 *
-	 * @param string $constantValue Constant value.
-	 * @param string $optionName Option name.
-	 * @param string $constantName Constant name.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public static function getSettingsDisabledOutputWithDebugFilter(
-		string $constantValue,
-		string $optionName,
-		string $constantName = ''
-	): array {
-		$isDisabled = !empty($constantValue);
-		$value = '';
-		$isContantValueUsed = false;
-
-		$option = self::getOptionValue($optionName);
-
-		if (empty($constantValue)) {
-			$value = $option;
-		} else {
-			$value = $constantValue;
-			$isContantValueUsed = true;
-		}
-
-		$isOverrideActive = UtilsDeveloperHelper::isDeveloperForceDisabledFieldsActive();
-
-		if ($isOverrideActive) {
-			$isDisabled = false;
-			if (empty($option)) {
-				$value = $constantValue;
-				$isContantValueUsed = true;
-			} else {
-				$value = $option;
-			}
-		}
-
-		$helpOutput = '';
-
-		if ($constantName) {
-			// translators: %s will be replaced with global variable name.
-			$helpOutput .= \sprintf(\__('
-				<details class="is-filter-applied">
-					<summary>Available global variables</summary>
-					<ul>
-						<li>%s</li>
-					</ul>
-					<br />
-					This field value can also be set using a global variable via code.
-				</details>', 'eightshift-forms'), $constantName);
-
-			if ($isContantValueUsed) {
-				$helpOutput = '<span class="is-filter-applied">' . \__('This field value is set with a global variable via code.', 'eightshift-forms') . '</span>';
-			}
-
-			if ($isOverrideActive) {
-				$helpOutput .= '<span class="is-debug-applied">' . \__('Debug disable option override is active. Be careful what value is used!', 'eightshift-forms') . '</span>';
-			}
-		}
-
-		return [
-			'name' => self::getOptionName($optionName),
-			'value' => $value,
-			'isDisabled' => $isDisabled,
-			'help' => $helpOutput,
-			'constantValue' => $constantValue,
-			'isContantValueUsed' => $isContantValueUsed,
-		];
 	}
 
 	// --------------------------------------------------

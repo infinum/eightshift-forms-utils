@@ -304,6 +304,7 @@ final class UtilsSettingsOutputHelper
 	 * Setting output for Test api connection
 	 *
 	 * @param string $url Oauth url.
+	 * @param string $tokenKey Token key.
 	 *
 	 * @return array<string, mixed>
 	 */

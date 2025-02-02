@@ -287,7 +287,7 @@ final class UtilsSettingsOutputHelper
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getTestAliConnection(string $key): array
+	public static function getTestApiConnection(string $key): array
 	{
 		return [
 			'component' => 'submit',
@@ -297,6 +297,45 @@ final class UtilsSettingsOutputHelper
 				UtilsHelper::getStateAttribute('testApiType') => $key,
 			],
 			'additionalClass' => UtilsHelper::getStateSelectorAdmin('testApi') . ' es-submit--api-test',
+		];
+	}
+
+	/**
+	 * Setting output for Test api connection
+	 *
+	 * @param string $url Oauth url.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public static function getOauthConnection(string $url, string $tokenKey): array
+	{
+		$token = UtilsSettingsHelper::getOptionValue($tokenKey);
+
+		$msg = isset($_GET['oauthMsg']) ? \sanitize_text_field(\wp_unslash($_GET['oauthMsg'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		return [
+			'component' => 'layout',
+			'layoutType' => 'layout-v-stack-clean-full',
+			'layoutContent' => [
+				[
+					'component' => 'card-inline',
+					'cardInlineTitle' => \__('Connect with Oauth', 'eightshift-forms'),
+					'cardInlineSubTitle' => $token ? \__('Oauth connected.', 'eightshift-forms') : \__('Oauth connection required!', 'eightshift-forms'),
+					'cardInlineRightContent' => [
+						[
+							'component' => 'submit',
+							'submitValue' => \__('Oauth Connect', 'eightshift-forms'),
+							'submitVariant' => $token ? 'success' : 'error',
+							'submitButtonAsLink' => true,
+							'submitButtonAsLinkUrl' => $url,
+						],
+					],
+				],
+				$msg ? [
+					'component' => 'intro',
+					'introSubtitle' => $msg,
+				] : [],
+			],
 		];
 	}
 

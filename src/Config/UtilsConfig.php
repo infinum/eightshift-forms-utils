@@ -246,13 +246,6 @@ class UtilsConfig
 	 */
 	public const SETTINGS_DEBUG_DEVELOPER_MODE_KEY = 'developer-mode';
 
-	/**
-	 * Debug settings name - skip Query Monitor plugin log mode.
-	 *
-	 * @var string
-	 */
-	public const SETTINGS_DEBUG_QM_LOG = 'skip-qm-log';
-
 	// ------------------------------------------------------------------
 	// SETTINGS TYPES
 	// ------------------------------------------------------------------

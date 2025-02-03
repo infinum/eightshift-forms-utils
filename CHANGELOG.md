@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.2.0]
+
+### Removed
+
+- `SETTINGS_DEBUG_QM_LOG` constant.
+- `isDeveloperQMLogActive` method.
+- `setQmLogsOutput` method.
+
+### Changed
+
+- Typo in `getTestAliConnection` method to `getTestApiConnection`.
+
+### Added
+
+- `getOauthConnection` method.
+- `NotionBuilder` icon.
+
 ## [3.1.3]
 
 ### Removed
@@ -354,7 +371,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Initial production release.
 
-[3.1.3]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.2...3.1.3
+[3.2.0]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.3...3.2.0
 [3.1.2]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.1...3.1.2
 [3.1.1]: https://github.com/infinum/eightshift-forms-utils/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/infinum/eightshift-forms-utils/compare/3.0.18...3.1.0

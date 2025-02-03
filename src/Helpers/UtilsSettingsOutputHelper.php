@@ -305,12 +305,14 @@ final class UtilsSettingsOutputHelper
 	 *
 	 * @param string $url Oauth url.
 	 * @param string $tokenKey Token key.
+	 * @param string $allowKey Allow key.
 	 *
 	 * @return array<string, mixed>
 	 */
-	public static function getOauthConnection(string $url, string $tokenKey): array
+	public static function getOauthConnection(string $url, string $tokenKey, string $allowKey): array
 	{
 		$token = UtilsSettingsHelper::getOptionValue($tokenKey);
+		$allowIsChecked = UtilsSettingsHelper::isOptionCheckboxChecked($allowKey, $allowKey);
 
 		$msg = isset($_GET['oauthMsg']) ? \sanitize_text_field(\wp_unslash($_GET['oauthMsg'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
@@ -318,6 +320,28 @@ final class UtilsSettingsOutputHelper
 			'component' => 'layout',
 			'layoutType' => 'layout-v-stack-clean-full',
 			'layoutContent' => [
+				[
+					'component' => 'checkboxes',
+					'checkboxesFieldLabel' => '',
+					'checkboxesName' => UtilsSettingsHelper::getOptionName($allowKey),
+					'checkboxesContent' => [
+						[
+							'component' => 'checkbox',
+							'checkboxLabel' => \__('Enable Oauth connection', 'eightshift-forms'),
+							'checkboxHelp' => \__('Due to security reasons, the Oauth connection should be disabled unles you are actively using it to connect to the application.', 'eightshift-forms'),
+							'checkboxIsChecked' => $allowIsChecked,
+							'checkboxValue' => $allowKey,
+							'checkboxSingleSubmit' => true,
+							'checkboxAsToggle' => true,
+						]
+					]
+				],
+				$allowIsChecked ? [
+					'component' => 'intro',
+					'introSubtitle' => \__('Make sure you turn off the Oauth connection when the connection is created or it will automatically after 5 minutes if your Cron events are set correctly. ', 'eightshift-forms'),
+					'introIsHighlighted' => true,
+					'introIsHighlightedImportant' => true,
+				] : [],
 				[
 					'component' => 'card-inline',
 					'cardInlineTitle' => \__('Connect with Oauth', 'eightshift-forms'),
@@ -329,6 +353,7 @@ final class UtilsSettingsOutputHelper
 							'submitVariant' => $token ? 'success' : 'error',
 							'submitButtonAsLink' => true,
 							'submitButtonAsLinkUrl' => $url,
+							'submitIsDisabled' => $allowIsChecked ? false : true,
 						],
 					],
 				],

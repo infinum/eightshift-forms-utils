@@ -338,7 +338,7 @@ final class UtilsSettingsOutputHelper
 				],
 				$allowIsChecked ? [
 					'component' => 'intro',
-					'introSubtitle' => \__('Make sure you turn off the Oauth connection when the connection is created or it will automatically after 5 minutes if your Cron events are set correctly. ', 'eightshift-forms'),
+					'introSubtitle' => \__('Make sure you turn off the Oauth connection when the connection is created or it will turn off automatically after 5 minutes if your Cron events are set correctly. ', 'eightshift-forms'),
 					'introIsHighlighted' => true,
 					'introIsHighlightedImportant' => true,
 				] : [],

@@ -328,7 +328,7 @@ final class UtilsSettingsOutputHelper
 						[
 							'component' => 'checkbox',
 							'checkboxLabel' => \__('Enable Oauth connection', 'eightshift-forms'),
-							'checkboxHelp' => \__('Due to security reasons, the Oauth connection should be disabled unles you are actively using it to connect to the application.', 'eightshift-forms'),
+							'checkboxHelp' => \__('Due to security reasons, the Oauth connection should be disabled unless you are actively using it to connect to the application.', 'eightshift-forms'),
 							'checkboxIsChecked' => $allowIsChecked,
 							'checkboxValue' => $allowKey,
 							'checkboxSingleSubmit' => true,

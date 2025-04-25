@@ -22,7 +22,7 @@ final class UtilsIntegrationsHelper
 	 *
 	 * @param string $id Form Id.
 	 *
-	 * @return array<string, string>
+	 * @return array<string, mixed>
 	 */
 	public static function getIntegrationDetailsById(string $id): array
 	{

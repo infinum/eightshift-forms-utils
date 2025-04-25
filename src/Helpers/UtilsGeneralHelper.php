@@ -197,10 +197,14 @@ final class UtilsGeneralHelper
 		}
 
 		foreach ($matches as $match) {
+			$original = $match[0] ?: '';
+			$label = $match[2] ?: '';
+			$value = $match[1] ?: '';
+
 			$output[] = [
-				'label' => self::minifyString($match[2] ?? ''),
-				'value' => self::minifyString($match[1] ?? ''),
-				'original' => $match[0] ?? '',
+				'label' => self::minifyString($label),
+				'value' => self::minifyString($value),
+				'original' => $original,
 			];
 		}
 
@@ -618,8 +622,8 @@ final class UtilsGeneralHelper
 
 		return \array_values(\array_filter(\array_map(
 			static function ($item) {
-				$slug = $item[1] ?? '';
-				$label = $item[2] ?? '';
+				$slug = $item[1] ?: '';
+				$label = $item[2] ?: '';
 
 				if (!$slug || !$label) {
 					return false;

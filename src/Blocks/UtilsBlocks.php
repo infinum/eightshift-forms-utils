@@ -27,7 +27,6 @@ class UtilsBlocks extends AbstractBlocks
 	public function register(): void
 	{
 		// Register all custom blocks.
-		\add_action('init', [$this, 'getBlocksDataFullRaw'], 10);
 		\add_action('init', [$this, 'registerBlocks'], 11);
 
 		// Register all custom blocks from add-ons.

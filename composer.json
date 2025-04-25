@@ -1,68 +1,68 @@
 {
-	"name": "infinum/eightshift-forms-utils",
-	"description": "Eightshift Forms Utils library for shared functionality",
-	"keywords": [
-		"composer",
-		"form",
-		"forms",
-		"email",
-		"Mailchimp",
-		"plugin",
-		"blocks",
-		"Gutenberg",
-		"WordPress"
-	],
-	"homepage": "https://eightshift.com/",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Eightshift team",
-			"email": "team@eightshift.com",
-			"homepage": "https://eightshift.com/",
-			"role": "Developer / IT Manager"
-		}
-	],
-	"support": {
-		"issues": "https://github.com/infinum/eightshift-forms/issues",
-		"source": "https://github.com/infinum/eightshift-forms"
-	},
-	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
-		"infinum/eightshift-coding-standards": "^3.0.0",
-		"php-parallel-lint/php-parallel-lint": "^v1.4.0",
-		"php-stubs/wordpress-stubs": "v6.6.2",
-		"szepeviktor/phpstan-wordpress": "^v1.3.5"
-	},
-	"require": {
-		"php": ">=8.3",
-		"infinum/eightshift-libs": "^9.3.1"
-	},
-	"suggest": {
-		"ext-pcov": "* || This extension is used for code coverage generation. Use either pcov, or xdebug, but not both.",
-		"ext-xdebug": "^3.0.0 || This extension is used for code coverage generation. Use either pcov, or xdebug, but not both."
-	},
-	"autoload": {
-		"psr-4": {
-			"EightshiftFormsUtils\\": "src/"
-		}
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"config": {
-		"sort-packages": true,
-		"optimize-autoloader": true,
-		"process-timeout": 2000,
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	},
-	"scripts": {
-		"test:types": "@php ./vendor/bin/phpstan analyze",
-		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.3-",
-		"standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 8.3-",
-		"test": [
-			"@test:standards",
-			"@test:types"
-		]
-	}
+  "name": "infinum/eightshift-forms-utils",
+  "description": "Eightshift Forms Utils library for shared functionality",
+  "keywords": [
+    "composer",
+    "form",
+    "forms",
+    "email",
+    "Mailchimp",
+    "plugin",
+    "blocks",
+    "Gutenberg",
+    "WordPress"
+  ],
+  "homepage": "https://eightshift.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eightshift team",
+      "email": "team@eightshift.com",
+      "homepage": "https://eightshift.com/",
+      "role": "Developer / IT Manager"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/infinum/eightshift-forms/issues",
+    "source": "https://github.com/infinum/eightshift-forms"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
+    "infinum/eightshift-coding-standards": "^3.0.0",
+    "php-parallel-lint/php-parallel-lint": "^v1.4.0",
+    "php-stubs/wordpress-stubs": "v6.8.0",
+    "szepeviktor/phpstan-wordpress": "v2.0.1"
+  },
+  "require": {
+    "php": ">=8.3",
+    "infinum/eightshift-libs": "^10.0.0"
+  },
+  "suggest": {
+    "ext-pcov": "* || This extension is used for code coverage generation. Use either pcov, or xdebug, but not both.",
+    "ext-xdebug": "^3.0.0 || This extension is used for code coverage generation. Use either pcov, or xdebug, but not both."
+  },
+  "autoload": {
+    "psr-4": {
+      "EightshiftFormsUtils\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "process-timeout": 2000,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "test:types": "@php ./vendor/bin/phpstan analyze",
+    "test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.3-",
+    "standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 8.3-",
+    "test": [
+      "@test:standards",
+      "@test:types"
+    ]
+  }
 }

@@ -35,7 +35,7 @@
   },
   "require": {
     "php": ">=8.3",
-    "infinum/eightshift-libs": "^10.9.1"
+    "infinum/eightshift-libs": "^10.9.2"
   },
   "suggest": {
     "ext-pcov": "* || This extension is used for code coverage generation. Use either pcov, or xdebug, but not both.",

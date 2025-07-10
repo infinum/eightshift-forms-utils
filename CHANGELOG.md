@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [3.4.5]
+
+### Added
+
+- New `selectors` enum `fileButton`.
+
 ## [3.4.4]
 
 ### Changed

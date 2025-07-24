@@ -376,6 +376,7 @@ class UtilsConfig
 	public const SLUG_ADMIN_LISTING_TRASH = 'trash';
 	public const SLUG_ADMIN_LISTING_RESULTS = 'results';
 	public const SLUG_ADMIN_LISTING_LOCATIONS = 'locations';
+	public const SLUG_ADMIN_LISTING_ACTIVITY_LOGS = 'activity-logs';
 
 	// ------------------------------------------------------------------
 	// REST API
